@@ -1,0 +1,41 @@
+build
+dist/
+node_modules
+.DS_Store
+.env
+*.env
+*.env.*
+test.env
+.next
+next-env.d.ts
+.vercel
+.vscode/
+.idea/
+
+# Payload default media upload directory
+public/media/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite-journal
+payload.db
+
+public/robots.txt
+public/sitemap*.xml
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+skillversity_backup.dump
+.gstack/
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
+*.dump
+
+# Local-only DB clone helper (machine-specific, contains no secrets)
+/scripts/clone-prod-db.sh
+

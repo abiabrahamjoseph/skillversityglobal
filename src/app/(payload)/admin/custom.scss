@@ -1,0 +1,60 @@
+/* Skillversity Admin Theme */
+
+:root {
+  /* Override Payload's default blue with Skillversity brand colors */
+  --theme-elevation-0: #0a0a1a;
+  --theme-elevation-50: #0f0f25;
+  --theme-elevation-100: #141430;
+  --theme-elevation-150: #1a1a3c;
+  --theme-elevation-200: #1f1f48;
+  --theme-elevation-250: #252554;
+  --theme-elevation-300: #2a2a60;
+  --theme-elevation-350: #30306c;
+  --theme-elevation-400: #353578;
+  --theme-elevation-450: #3b3b84;
+  --theme-elevation-500: #404090;
+  --theme-elevation-550: #46469c;
+  --theme-elevation-600: #4b4ba8;
+  --theme-elevation-650: #5151b4;
+  --theme-elevation-700: #5656c0;
+  --theme-elevation-750: #5c5ccc;
+  --theme-elevation-800: #6161d8;
+  --theme-elevation-850: #6767e4;
+  --theme-elevation-900: #6c6cf0;
+  --theme-elevation-950: #7272fc;
+  --theme-elevation-1000: #ffffff;
+}
+
+/* Brand accent */
+:root {
+  --theme-success-500: #10b981;
+  --theme-error-500: #FF1F5C;
+  --theme-warning-500: #FFCB28;
+}
+
+/* Hide Payload branding text in the nav */
+.nav__label,
+[class*="nav__logo-"] span:not(:first-child) {
+  /* Keep visible — our custom logo handles branding */
+}
+
+/* Custom button styles */
+.btn--style-primary {
+  background: linear-gradient(135deg, #FF1F5C, #FF7A1A) !important;
+  border: none !important;
+}
+
+.btn--style-primary:hover {
+  background: linear-gradient(135deg, #e01a52, #e56d15) !important;
+}
+
+/* Sidebar active state */
+.nav-group__link--active {
+  background: rgba(255, 31, 92, 0.12) !important;
+  border-left-color: #FF1F5C !important;
+}
+
+/* Document header - subtle brand accent */
+.doc-header__title {
+  font-weight: 700 !important;
+}

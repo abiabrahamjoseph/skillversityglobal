@@ -1,0 +1,95 @@
+import type { CollectionConfig } from 'payload'
+
+import {
+  FixedToolbarFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+import { anyone } from '../access/anyone'
+import { adminOrEditor } from '../access/roles'
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
+
+export const Media: CollectionConfig = {
+  slug: 'media',
+  access: {
+    create: adminOrEditor,
+    delete: adminOrEditor,
+    read: anyone,
+    update: adminOrEditor,
+  },
+  fields: [
+    {
+      name: 'alt',
+      type: 'text',
+      required: true,
+      admin: {
+        description:
+          'Describe the image in one sentence. This is read aloud by screen readers and used by search engines and AI crawlers. Avoid generic words like "image" or "photo" on their own.',
+      },
+      validate: (value: unknown) => {
+        if (typeof value !== 'string') return 'Alt text is required.'
+        const trimmed = value.trim()
+        if (!trimmed) return 'Alt text is required.'
+        if (trimmed.length < 4) return 'Alt text should be descriptive — at least 4 characters.'
+        const generic = ['image', 'photo', 'img', 'picture', 'pic']
+        if (generic.includes(trimmed.toLowerCase())) {
+          return 'Alt text should describe the image content, not just say "image" or "photo".'
+        }
+        return true
+      },
+    },
+    {
+      name: 'caption',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+        },
+      }),
+    },
+  ],
+  upload: {
+    // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
+    staticDir: path.resolve(dirname, '../../public/media'),
+    adminThumbnail: 'thumbnail',
+    focalPoint: true,
+    imageSizes: [
+      {
+        name: 'thumbnail',
+        width: 300,
+      },
+      {
+        name: 'square',
+        width: 500,
+        height: 500,
+      },
+      {
+        name: 'small',
+        width: 600,
+      },
+      {
+        name: 'medium',
+        width: 900,
+      },
+      {
+        name: 'large',
+        width: 1400,
+      },
+      {
+        name: 'xlarge',
+        width: 1920,
+      },
+      {
+        name: 'og',
+        width: 1200,
+        height: 630,
+        crop: 'center',
+      },
+    ],
+  },
+}

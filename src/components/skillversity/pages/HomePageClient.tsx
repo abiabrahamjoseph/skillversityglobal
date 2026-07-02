@@ -1,0 +1,765 @@
+'use client'
+
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { ScrollReveal } from '../ScrollReveal'
+import { LeadForm } from '../LeadForm'
+import { MediaPlaceholder } from '../MediaPlaceholder'
+
+type MediaLike = { url?: string | null; alt?: string | null } | null
+
+type Props = {
+  stats: {
+    placements: string
+    placementsLabel: string
+    hiringPartners: string
+    hiringPartnersLabel: string
+    mentors: string
+    mentorsLabel: string
+    mentorshipYears: string
+    mentorshipLabel: string
+  }
+  companies: string[]
+  certs: Array<{ icon: string; title: string; description: string }>
+  programCards: Array<{
+    href: string; bg: string; tag: string; tagBg: string
+    title: string; desc: string; dur: string; elig: string; color: string
+    image?: MediaLike
+  }>
+  testimonialCards: Array<{
+    q: string; name: string; role: string; init: string; color: string
+  }>
+  heroCollage?: Array<{
+    image?: MediaLike
+    caption?: string
+    badge?: string
+    overlay?: string
+    placeholderLabel?: string
+  }>
+  heroHeadline: string
+  heroHighlight: string
+  heroDescription: string
+}
+
+const companyLogos = [
+  { name: 'Amazon', bg: '#111111', color: '#FF9900', logoText: 'amazon', icon: '📦' },
+  { name: 'DHL', bg: '#FFCC00', color: '#D40511', logoText: 'DHL', icon: '⚡' },
+  { name: 'FedEx', bg: '#4D148C', color: '#FF6600', logoText: 'FedEx', icon: '✈️' },
+  { name: 'Maersk', bg: '#00243D', color: '#00A0E2', logoText: 'MAERSK', icon: '⚓' },
+  { name: 'Flipkart', bg: '#2874F0', color: '#FFE500', logoText: 'Flipkart', icon: '🛍️' },
+  { name: 'Apollo Hospitals', bg: '#006B54', color: '#FFFFFF', logoText: 'Apollo', icon: '🏥' },
+  { name: 'Aster Medcity', bg: '#0085A1', color: '#FFFFFF', logoText: 'Aster', icon: '💙' },
+  { name: 'DP World', bg: '#0D2C54', color: '#00B4D8', logoText: 'DP WORLD', icon: '🌊' },
+  { name: 'Reliance Retail', bg: '#E21B22', color: '#FFFFFF', logoText: 'Reliance', icon: '🛒' },
+  { name: 'Blue Dart', bg: '#FFCC00', color: '#003399', logoText: 'BLUE DART', icon: '🚀' },
+  { name: 'Delhivery', bg: '#1A1A1A', color: '#FFFFFF', logoText: 'DELHIVERY', icon: '🚚' },
+]
+
+export const HomePageClient: React.FC<Props> = ({
+  stats, companies, certs, programCards, testimonialCards, heroCollage,
+  heroHeadline, heroHighlight, heroDescription,
+}) => {
+  const [isVideoOpen, setIsVideoOpen] = React.useState(false)
+  const [liveReviews, setLiveReviews] = React.useState<{
+    reviews: Array<{ name: string; role: string; text: string; initial: string; color: string }>
+    rating: string
+    count: string
+  } | null>(null)
+
+  React.useEffect(() => {
+    fetch('/api/google-reviews')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.reviews && data.reviews.length > 0) {
+          setLiveReviews({
+            reviews: data.reviews,
+            rating: data.rating || '4.9',
+            count: data.count || '680+',
+          })
+        }
+      })
+      .catch((err) => console.error('Error fetching live reviews:', err))
+  }, [])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    
+    const maxRotateX = 10
+    const maxRotateY = 10
+    
+    const rotateX = ((centerY - y) / centerY) * maxRotateX
+    const rotateY = ((x - centerX) / centerX) * maxRotateY
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`
+    card.style.boxShadow = `0 20px 40px rgba(10, 0, 122, 0.16)`
+  }
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget
+    card.style.transform = ''
+    card.style.boxShadow = ''
+  }
+
+  const rawCollage = (heroCollage && heroCollage.length ? heroCollage : [
+    { caption: 'Workplace Simulations', placeholderLabel: 'Skillversity classroom photo', image: { url: '/media/classroom-students-lecture-500x500.jpg', alt: 'Workplace Simulations' } },
+    { caption: 'Hospital Admin Lab', placeholderLabel: 'Hospital admin lab photo', badge: '🇮🇳 + 🇦🇪 Pathways', image: { url: '/media/image-hero1-500x500.webp', alt: 'Hospital Admin Lab' } },
+    { caption: 'Warehouse Visit', placeholderLabel: 'Warehouse visit photo', overlay: '10141+ placed from 2014', image: { url: '/media/oil-and-gas-worker-500x500.jpg', alt: 'Warehouse Visit' } },
+    { caption: 'Mentor-led Sessions', placeholderLabel: 'Mentor session photo', image: { url: '/media/image-post1-500x500.webp', alt: 'Mentor-led Sessions' } },
+    { caption: 'Practical Lab', placeholderLabel: 'Practical lab photo', image: { url: '/media/image-post2-500x500.webp', alt: 'Practical Lab' } },
+  ]).slice(0, 5)
+
+  const collage = rawCollage.map((slot, i) => {
+    if (i === 0) {
+      return {
+        ...slot,
+        caption: 'Introduction Video',
+        image: { url: '/media/vHkV7susa20-thumb.jpg', alt: 'Skillversity Introduction Video' }
+      }
+    }
+    if (i === 1) {
+      return {
+        ...slot,
+        caption: 'Logistics Simulation',
+        image: { url: '/media/logistics-clean.jpg', alt: 'Logistics Simulation' }
+      }
+    }
+    if (i === 3) {
+      return {
+        ...slot,
+        caption: 'Mentor-led Sessions',
+        image: { url: '/media/mentor-session-clean.jpg', alt: 'Mentor-led Sessions' }
+      }
+    }
+    if (i === 4) {
+      return {
+        ...slot,
+        caption: 'Hospital Admin Lab',
+        image: { url: '/media/hospital-admin-lab-clean.jpg', alt: 'Hospital Admin Lab' }
+      }
+    }
+    return slot
+  })
+  // Duplicate logo badges for a seamless infinite running marquee loop
+  const marqueeLogos = [...companyLogos, ...companyLogos, ...companyLogos, ...companyLogos]
+
+  return (
+    <>
+      {/* HERO */}
+      <section className="hero-base" style={{ padding: '80px 0 110px' }}>
+        <div className="wrap">
+          <div className="hero-grid">
+            <div>
+              <span className="eyebrow load-reveal-eyebrow" style={{ marginBottom: '20px' }}>
+                <span className="dot" />India&apos;s First Job-Ready Campus · Kochi, Kerala · Established 2020
+              </span>
+              <h1 className="h-display load-reveal-title" style={{ marginTop: '16px' }}>
+                {heroHeadline}<br /><span className="grad-text">{heroHighlight}</span>
+              </h1>
+              <p className="lead load-reveal-desc" style={{ maxWidth: '600px', marginTop: '22px' }}>
+                {heroDescription}
+              </p>
+              <div className="hero-cta-group load-reveal-ctas" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '32px' }}>
+                <Link href="/contact" className="btn btn-brand btn-lg hero-cta-btn-main" style={{ flexGrow: 1, minWidth: '280px', justifyContent: 'center' }}>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  Book Free Counselling Call
+                </Link>
+                <div className="hero-cta-subgroup" style={{ display: 'flex', gap: '12px', flexGrow: 1, minWidth: '280px' }}>
+                  <Link href="/contact?action=test" className="btn btn-dark btn-lg" style={{ flex: 1, justifyContent: 'center', paddingLeft: '12px', paddingRight: '12px', fontSize: '15px' }}>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                      <circle cx="12" cy="12" r="10"/>
+                      <circle cx="12" cy="12" r="6"/>
+                      <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                    Career Test
+                  </Link>
+                  <a href="https://wa.me/919946033355?text=Hi%20Skillversity" target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-lg" style={{ flex: 1, justifyContent: 'center', paddingLeft: '12px', paddingRight: '12px', fontSize: '15px' }}>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }}>
+                      <path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.918.528 3.708 1.44 5.244L2 22l4.908-1.284a9.932 9.932 0 005.104 1.392c5.532 0 10.012-4.48 10.012-10.012C22.024 6.48 17.544 2 12.012 2zm4.884 13.836c-.204.576-.996 1.056-1.632 1.188-.444.096-.996.168-2.952-.648-2.508-1.044-4.116-3.6-4.236-3.768-.132-.168-.96-1.272-.96-2.436 0-1.164.6-1.74.816-1.98.216-.24.468-.3.624-.3h.444c.144 0 .348.012.504.384.168.396.576 1.392.624 1.488.048.096.084.216.012.36-.072.144-.108.24-.228.372-.12.144-.24.3-.348.408-.108.108-.228.228-.096.456.132.228.588.972 1.26 1.572.864.768 1.596 1.008 1.824 1.116.228.108.36.096.492-.06.132-.156.576-.672.732-.9.156-.228.312-.192.528-.108.216.084 1.368.648 1.608.768.24.12.396.18.456.288.06.108.06.624-.144 1.2z"/>
+                    </svg>
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+              <div className="load-reveal-ctas" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '22px', fontSize: '14px', color: 'var(--ink-soft)' }}>
+                <span style={{ color: 'var(--brand-orange)' }}>★★★★★</span>
+                <span><b>4.7/5</b> · 498 student reviews &nbsp;·&nbsp; 15-min call · completely free</span>
+              </div>
+              <div className="load-reveal-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '10px', marginTop: '34px', maxWidth: '460px' }}>
+                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-pink)' }}>{stats.placements}<sup style={{ fontSize: '.5em' }}>+</sup></div><div className="stat-lbl">{stats.placementsLabel}</div></div>
+                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-blue)' }}>{stats.hiringPartners}<sup style={{ fontSize: '.5em' }}>+</sup></div><div className="stat-lbl">{stats.hiringPartnersLabel}</div></div>
+                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-orange)' }}>{stats.mentors}</div><div className="stat-lbl">{stats.mentorsLabel}</div></div>
+                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-cyan)' }}>{stats.mentorshipYears} <span style={{ fontSize: '16px', fontWeight: 700 }}>yr</span></div><div className="stat-lbl">{stats.mentorshipLabel}</div></div>
+              </div>
+            </div>
+            <div className="hero-form-col">
+              <div className="hero-collage load-reveal-collage" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                {/* Left Column: Cards 1, 3, 5 */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {collage.filter((_, idx) => idx % 2 === 0).map((slot, index) => {
+                    const i = index * 2
+                    return (
+                      <div key={i} className={`hero-collage-card hero-collage-card-${i + 1} ${i === 0 ? 'hero-collage-video-card' : ''}`}>
+                        <div 
+                          className="hero-collage-card-inner"
+                          onMouseMove={handleMouseMove}
+                          onMouseLeave={handleMouseLeave}
+                          style={{ 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: 'inherit', 
+                            overflow: 'hidden', 
+                            position: 'relative',
+                            transition: 'transform 0.15s ease-out, box-shadow 0.15s ease-out',
+                            transformStyle: 'preserve-3d',
+                            perspective: '1000px'
+                          }}
+                        >
+                          <MediaPlaceholder
+                            media={slot.image}
+                            label={slot.placeholderLabel || slot.caption || 'a Skillversity photo'}
+                          />
+                          {i === 0 && (
+                            <div className="video-play-overlay" onClick={() => setIsVideoOpen(true)}>
+                              <div className="play-button-wrapper">
+                                <div className="play-ripple play-ripple-1"></div>
+                                <div className="play-ripple play-ripple-2"></div>
+                                <div className="play-button-circle">
+                                  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                  </svg>
+                                </div>
+                              </div>
+                              <span className="play-text">Watch Video</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                {/* Right Column: Cards 2, 4 */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
+                  {collage.filter((_, idx) => idx % 2 === 1).map((slot, index) => {
+                    const i = index * 2 + 1
+                    return (
+                      <div key={i} className={`hero-collage-card hero-collage-card-${i + 1}`}>
+                        <div 
+                          className="hero-collage-card-inner"
+                          onMouseMove={handleMouseMove}
+                          onMouseLeave={handleMouseLeave}
+                          style={{ 
+                            width: '100%', 
+                            height: '100%', 
+                            borderRadius: 'inherit', 
+                            overflow: 'hidden', 
+                            position: 'relative',
+                            transition: 'transform 0.15s ease-out, box-shadow 0.15s ease-out',
+                            transformStyle: 'preserve-3d',
+                            perspective: '1000px'
+                          }}
+                        >
+                          <MediaPlaceholder
+                            media={slot.image}
+                            label={slot.placeholderLabel || slot.caption || 'a Skillversity photo'}
+                          />
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE */}
+      <section className="marquee-wrap">
+        <div style={{ textAlign: 'center', marginBottom: '14px', fontSize: '11.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--ink-mute)' }}>
+          Our Students Get Hired By {stats.hiringPartners}+ Companies Including
+        </div>
+        <div className="marquee-track">
+          {marqueeLogos.map((c, i) => (
+            <span 
+              className="m-logo-pill" 
+              key={i}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 18px',
+                borderRadius: '999px',
+                border: '1px solid rgba(255,255,255,0.15)',
+                background: c.bg,
+                color: c.color,
+                fontFamily: 'var(--display)',
+                fontWeight: 900,
+                fontSize: '15px',
+                boxShadow: '0 6px 16px -4px rgba(0,0,0,0.12)',
+                whiteSpace: 'nowrap',
+                transition: 'transform 0.25s var(--ease), box-shadow 0.25s var(--ease)',
+                cursor: 'default'
+              }}
+            >
+              <span style={{ fontSize: '16px' }}>{c.icon}</span>
+              <span style={{ letterSpacing: c.name === 'MAERSK' ? '1.5px' : 'normal' }}>
+                {c.logoText === 'FedEx' ? (
+                  <>
+                    <span style={{ color: '#fff' }}>Fed</span>
+                    <span style={{ color: '#FF6600' }}>Ex</span>
+                  </>
+                ) : c.logoText === 'amazon' ? (
+                  <>
+                    <span style={{ color: '#fff' }}>ama</span>
+                    <span style={{ color: '#FF9900' }}>zon</span>
+                  </>
+                ) : (
+                  c.logoText
+                )}
+              </span>
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* STUDENT REALITY CHECK */}
+      <section className="dark-sec section">
+        <div className="wrap" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }}>
+          <ScrollReveal>
+            <span className="eyebrow"><span className="dot" />Student Reality Check</span>
+            <h2 className="h-section" style={{ color: '#fff', marginTop: '18px' }}>
+              You have the degree.<br /><em style={{ fontStyle: 'normal', color: 'var(--brand-yellow)' }}>But are you really job-ready?</em>
+            </h2>
+            <p className="lead" style={{ marginTop: '16px' }}>
+              Many students graduate with certificates, yet feel completely stuck the moment real interviews and workplace pressure show up. Skillversity closes that gap — permanently.
+            </p>
+            <ul className="check-list" style={{ marginTop: '28px' }}>
+              <li>Degree in hand but no job-relevant practical skills</li>
+              <li>Interview confidence crumbles under real pressure</li>
+              <li>Resumes sent weekly — zero callbacks received</li>
+              <li>No experience — the classic hiring catch-22</li>
+              <li>Career path unclear, every decision delayed</li>
+            </ul>
+            <style>{`.check-list li::before{background:var(--brand-pink)}`}</style>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div style={{ background: 'var(--grad-warm)', borderRadius: 'var(--rad-lg)', padding: '36px', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 60px -20px rgba(255,46,31,.45)' }}>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
+              <span className="tape">Skillversity closes this gap</span>
+              <h3 style={{ fontSize: '26px', color: '#fff', marginTop: '16px', lineHeight: 1.1 }}>Job Ready. Life Ready. Future Ready.</h3>
+              <p style={{ color: 'rgba(255,255,255,.9)', marginTop: '14px', fontSize: '15px' }}>A complete transformation — real projects, industry mentors, confidence training, structured placement support. From day one.</p>
+              <ul style={{ marginTop: '20px', display: 'grid', gap: '9px' }}>
+                {['Real workplace projects from week one',`${stats.mentors} mentors with 30+ years of industry experience`,`${stats.mentorshipYears}-year career mentorship post-placement`,'India + GCC pathways in every program'].map((item, i) => (
+                  <li key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center', color: '#fff', fontWeight: 600, fontSize: '14.5px' }}>
+                    <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255,255,255,.25)', display: 'grid', placeItems: 'center', fontSize: '11px', fontWeight: 800, flex: 'none' }}>✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/contact" className="btn btn-ghost-white btn-lg" style={{ marginTop: '24px', width: '100%' }}>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Book Free Counselling Call
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* PROGRAMS */}
+      <section className="section grid-paper">
+        <div className="wrap">
+          <ScrollReveal className="section-head">
+            <span className="eyebrow"><span className="dot" />Career Programs</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>Four industry-led programs.<br /><span className="squiggle">One job-ready campus.</span></h2>
+            <p className="lead">Every program is built around real workplace skills, expert mentors, India & GCC alignment, and structured placement support — so you graduate ready to work, not just qualified to apply.</p>
+          </ScrollReveal>
+          <div className="g4">
+            {programCards.map((p, i) => (
+              <ScrollReveal key={i}>
+                <Link href={p.href} className="prog-card">
+                  <div className="prog-card-media" style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden', background: p.bg }}>
+                    <MediaPlaceholder media={p.image} label={`${p.title} photo`} />
+                    <span className="prog-card-tag" style={{ background: p.tagBg, position: 'absolute', top: '14px', left: '14px', zIndex: 2 }}>{p.tag}</span>
+                  </div>
+                  <div className="prog-card-head" style={{ background: 'transparent', paddingTop: '18px' }}>
+                    <h3>{p.title}</h3>
+                    <p>{p.desc}</p>
+                  </div>
+                  <div className="prog-card-body">
+                    <div style={{ display: 'flex', gap: '20px', fontSize: '12.5px', fontWeight: 700, margin: '12px 0' }}>
+                      <div><b style={{ display: 'block', fontSize: '10.5px', color: 'var(--ink-mute)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: '2px' }}>Duration</b>{p.dur}</div>
+                      <div><b style={{ display: 'block', fontSize: '10.5px', color: 'var(--ink-mute)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: '2px' }}>Eligibility</b>{p.elig}</div>
+                    </div>
+                    <div style={{ color: p.color, fontWeight: 800, fontSize: '14px' }}>Explore program →</div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '36px' }}>
+            <Link href="/programs" className="btn btn-dark btn-lg">Compare All Programs in Detail →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PLACEMENTS */}
+      <section className="section" style={{ background: 'var(--cream)' }}>
+        <div className="wrap">
+          <ScrollReveal className="section-head">
+            <span className="eyebrow"><span className="dot" />Placement Commitment</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>{stats.placements}+ Placements from 2014.<br /><span className="squiggle">A structured commitment.</span></h2>
+            <p className="lead">At Skillversity, placement is not a promise — it is a structured, end-to-end commitment.</p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div style={{ background: '#fff', border: '2px solid var(--ink)', borderRadius: 'var(--rad-lg)', padding: '40px', boxShadow: '8px 8px 0 var(--ink)' }}>
+              <div style={{ fontFamily: 'var(--display)', fontWeight: 800, fontSize: 'clamp(68px,12vw,140px)', lineHeight: '.85', background: 'var(--grad-brand)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', backgroundSize: '200% 100%', animation: 'gradShift 10s linear infinite' }}>
+                {stats.placements}<sup style={{ fontSize: '.35em' }}>+</sup>
+              </div>
+              <h3 className="h-section" style={{ marginTop: '12px', marginBottom: '12px' }}>Placements from 2014.</h3>
+              <p style={{ color: 'var(--ink-soft)', fontSize: '15.5px', maxWidth: '560px', lineHeight: 1.6 }}>
+                Hospital Administration, Logistics, Oil & Gas, and HR Management roles placed across leading employers in India and GCC.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '18px' }}>
+                <span className="role-pill" style={{ background: '#DBE5FF', color: 'var(--brand-blue)', fontWeight: 700 }}>617+ Company Connections</span>
+                <span className="role-pill" style={{ background: '#FFE4ED', color: 'var(--brand-pink)', fontWeight: 700 }}>Dedicated Placement Team</span>
+                <span className="role-pill" style={{ background: '#D1FAE5', color: '#065F46', fontWeight: 700 }}>{stats.mentorshipYears}-Year Career Mentorship</span>
+                <span className="role-pill" style={{ background: '#FFF4D6', color: '#92400E', fontWeight: 700 }}>India + GCC Pathways</span>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '22px' }}>
+                <Link href="/placements" className="btn btn-dark">View Full Placement Record →</Link>
+                <Link href="/contact?action=brochure" className="btn btn-ghost">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download Report
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* CERTIFICATIONS */}
+      <section className="dark-sec section--sm">
+        <div className="wrap">
+          <ScrollReveal>
+            <div className="section-head" style={{ marginBottom: '36px' }}>
+              <span className="eyebrow"><span className="dot" />Global Recognition</span>
+              <h2 className="h-section" style={{ color: '#fff', marginTop: '14px' }}>Internationally Recognised.<br />Locally Relevant.</h2>
+            </div>
+          </ScrollReveal>
+          <div className="g4" style={{ gap: '14px' }}>
+            {certs.map((c, i) => (
+              <div key={i} style={{ background: 'rgba(255,255,255,.07)', border: '1px solid rgba(255,255,255,.14)', borderRadius: 'var(--rad)', padding: '22px' }}>
+                <div style={{ fontSize: '26px', marginBottom: '10px' }}>{c.icon}</div>
+                <h4 style={{ color: 'var(--brand-yellow)', fontSize: '16px', marginBottom: '8px' }}>{c.title}</h4>
+                <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,.75)' }}>{c.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="section" style={{ background: '#fff' }}>
+        <div className="wrap">
+          <ScrollReveal className="section-head">
+            <span className="eyebrow"><span className="dot" />Student Voices</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>Students <span className="squiggle">feel the difference.</span></h2>
+            <p className="lead">The strongest feedback is about confidence, practical learning, and the feeling that Skillversity is a launchpad — not just an institution.</p>
+          </ScrollReveal>
+          <div className="g3">
+            {testimonialCards.map((t, i) => (
+              <ScrollReveal key={i}>
+                <div className="t-card">
+                  <div className="qmark">&quot;</div>
+                  <div className="stars">★★★★★</div>
+                  <p className="quote">{t.q}</p>
+                  <div className="person">
+                    <div className="ava" style={{ background: t.color }}>{t.init}</div>
+                    <div className="meta"><b>{t.name}</b><span>{t.role}</span></div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GOOGLE REVIEWS SECTION */}
+      <section className="section google-reviews-section">
+        <div className="wrap">
+          <div className="section-head" style={{ marginBottom: '32px' }}>
+            <span className="eyebrow"><span className="dot" />Educational Institution in Kerala</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>Verified Google Reviews</h2>
+            <p className="lead" style={{ marginTop: '8px' }}>See what our students say about their journey to becoming job-ready.</p>
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <a 
+              href="https://www.google.com/search?q=Skillversity+Global+Kochi+Reviews" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="google-reviews-badge pulse-google"
+            >
+              <svg className="g-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.08H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.92l2.85-2.22.81-.6z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.08l3.66 2.84c.87-2.6 3.3-4.54 6.16-4.54z"/>
+              </svg>
+              <div style={{ textAlign: 'left', lineHeight: 1.2 }}>
+                <span style={{ fontSize: '15px', fontWeight: 800, color: 'var(--ink)' }}>Google Rating</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+                  <span style={{ fontSize: '16px', fontWeight: 800, color: 'var(--brand-orange)' }}>{liveReviews?.rating || '4.7'}/5</span>
+                  <span style={{ color: '#fbbc05', fontSize: '13px' }}>★★★★★</span>
+                  <span style={{ fontSize: '12px', color: 'var(--ink-soft)' }}>({liveReviews?.count || '498'} reviews)</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div className="google-reviews-marquee-wrap">
+            <div className="google-reviews-track">
+              {(() => {
+                const staticFallbackReviews = [
+                  { name: 'Amaljith P. V.', role: 'Oil & Gas Graduate', text: 'My journey in the Oil & Gas Engineering program at Skillversity was both transformative and rewarding. The practical training helped me build the skills needed for a successful professional career.', initial: 'A', color: 'var(--brand-orange)' },
+                  { name: 'Mehzana K. A.', role: 'Hospital Administration Graduate', text: 'IMS Skillversity was a wonderful journey for me. It helped shape my confidence, communication skills, and professional growth. It truly made me who I am today.', initial: 'M', color: 'var(--brand-pink)' },
+                  { name: 'Muhammed Jamal', role: 'Oil & Gas Graduate', text: 'My time at Skillversity helped me gain extensive industry knowledge, build immense confidence, overcome stage fear, and develop strong teamwork skills. It was a wonderful journey.', initial: 'M', color: 'var(--brand-blue)' },
+                  { name: 'Adithya K. S.', role: 'Logistics Graduate', text: 'Skillversity transformed my career. The practical logistics training and mock interviews gave me the confidence to ace my interview at DHL. Highly recommended for logistics aspirants!', initial: 'A', color: 'var(--brand-blue)' },
+                  { name: 'Anjali Menon', role: 'HR Management Graduate', text: 'The personality development sessions and resume building workshops were a game changer. I went from having zero callbacks to receiving three job offers in HR departments.', initial: 'A', color: 'var(--brand-cyan)' },
+                ]
+                const baseReviews = liveReviews?.reviews || staticFallbackReviews
+                // Duplicate reviews list for seamless looping marquee animation
+                return [...baseReviews, ...baseReviews].map((rev, index) => (
+                <div className="google-review-card" key={index}>
+                  <div className="google-review-header">
+                    <div className="google-reviewer">
+                      <div className="google-reviewer-avatar" style={{ background: rev.color }}>{rev.initial}</div>
+                      <div className="google-reviewer-info">
+                        <b>{rev.name}</b>
+                        <span>{rev.role}</span>
+                      </div>
+                    </div>
+                    <svg className="google-logo-sm" viewBox="0 0 24 24" width="16" height="16">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.08H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.92l2.85-2.22.81-.6z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.08l3.66 2.84c.87-2.6 3.3-4.54 6.16-4.54z"/>
+                    </svg>
+                  </div>
+                  <div className="google-review-rating">★★★★★</div>
+                  <p className="google-review-text">&quot;{rev.text}&quot;</p>
+                  <div style={{ fontSize: '11px', color: 'var(--ink-mute)', marginTop: '14px', display: 'flex', justifyContent: 'space-between' }}>
+                    <span>Verified Student</span>
+                    <span>Google Review</span>
+                  </div>
+                </div>
+              ))})()}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INSTAGRAM FEED SECTION */}
+      <section className="section instagram-section">
+        <div className="wrap">
+          <ScrollReveal className="section-head" style={{ marginBottom: '40px' }}>
+            <span className="eyebrow"><span className="dot" />Life At Campus</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>On Instagram</h2>
+            <p className="lead" style={{ marginTop: '8px' }}>Follow our journey, campus life events, and placement highlights on social media.</p>
+          </ScrollReveal>
+
+          <div className="instagram-marquee-wrap">
+            <div className="instagram-track">
+              {[
+                { img: '/media/insta-1.jpg', likes: '312', comments: '28' },
+                { img: '/media/insta-2.jpg', likes: '489', comments: '54' },
+                { img: '/media/insta-3.jpg', likes: '411', comments: '39' },
+                { img: '/media/insta-4.jpg', likes: '267', comments: '22' },
+                { img: '/media/insta-5.jpg', likes: '382', comments: '41' },
+                { img: '/media/insta-6.jpg', likes: '354', comments: '30' }
+              ].concat([
+                { img: '/media/insta-1.jpg', likes: '312', comments: '28' },
+                { img: '/media/insta-2.jpg', likes: '489', comments: '54' },
+                { img: '/media/insta-3.jpg', likes: '411', comments: '39' },
+                { img: '/media/insta-4.jpg', likes: '267', comments: '22' },
+                { img: '/media/insta-5.jpg', likes: '382', comments: '41' },
+                { img: '/media/insta-6.jpg', likes: '354', comments: '30' }
+              ]).map((post, idx) => (
+                <div className="instagram-card" key={idx}>
+                  <Image
+                    src={post.img}
+                    alt={`Instagram Post ${idx + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 300px, 320px"
+                    className="instagram-media"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <div className="instagram-overlay">
+                    <span>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                      </svg>
+                      {post.likes}
+                    </span>
+                    <span>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                      </svg>
+                      {post.comments}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '36px' }}>
+            <a 
+              href="https://www.instagram.com/skillversity.global/?hl=en" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-instagram btn-lg"
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ marginRight: '6px' }}>
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+              Follow us on Instagram
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* BLOG SECTION */}
+      <section className="section" style={{ background: 'var(--cream)' }}>
+        <div className="wrap">
+          <ScrollReveal className="section-head">
+            <span className="eyebrow"><span className="dot" />Career Insights</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>From our <span className="squiggle">knowledge hub.</span></h2>
+            <p className="lead">Career guides, industry news, placement stories, and expert advice.</p>
+          </ScrollReveal>
+          <div className="g3">
+            {[
+              { href: '/blog/logistics-career-guide', bg: 'linear-gradient(135deg,#0A007A,#1A3DB8)', icon: '📦', cat: 'Logistics', catBg: '#1A3DB8', title: 'Why Logistics is the Best Career Choice for Students in 2025', desc: 'Amazon, Maersk, DHL — the demand for logistics talent is at an all-time high.', time: '8 min read', image: '/media/classroom-students-lecture-500x500.jpg' },
+              { href: '/blog/hospital-admin-guide', bg: 'linear-gradient(135deg,#00B6E8,#FF1F5C)', icon: '🏥', cat: 'Healthcare', catBg: '#00B6E8', title: 'Hospital Administration: The Complete Career Guide for Indian Students', desc: 'No medical background required. One of the fastest-growing careers in India and the Gulf.', time: '10 min read', image: '/media/image-hero1-500x500.webp' },
+              { href: '/blog', bg: 'linear-gradient(135deg,#FF2E1F,#FFCB28)', icon: '🛢', cat: 'Oil & Gas', catBg: '#FF2E1F', title: 'Oil & Gas Jobs in the Gulf: How to Get Hired from India in 2025', desc: 'QA/QC, NDT, HSE — the Gulf is actively hiring from India.', time: '9 min read', image: '/media/oil-and-gas-worker-500x500.jpg' },
+            ].map((b, i) => (
+              <ScrollReveal key={i}>
+                <Link href={b.href} className="blog-card">
+                  <div className="blog-thumb" style={b.image ? { position: 'relative', overflow: 'hidden' } : { background: b.bg }}>
+                    {b.image ? (
+                      <Image
+                        src={b.image}
+                        alt={b.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    ) : (
+                      b.icon
+                    )}
+                  </div>
+                  <div className="blog-body">
+                    <span className="cat" style={{ background: b.catBg }}>{b.cat}</span>
+                    <h3>{b.title}</h3>
+                    <p>{b.desc}</p>
+                    <div className="blog-meta"><span>{b.time}</span><span>Career Guide</span></div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '32px' }}>
+            <Link href="/blog" className="btn btn-dark btn-lg">View All Articles →</Link>
+          </div>
+        </div>
+      </section>
+      {/* CTA + FORM */}
+      <section className="dark-sec section">
+        <div className="wrap cta-wrap">
+          <ScrollReveal>
+            <span className="eyebrow"><span className="dot" />Take the Next Step</span>
+            <h2 className="h-section" style={{ color: '#fff', marginTop: '16px' }}>
+              Ready to build your<br /><span style={{ color: 'var(--brand-yellow)' }}>job-ready career?</span>
+            </h2>
+            <p className="lead" style={{ marginTop: '16px' }}>Book a free 15-minute counselling call — no commitment, just clarity.</p>
+            <div className="cta-btn-group">
+              <Link href="/contact" className="btn btn-brand btn-lg" style={{ flexGrow: 1, minWidth: '280px', justifyContent: 'center' }}>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Book Free Counselling Call
+              </Link>
+              <div className="cta-btn-subgroup">
+                <Link href="/contact?action=brochure" className="btn btn-ghost-white btn-lg" style={{ flex: 1, justifyContent: 'center' }}>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download Brochure
+                </Link>
+                <a href="https://wa.me/919946033355" target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-lg" style={{ flex: 1, justifyContent: 'center' }}>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }}>
+                    <path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.918.528 3.708 1.44 5.244L2 22l4.908-1.284a9.932 9.932 0 005.104 1.392c5.532 0 10.012-4.48 10.012-10.012C22.024 6.48 17.544 2 12.012 2zm4.884 13.836c-.204.576-.996 1.056-1.632 1.188-.444.096-.996.168-2.952-.648-2.508-1.044-4.116-3.6-4.236-3.768-.132-.168-.96-1.272-.96-2.436 0-1.164.6-1.74.816-1.98.216-.24.468-.3.624-.3h.444c.144 0 .348.012.504.384.168.396.576 1.392.624 1.488.048.096.084.216.012.36-.072.144-.108.24-.228.372-.12.144-.24.3-.348.408-.108.108-.228.228-.096.456.132.228.588.972 1.26 1.572.864.768 1.596 1.008 1.824 1.116.228.108.36.096.492-.06.132-.156.576-.672.732-.9.156-.228.312-.192.528-.108.216.084 1.368.648 1.608.768.24.12.396.18.456.288.06.108.06.624-.144 1.2z"/>
+                  </svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+            <div className="cta-info-grid">
+              <div className="cta-info-card">
+                <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '.1em', color: 'rgba(255,255,255,.5)', marginBottom: '4px', fontWeight: 700 }}>Phone / WhatsApp</div>
+                <a href="tel:+919946033355" style={{ color: '#fff', fontWeight: 700, fontSize: '14px' }}>+91 99460 33355</a>
+              </div>
+              <div className="cta-info-card">
+                <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '.1em', color: 'rgba(255,255,255,.5)', marginBottom: '4px', fontWeight: 700 }}>Email</div>
+                <a href="mailto:info@skillversityglobal.com" style={{ color: '#fff', fontWeight: 700, fontSize: '13px' }}>info@skillversityglobal.com</a>
+              </div>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <LeadForm />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* VIDEO PLAYBACK MODAL */}
+      {isVideoOpen && (
+        <div className="video-modal-backdrop" onClick={() => setIsVideoOpen(false)}>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="video-modal-close" onClick={() => setIsVideoOpen(false)} aria-label="Close Video">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+            <div className="video-iframe-container">
+              <iframe
+                src="https://www.youtube.com/embed/vHkV7susa20?autoplay=1&mute=0"
+                title="Skillversity Global Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}

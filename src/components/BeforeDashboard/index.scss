@@ -1,0 +1,84 @@
+@import '@payloadcms/ui/scss';
+
+.dashboard .before-dashboard {
+  margin-bottom: base(2);
+
+  &__hero {
+    background: linear-gradient(135deg, #111827, #1a3db8 55%, #ff1f5c);
+    border-radius: 12px;
+    color: #fff;
+    margin-bottom: base(1);
+    padding: base(1.5);
+
+    h2 {
+      color: #fff;
+      font-size: 32px;
+      line-height: 1.05;
+      margin: 0 0 10px;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 760px;
+    }
+  }
+
+  &__eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+
+    a {
+      background: #fff;
+      border-radius: 8px;
+      color: #111827;
+      font-weight: 800;
+      padding: 10px 14px;
+      text-decoration: none;
+
+      &:last-child {
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
+
+  &__card {
+    border: 1px solid var(--theme-elevation-150);
+    border-radius: 10px;
+    color: var(--theme-text);
+    display: grid;
+    gap: 4px;
+    padding: 16px;
+    text-decoration: none;
+
+    strong {
+      font-size: 16px;
+    }
+
+    span {
+      color: var(--theme-elevation-600);
+      font-size: 13px;
+    }
+
+    &:hover {
+      border-color: #ff1f5c;
+      opacity: 0.92;
+    }
+  }
+}
