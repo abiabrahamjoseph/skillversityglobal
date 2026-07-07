@@ -116,13 +116,35 @@ export const HomePageClient: React.FC<Props> = ({
         if (data.reviews && data.reviews.length > 0) {
           setLiveReviews({
             reviews: data.reviews,
-            rating: data.rating || '4.9',
-            count: data.count || '680+',
+            rating: data.rating || '4.7',
+            count: data.count || '511',
           })
         }
       })
       .catch((err) => console.error('Error fetching live reviews:', err))
   }, [])
+
+  const [animatedCount, setAnimatedCount] = React.useState(0)
+  const targetCount = liveReviews ? parseInt(liveReviews.count) || 511 : 511
+
+  React.useEffect(() => {
+    let start = 0
+    const end = targetCount
+    if (end === 0) return
+    const duration = 1500 // 1.5s
+    const stepTime = 15
+    const stepSize = Math.max(Math.ceil(end / (duration / stepTime)), 1)
+    const timer = setInterval(() => {
+      start += stepSize
+      if (start >= end) {
+        setAnimatedCount(end)
+        clearInterval(timer)
+      } else {
+        setAnimatedCount(start)
+      }
+    }, stepTime)
+    return () => clearInterval(timer)
+  }, [targetCount])
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -147,10 +169,16 @@ export const HomePageClient: React.FC<Props> = ({
               <div className="wrap">
                 <div className="slide-grid">
                   <div className="slide-content-col">
-                    <div className="slide-rating-badge">
+                    <a
+                      href="https://www.google.com/search?q=skillversity&rlz=1C1OPNX_enIN1171IN1171&oq=skillvers&gs_lcrp=EgZjaHJvbWUqBggBECMYJzIGCAAQRRg8MgYIARAjGCcyBggCEEUYOTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGEHSAQgzNDE5ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3b080d665f30007f:0x1656ac17070f06af,1,,,,"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="slide-rating-badge"
+                      style={{ textDecoration: 'none', cursor: 'pointer' }}
+                    >
                       <span className="stars">★★★★★</span>
-                      <span className="text">{liveReviews?.rating || '4.9'}/5 Google Rating ({liveReviews?.count || '680+'})</span>
-                    </div>
+                      <span className="text">{liveReviews?.rating || '4.7'}/5 Google Rating ({animatedCount} Reviews)</span>
+                    </a>
                     <span className="eyebrow" style={{ marginBottom: '14px' }}>
                       <span className="dot" style={{ background: slide.color }} />
                       {slide.eyebrow}
@@ -488,7 +516,7 @@ export const HomePageClient: React.FC<Props> = ({
 
           <div style={{ textAlign: 'center' }}>
             <a 
-              href="https://www.google.com/search?q=Skillversity+Global+Kochi+Reviews" 
+              href="https://www.google.com/search?q=skillversity&rlz=1C1OPNX_enIN1171IN1171&oq=skillvers&gs_lcrp=EgZjaHJvbWUqBggBECMYJzIGCAAQRRg8MgYIARAjGCcyBggCEEUYOTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGEHSAQgzNDE5ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3b080d665f30007f:0x1656ac17070f06af,1,,,," 
               target="_blank" 
               rel="noopener noreferrer" 
               className="google-reviews-badge pulse-google"
@@ -504,7 +532,7 @@ export const HomePageClient: React.FC<Props> = ({
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
                   <span style={{ fontSize: '16px', fontWeight: 800, color: 'var(--brand-orange)' }}>{liveReviews?.rating || '4.7'}/5</span>
                   <span style={{ color: '#fbbc05', fontSize: '13px' }}>★★★★★</span>
-                  <span style={{ fontSize: '12px', color: 'var(--ink-soft)' }}>({liveReviews?.count || '498'} reviews)</span>
+                  <span style={{ fontSize: '12px', color: 'var(--ink-soft)' }}>({liveReviews?.count || '511'} reviews)</span>
                 </div>
               </div>
             </a>
