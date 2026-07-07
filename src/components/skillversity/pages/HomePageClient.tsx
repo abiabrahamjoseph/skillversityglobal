@@ -242,6 +242,30 @@ export const HomePageClient: React.FC<Props> = ({
                   </div>
 
                   <div className="slide-image-col">
+                    {/* Glowing radial gradient backdrop blob */}
+                    <div
+                      className="decor-blob"
+                      style={{
+                        background: `radial-gradient(circle, ${slide.color} 0%, transparent 70%)`,
+                        animation: 'pulse-soft 6s infinite ease-in-out',
+                      }}
+                    />
+                    
+                    {/* Floating Outlined Sparkle/Star */}
+                    <svg className="decor-shape decor-star" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="1.5">
+                      <path d="M12 3v18M3 12h18M5.636 5.636l12.728 12.728M5.636 18.364L18.364 5.636" strokeLinecap="round"/>
+                    </svg>
+
+                    {/* Floating Outlined Ring */}
+                    <svg className="decor-shape decor-ring" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="1.2">
+                      <circle cx="12" cy="12" r="8" strokeDasharray="3 3"/>
+                    </svg>
+
+                    {/* Floating Outlined Diamond */}
+                    <svg className="decor-shape decor-diamond" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="1.5">
+                      <rect x="6" y="6" width="12" height="12" rx="2" transform="rotate(45 12 12)"/>
+                    </svg>
+
                     <div className="slide-image-wrapper">
                       <Image
                         src={slide.image}
