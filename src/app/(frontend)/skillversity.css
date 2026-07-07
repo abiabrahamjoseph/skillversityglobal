@@ -2112,8 +2112,47 @@ footer ul a:hover { color: var(--brand-orange); }
   .slider-arrow-next {
     right: 8px;
   }
-  .decor-blob, .decor-shape {
-    display: none !important;
+  /* Make decorations visible and scaled down on mobile */
+  .decor-blob {
+    display: block !important;
+    width: 140px !important;
+    height: 140px !important;
+    top: 2% !important;
+    left: 5% !important;
+    filter: blur(25px) !important;
+  }
+  .decor-shape {
+    display: block !important;
+  }
+  .decor-star {
+    width: 20px !important;
+    height: 20px !important;
+    top: 8% !important;
+    left: 10% !important;
+  }
+  .decor-ring {
+    width: 26px !important;
+    height: 26px !important;
+    top: 25% !important;
+    left: 5% !important;
+  }
+  .decor-diamond {
+    width: 14px !important;
+    height: 14px !important;
+    top: 4% !important;
+    left: 80% !important;
+  }
+  .decor-plus {
+    width: 12px !important;
+    height: 12px !important;
+    top: 32% !important;
+    left: 25% !important;
+  }
+  .decor-circle-two {
+    width: 10px !important;
+    height: 10px !important;
+    top: 18% !important;
+    left: 85% !important;
   }
 }
 
@@ -2156,6 +2195,20 @@ footer ul a:hover { color: var(--brand-orange); }
   left: 45%;
   width: 22px;
   height: 22px;
+}
+
+.decor-plus {
+  top: 45%;
+  left: 35%;
+  width: 20px;
+  height: 20px;
+}
+
+.decor-circle-two {
+  top: 22%;
+  left: 65%;
+  width: 16px;
+  height: 16px;
 }
 
 /* Float Keyframe Animations */
@@ -2207,6 +2260,14 @@ footer ul a:hover { color: var(--brand-orange); }
 
 .decor-diamond {
   animation: float-slow 7s infinite ease-in-out;
+}
+
+.decor-plus {
+  animation: float-slow 9s infinite ease-in-out;
+}
+
+.decor-circle-two {
+  animation: float-medium 7.5s infinite ease-in-out;
 }
 
 /* Staggered Slide Content Entry Animation */

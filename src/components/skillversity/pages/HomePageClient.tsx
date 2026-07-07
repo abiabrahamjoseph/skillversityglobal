@@ -263,6 +263,16 @@ export const HomePageClient: React.FC<Props> = ({
                       <rect x="6" y="6" width="12" height="12" rx="2" transform="rotate(45 12 12)"/>
                     </svg>
 
+                    {/* Floating Outlined Plus */}
+                    <svg className="decor-shape decor-plus" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="1.5">
+                      <path d="M12 5v14M5 12h14" strokeLinecap="round"/>
+                    </svg>
+
+                    {/* Floating Outlined Circle Two */}
+                    <svg className="decor-shape decor-circle-two" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="1.5">
+                      <circle cx="12" cy="12" r="5"/>
+                    </svg>
+
                     <div className="slide-image-wrapper">
                       <Image
                         src={slide.image}
