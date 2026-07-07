@@ -2060,20 +2060,29 @@ footer ul a:hover { color: var(--brand-orange); }
 
 /* Responsive Slide Adjustments */
 @media (max-width: 1000px) {
+  .hero-slider-wrap {
+    min-height: auto;
+  }
   .slide-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 60px 0 80px;
+    gap: 20px;
+    padding: 40px 0 60px;
   }
   .slide-image-col {
     height: 320px;
     grid-row: 1; /* Image first on mobile/tablet */
+    justify-content: center;
+  }
+  .slide-image-wrapper {
+    transform: none; /* Reset transform/scale on mobile */
   }
   .slide-content-col {
     align-items: center;
     text-align: center;
+    padding-bottom: 0; /* Reset vertical offset padding on mobile */
   }
   .slide-bullets-row {
+    flex-wrap: wrap; /* Allow wrapping on mobile to prevent overflow */
     justify-content: center;
     border-top: 1px solid rgba(10, 10, 31, 0.08);
     border-bottom: 1px solid rgba(10, 10, 31, 0.08);
