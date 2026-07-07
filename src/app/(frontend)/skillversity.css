@@ -2105,6 +2105,8 @@ footer ul a:hover { color: var(--brand-orange); }
     display: flex !important;
     width: 36px;
     height: 36px;
+    top: 230px !important;
+    transform: translateY(-50%) !important;
   }
   .slider-arrow-prev {
     left: 8px;
