@@ -2156,6 +2156,24 @@ footer ul a:hover { color: var(--brand-orange); }
     top: 18% !important;
     left: 85% !important;
   }
+  .decor-cross {
+    width: 12px !important;
+    height: 12px !important;
+    top: 38% !important;
+    left: 75% !important;
+  }
+  .decor-triangle {
+    width: 14px !important;
+    height: 14px !important;
+    top: 10% !important;
+    left: 55% !important;
+  }
+  .decor-dash {
+    width: 10px !important;
+    height: 6px !important;
+    top: 28% !important;
+    left: 15% !important;
+  }
 }
 
 /* Floating Background Decorations */
@@ -2211,6 +2229,27 @@ footer ul a:hover { color: var(--brand-orange); }
   left: 65%;
   width: 16px;
   height: 16px;
+}
+
+.decor-cross {
+  top: 70%;
+  left: 8%;
+  width: 18px;
+  height: 18px;
+}
+
+.decor-triangle {
+  top: 38%;
+  left: 88%;
+  width: 22px;
+  height: 22px;
+}
+
+.decor-dash {
+  top: 60%;
+  left: 82%;
+  width: 16px;
+  height: 8px;
 }
 
 /* Float Keyframe Animations */
@@ -2270,6 +2309,18 @@ footer ul a:hover { color: var(--brand-orange); }
 
 .decor-circle-two {
   animation: float-medium 7.5s infinite ease-in-out;
+}
+
+.decor-cross {
+  animation: float-reverse 8.5s infinite ease-in-out;
+}
+
+.decor-triangle {
+  animation: float-slow 10s infinite ease-in-out;
+}
+
+.decor-dash {
+  animation: float-medium 6.8s infinite ease-in-out;
 }
 
 /* Staggered Slide Content Entry Animation */

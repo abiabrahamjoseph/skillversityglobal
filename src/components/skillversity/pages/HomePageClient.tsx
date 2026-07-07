@@ -273,6 +273,21 @@ export const HomePageClient: React.FC<Props> = ({
                       <circle cx="12" cy="12" r="5"/>
                     </svg>
 
+                    {/* Floating Outlined Cross */}
+                    <svg className="decor-shape decor-cross" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="1.5">
+                      <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round"/>
+                    </svg>
+
+                    {/* Floating Outlined Triangle */}
+                    <svg className="decor-shape decor-triangle" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="1.5">
+                      <polygon points="12,5 5,18 19,18" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+
+                    {/* Floating Outlined Dash */}
+                    <svg className="decor-shape decor-dash" viewBox="0 0 24 24" fill="none" stroke={slide.color} strokeWidth="2">
+                      <line x1="5" y1="12" x2="19" y2="12" strokeLinecap="round"/>
+                    </svg>
+
                     <div className="slide-image-wrapper">
                       <Image
                         src={slide.image}
