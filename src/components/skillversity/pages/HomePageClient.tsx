@@ -420,9 +420,9 @@ export const HomePageClient: React.FC<Props> = ({
                 <Link href={p.href} className="prog-card">
                   <div className="prog-card-media" style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden', background: p.bg }}>
                     <MediaPlaceholder media={p.image} label={`${p.title} photo`} />
-                    <span className="prog-card-tag" style={{ background: p.tagBg, position: 'absolute', top: '14px', left: '14px', zIndex: 2 }}>{p.tag}</span>
                   </div>
                   <div className="prog-card-head" style={{ background: 'transparent', paddingTop: '18px' }}>
+                    <span className="prog-card-tag" style={{ background: p.tagBg }}>{p.tag}</span>
                     <h3>{p.title}</h3>
                     <p>{p.desc}</p>
                   </div>
