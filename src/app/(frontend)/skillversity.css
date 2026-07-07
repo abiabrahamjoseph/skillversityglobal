@@ -2078,12 +2078,12 @@ footer ul a:hover { color: var(--brand-orange); }
     padding: 40px 0 60px;
   }
   .slide-image-col {
-    height: 320px;
+    height: 380px;
     grid-row: 1; /* Image first on mobile/tablet */
     justify-content: center;
   }
   .slide-image-wrapper {
-    transform: none; /* Reset transform/scale on mobile */
+    transform: scale(1.18) translateY(-10px);
   }
   .slide-content-col {
     align-items: center;
