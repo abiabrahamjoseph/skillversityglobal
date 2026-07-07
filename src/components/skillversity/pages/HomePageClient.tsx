@@ -418,7 +418,7 @@ export const HomePageClient: React.FC<Props> = ({
             {programCards.map((p, i) => (
               <ScrollReveal key={i}>
                 <Link href={p.href} className="prog-card">
-                  <div className="prog-card-media" style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden', background: p.bg }}>
+                  <div className="prog-card-media" style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: p.bg }}>
                     <MediaPlaceholder media={p.image} label={`${p.title} photo`} />
                   </div>
                   <div className="prog-card-head" style={{ background: 'transparent', paddingTop: '18px' }}>
