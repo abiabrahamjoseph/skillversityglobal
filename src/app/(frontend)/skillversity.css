@@ -1885,7 +1885,7 @@ footer ul a:hover { color: var(--brand-orange); }
   box-shadow: none;
   border: none;
   background: transparent;
-  transform: translateY(-115px) scale(1.38);
+  transform: translateY(-170px) scale(1.15);
 }
 
 /* Google Reviews Badge in Slide */
