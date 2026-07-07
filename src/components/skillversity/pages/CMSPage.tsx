@@ -100,31 +100,18 @@ const getHomeData = async (page: SkillversityStructuredPage) => {
     : defaultCompanies
   const certs = settings?.certifications?.length ? settings.certifications : defaultCerts
 
-  const programCards = programs.length > 0
-    ? programs.map((program: any) => ({
-        href: `/programs/${program.slug}`,
-        bg: program.cardGradient,
-        tag: program.tag,
-        tagBg: program.tagColor,
-        title: program.title,
-        desc: program.shortDescription,
-        dur: program.duration,
-        elig: program.eligibility,
-        color: program.accentColor,
-        image: program.cardImage,
-      }))
-    : defaultPrograms.map((program) => ({
-        href: `/programs/${program.slug}`,
-        bg: program.cardGradient,
-        tag: program.tag,
-        tagBg: program.tagColor,
-        title: program.title,
-        desc: program.shortDescription,
-        dur: program.duration,
-        elig: program.eligibility,
-        color: program.accentColor,
-        image: null,
-      }))
+  const programCards = defaultPrograms.map((program) => ({
+    href: `/programs/${program.slug}`,
+    bg: program.cardGradient,
+    tag: program.tag,
+    tagBg: program.tagColor,
+    title: program.title,
+    desc: program.shortDescription,
+    dur: program.duration,
+    elig: program.eligibility,
+    color: program.accentColor,
+    image: program.image ? { url: program.image, alt: program.title } : null,
+  }))
 
   const testimonialCards = testimonials.length > 0
     ? testimonials.map((testimonial: any) => ({

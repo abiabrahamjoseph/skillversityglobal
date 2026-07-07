@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { GraduationCap, Briefcase, TrendingUp, Laptop, ChevronLeft, ChevronRight } from 'lucide-react'
 import { ScrollReveal } from '../ScrollReveal'
 import { LeadForm } from '../LeadForm'
 import { MediaPlaceholder } from '../MediaPlaceholder'
@@ -60,12 +61,53 @@ export const HomePageClient: React.FC<Props> = ({
   stats, companies, certs, programCards, testimonialCards, heroCollage,
   heroHeadline, heroHighlight, heroDescription,
 }) => {
+  const [currentSlide, setCurrentSlide] = React.useState(0)
   const [isVideoOpen, setIsVideoOpen] = React.useState(false)
   const [liveReviews, setLiveReviews] = React.useState<{
     reviews: Array<{ name: string; role: string; text: string; initial: string; color: string }>
     rating: string
     count: string
   } | null>(null)
+
+  const slides = [
+    {
+      eyebrow: "Healthcare & Corporate Operations",
+      title: "Business Administration & Hospital Management",
+      highlight: "Combined Corporate Operations & Healthcare Management",
+      description: "Master corporate management, financial planning, workflow automation, patient relations, and NABH healthcare quality standards.",
+      image: '/media/hospital-admin-hero.png',
+      color: '#00B6E8',
+      href: "/programs/business-hospital-management"
+    },
+
+    {
+      eyebrow: "Corporate People Operations",
+      title: "Best HR Management Course In Kochi",
+      highlight: "Learn Recruitment, Payroll, Analytics and HRIS Tools",
+      description: "Practical people operations, candidate sourcing, payroll software, HR analytics, employee engagement, and corporate compliance training.",
+      image: '/media/hr-management-hero.png',
+      color: '#C040A0',
+      href: "/programs/hr-management"
+    },
+    {
+      eyebrow: "Global Trade Pathway",
+      title: "Best Logistics & Supply Chain Course In Kochi",
+      highlight: "Practical Global Trade Training with Port & Warehouse Visits",
+      description: "Master warehousing, shipping operations, procurement, customs clearance, port workflows, and ERP logistics systems.",
+      image: '/media/logistics-hero.png',
+      color: '#1A3DB8',
+      href: "/programs/logistics-supply-chain"
+    },
+    {
+      eyebrow: "Industrial Energy Pathway",
+      title: "Best Oil & Gas Engineering Course In Kochi",
+      highlight: "International QA/QC & NDT Certifications for Gulf Careers",
+      description: "Master safety-first technical refinery operations, piping inspection, QA/QC, non-destructive testing (NDT), and HSE guidelines.",
+      image: '/media/oil-gas-hero.png',
+      color: '#FF2E1F',
+      href: "/programs/oil-gas"
+    }
+  ]
 
   React.useEffect(() => {
     fetch('/api/google-reviews')
@@ -82,204 +124,139 @@ export const HomePageClient: React.FC<Props> = ({
       .catch((err) => console.error('Error fetching live reviews:', err))
   }, [])
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget
-    const rect = card.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    
-    const maxRotateX = 10
-    const maxRotateY = 10
-    
-    const rotateX = ((centerY - y) / centerY) * maxRotateX
-    const rotateY = ((x - centerX) / centerX) * maxRotateY
-    
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`
-    card.style.boxShadow = `0 20px 40px rgba(10, 0, 122, 0.16)`
-  }
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [slides.length])
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget
-    card.style.transform = ''
-    card.style.boxShadow = ''
-  }
-
-  const rawCollage = (heroCollage && heroCollage.length ? heroCollage : [
-    { caption: 'Workplace Simulations', placeholderLabel: 'Skillversity classroom photo', image: { url: '/media/classroom-students-lecture-500x500.jpg', alt: 'Workplace Simulations' } },
-    { caption: 'Hospital Admin Lab', placeholderLabel: 'Hospital admin lab photo', badge: '🇮🇳 + 🇦🇪 Pathways', image: { url: '/media/image-hero1-500x500.webp', alt: 'Hospital Admin Lab' } },
-    { caption: 'Warehouse Visit', placeholderLabel: 'Warehouse visit photo', overlay: '10141+ placed from 2014', image: { url: '/media/oil-and-gas-worker-500x500.jpg', alt: 'Warehouse Visit' } },
-    { caption: 'Mentor-led Sessions', placeholderLabel: 'Mentor session photo', image: { url: '/media/image-post1-500x500.webp', alt: 'Mentor-led Sessions' } },
-    { caption: 'Practical Lab', placeholderLabel: 'Practical lab photo', image: { url: '/media/image-post2-500x500.webp', alt: 'Practical Lab' } },
-  ]).slice(0, 5)
-
-  const collage = rawCollage.map((slot, i) => {
-    if (i === 0) {
-      return {
-        ...slot,
-        caption: 'Introduction Video',
-        image: { url: '/media/vHkV7susa20-thumb.jpg', alt: 'Skillversity Introduction Video' }
-      }
-    }
-    if (i === 1) {
-      return {
-        ...slot,
-        caption: 'Logistics Simulation',
-        image: { url: '/media/logistics-clean.jpg', alt: 'Logistics Simulation' }
-      }
-    }
-    if (i === 3) {
-      return {
-        ...slot,
-        caption: 'Mentor-led Sessions',
-        image: { url: '/media/mentor-session-clean.jpg', alt: 'Mentor-led Sessions' }
-      }
-    }
-    if (i === 4) {
-      return {
-        ...slot,
-        caption: 'Hospital Admin Lab',
-        image: { url: '/media/hospital-admin-lab-clean.jpg', alt: 'Hospital Admin Lab' }
-      }
-    }
-    return slot
-  })
   // Duplicate logo badges for a seamless infinite running marquee loop
   const marqueeLogos = [...companyLogos, ...companyLogos, ...companyLogos, ...companyLogos]
 
   return (
     <>
-      {/* HERO */}
-      <section className="hero-base" style={{ padding: '80px 0 110px' }}>
-        <div className="wrap">
-          <div className="hero-grid">
-            <div>
-              <span className="eyebrow load-reveal-eyebrow" style={{ marginBottom: '20px' }}>
-                <span className="dot" />India&apos;s First Job-Ready Campus · Kochi, Kerala · Established 2020
-              </span>
-              <h1 className="h-display load-reveal-title" style={{ marginTop: '16px' }}>
-                {heroHeadline}<br /><span className="grad-text">{heroHighlight}</span>
-              </h1>
-              <p className="lead load-reveal-desc" style={{ maxWidth: '600px', marginTop: '22px' }}>
-                {heroDescription}
-              </p>
-              <div className="hero-cta-group load-reveal-ctas" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '32px' }}>
-                <Link href="/contact" className="btn btn-brand btn-lg hero-cta-btn-main" style={{ flexGrow: 1, minWidth: '280px', justifyContent: 'center' }}>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                  Book Free Counselling Call
-                </Link>
-                <div className="hero-cta-subgroup" style={{ display: 'flex', gap: '12px', flexGrow: 1, minWidth: '280px' }}>
-                  <Link href="/contact?action=test" className="btn btn-dark btn-lg" style={{ flex: 1, justifyContent: 'center', paddingLeft: '12px', paddingRight: '12px', fontSize: '15px' }}>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                      <circle cx="12" cy="12" r="10"/>
-                      <circle cx="12" cy="12" r="6"/>
-                      <circle cx="12" cy="12" r="2"/>
-                    </svg>
-                    Career Test
-                  </Link>
-                  <a href="https://wa.me/919946033355?text=Hi%20Skillversity" target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-lg" style={{ flex: 1, justifyContent: 'center', paddingLeft: '12px', paddingRight: '12px', fontSize: '15px' }}>
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ flexShrink: 0 }}>
-                      <path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.918.528 3.708 1.44 5.244L2 22l4.908-1.284a9.932 9.932 0 005.104 1.392c5.532 0 10.012-4.48 10.012-10.012C22.024 6.48 17.544 2 12.012 2zm4.884 13.836c-.204.576-.996 1.056-1.632 1.188-.444.096-.996.168-2.952-.648-2.508-1.044-4.116-3.6-4.236-3.768-.132-.168-.96-1.272-.96-2.436 0-1.164.6-1.74.816-1.98.216-.24.468-.3.624-.3h.444c.144 0 .348.012.504.384.168.396.576 1.392.624 1.488.048.096.084.216.012.36-.072.144-.108.24-.228.372-.12.144-.24.3-.348.408-.108.108-.228.228-.096.456.132.228.588.972 1.26 1.572.864.768 1.596 1.008 1.824 1.116.228.108.36.096.492-.06.132-.156.576-.672.732-.9.156-.228.312-.192.528-.108.216.084 1.368.648 1.608.768.24.12.396.18.456.288.06.108.06.624-.144 1.2z"/>
-                    </svg>
-                    WhatsApp
-                  </a>
-                </div>
-              </div>
-              <div className="load-reveal-ctas" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '22px', fontSize: '14px', color: 'var(--ink-soft)' }}>
-                <span style={{ color: 'var(--brand-orange)' }}>★★★★★</span>
-                <span><b>4.7/5</b> · 498 student reviews &nbsp;·&nbsp; 15-min call · completely free</span>
-              </div>
-              <div className="load-reveal-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '10px', marginTop: '34px', maxWidth: '460px' }}>
-                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-pink)' }}>{stats.placements}<sup style={{ fontSize: '.5em' }}>+</sup></div><div className="stat-lbl">{stats.placementsLabel}</div></div>
-                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-blue)' }}>{stats.hiringPartners}<sup style={{ fontSize: '.5em' }}>+</sup></div><div className="stat-lbl">{stats.hiringPartnersLabel}</div></div>
-                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-orange)' }}>{stats.mentors}</div><div className="stat-lbl">{stats.mentorsLabel}</div></div>
-                <div className="stat-box"><div className="stat-num" style={{ color: 'var(--brand-cyan)' }}>{stats.mentorshipYears} <span style={{ fontSize: '16px', fontWeight: 700 }}>yr</span></div><div className="stat-lbl">{stats.mentorshipLabel}</div></div>
-              </div>
-            </div>
-            <div className="hero-form-col">
-              <div className="hero-collage load-reveal-collage" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                {/* Left Column: Cards 1, 3, 5 */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {collage.filter((_, idx) => idx % 2 === 0).map((slot, index) => {
-                    const i = index * 2
-                    return (
-                      <div key={i} className={`hero-collage-card hero-collage-card-${i + 1} ${i === 0 ? 'hero-collage-video-card' : ''}`}>
-                        <div 
-                          className="hero-collage-card-inner"
-                          onMouseMove={handleMouseMove}
-                          onMouseLeave={handleMouseLeave}
-                          style={{ 
-                            width: '100%', 
-                            height: '100%', 
-                            borderRadius: 'inherit', 
-                            overflow: 'hidden', 
-                            position: 'relative',
-                            transition: 'transform 0.15s ease-out, box-shadow 0.15s ease-out',
-                            transformStyle: 'preserve-3d',
-                            perspective: '1000px'
-                          }}
-                        >
-                          <MediaPlaceholder
-                            media={slot.image}
-                            label={slot.placeholderLabel || slot.caption || 'a Skillversity photo'}
-                          />
-                          {i === 0 && (
-                            <div className="video-play-overlay" onClick={() => setIsVideoOpen(true)}>
-                              <div className="play-button-wrapper">
-                                <div className="play-ripple play-ripple-1"></div>
-                                <div className="play-ripple play-ripple-2"></div>
-                                <div className="play-button-circle">
-                                  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                                    <polygon points="5 3 19 12 5 21 5 3"/>
-                                  </svg>
-                                </div>
-                              </div>
-                              <span className="play-text">Watch Video</span>
-                            </div>
-                          )}
-                        </div>
+      {/* HERO SLIDER / CAROUSEL (SKILLAGE STYLE) */}
+      <section className="hero-slider-wrap">
+        <div className="hero-slider-container">
+          {slides.map((slide, idx) => (
+            <div
+              key={idx}
+              className={`hero-slide ${idx === currentSlide ? 'active' : ''}`}
+            >
+              <div className="wrap">
+                <div className="slide-grid">
+                  <div className="slide-content-col">
+                    <div className="slide-rating-badge">
+                      <span className="stars">★★★★★</span>
+                      <span className="text">{liveReviews?.rating || '4.9'}/5 Google Rating ({liveReviews?.count || '680+'})</span>
+                    </div>
+                    <span className="eyebrow" style={{ marginBottom: '14px' }}>
+                      <span className="dot" style={{ background: slide.color }} />
+                      {slide.eyebrow}
+                    </span>
+                    <h1 className="h-hero" style={{ marginTop: '12px', lineHeight: 1.1 }}>
+                      {slide.title}
+                      <br />
+                      <span
+                        className="grad-text"
+                        style={{
+                          background: `linear-gradient(135deg, ${slide.color}, var(--brand-pink))`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          color: 'transparent',
+                          display: 'inline',
+                        }}
+                      >
+                        {slide.highlight}
+                      </span>
+                    </h1>
+                    <p className="lead" style={{ marginTop: '18px', maxWidth: '600px' }}>
+                      {slide.description}
+                    </p>
+                    
+                    <div className="slide-bullets-row">
+                      <div className="slide-bullet">
+                        <GraduationCap className="slide-bullet-icon" size={18} />
+                        <span>Get Skilled</span>
                       </div>
-                    )
-                  })}
-                </div>
+                      <div className="slide-bullet">
+                        <Briefcase className="slide-bullet-icon" size={18} />
+                        <span>Get Certified</span>
+                      </div>
+                      <div className="slide-bullet">
+                        <TrendingUp className="slide-bullet-icon" size={18} />
+                        <span>Get Hired</span>
+                      </div>
+                      <div className="slide-bullet">
+                        <Laptop className="slide-bullet-icon" size={18} />
+                        <span>Online & Offline</span>
+                      </div>
+                    </div>
 
-                {/* Right Column: Cards 2, 4 */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
-                  {collage.filter((_, idx) => idx % 2 === 1).map((slot, index) => {
-                    const i = index * 2 + 1
-                    return (
-                      <div key={i} className={`hero-collage-card hero-collage-card-${i + 1}`}>
-                        <div 
-                          className="hero-collage-card-inner"
-                          onMouseMove={handleMouseMove}
-                          onMouseLeave={handleMouseLeave}
-                          style={{ 
-                            width: '100%', 
-                            height: '100%', 
-                            borderRadius: 'inherit', 
-                            overflow: 'hidden', 
-                            position: 'relative',
-                            transition: 'transform 0.15s ease-out, box-shadow 0.15s ease-out',
-                            transformStyle: 'preserve-3d',
-                            perspective: '1000px'
-                          }}
-                        >
-                          <MediaPlaceholder
-                            media={slot.image}
-                            label={slot.placeholderLabel || slot.caption || 'a Skillversity photo'}
-                          />
-                        </div>
-                      </div>
-                    )
-                  })}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', width: '100%' }}>
+                      <Link
+                        href={slide.href}
+                        className="btn btn-skillage-teal"
+                        style={{ flexGrow: 1, minWidth: '220px', justifyContent: 'center' }}
+                      >
+                        Enroll Now
+                      </Link>
+                      <Link
+                        href="/contact?action=counseling"
+                        className="btn btn-skillage-navy"
+                        style={{ flexGrow: 1, minWidth: '220px', justifyContent: 'center' }}
+                      >
+                        Book a Free Consultation
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="slide-image-col">
+                    <div className="slide-image-wrapper">
+                      <Image
+                        src={slide.image}
+                        alt={slide.image}
+                        fill
+                        priority={idx === 0}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        style={{ objectFit: 'contain', objectPosition: 'bottom left' }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          className="slider-arrow slider-arrow-prev"
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button
+          className="slider-arrow slider-arrow-next"
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+          aria-label="Next slide"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        {/* Indicators/Dots */}
+        <div className="slider-dots">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              className={`slider-dot ${idx === currentSlide ? 'active' : ''}`}
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </section>
 
