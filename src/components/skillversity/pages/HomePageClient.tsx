@@ -516,6 +516,45 @@ export const HomePageClient: React.FC<Props> = ({
         </div>
       </section>
 
+      {/* PLACEMENTS */}
+      <section className="section" style={{ background: 'var(--cream)' }}>
+        <div className="wrap">
+          <ScrollReveal className="section-head">
+            <span className="eyebrow"><span className="dot" />Placement Commitment</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>{stats.placements}+ Placements from 2014.<br /><span className="squiggle">A structured commitment.</span></h2>
+            <p className="lead">At Skillversity, placement is not a promise — it is a structured, end-to-end commitment.</p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div style={{ background: '#fff', border: '2px solid var(--ink)', borderRadius: 'var(--rad-lg)', padding: '40px', boxShadow: '8px 8px 0 var(--ink)' }}>
+              <div style={{ fontFamily: 'var(--display)', fontWeight: 800, fontSize: 'clamp(68px,12vw,140px)', lineHeight: '.85', background: 'var(--grad-brand)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', backgroundSize: '200% 100%', animation: 'gradShift 10s linear infinite' }}>
+                {stats.placements}<sup style={{ fontSize: '.35em' }}>+</sup>
+              </div>
+              <h3 className="h-section" style={{ marginTop: '12px', marginBottom: '12px' }}>Placements from 2014.</h3>
+              <p style={{ color: 'var(--ink-soft)', fontSize: '15.5px', maxWidth: '560px', lineHeight: 1.6 }}>
+                Hospital Administration, Logistics, Oil & Gas, and HR Management roles placed across leading employers in India and GCC.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '18px' }}>
+                <span className="role-pill" style={{ background: '#DBE5FF', color: 'var(--brand-blue)', fontWeight: 700 }}>617+ Company Connections</span>
+                <span className="role-pill" style={{ background: '#FFE4ED', color: 'var(--brand-pink)', fontWeight: 700 }}>Dedicated Placement Team</span>
+                <span className="role-pill" style={{ background: '#D1FAE5', color: '#065F46', fontWeight: 700 }}>{stats.mentorshipYears}-Year Career Mentorship</span>
+                <span className="role-pill" style={{ background: '#FFF4D6', color: '#92400E', fontWeight: 700 }}>India + GCC Pathways</span>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '22px' }}>
+                <Link href="/placements" className="btn btn-dark">View Full Placement Record →</Link>
+                <Link href="/contact?action=brochure" className="btn btn-ghost">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download Report
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* STUDENT REALITY CHECK */}
       <section className="dark-sec section">
         <div className="wrap" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }}>
@@ -598,44 +637,7 @@ export const HomePageClient: React.FC<Props> = ({
         </div>
       </section>
 
-      {/* PLACEMENTS */}
-      <section className="section" style={{ background: 'var(--cream)' }}>
-        <div className="wrap">
-          <ScrollReveal className="section-head">
-            <span className="eyebrow"><span className="dot" />Placement Commitment</span>
-            <h2 className="h-section" style={{ marginTop: '14px' }}>{stats.placements}+ Placements from 2014.<br /><span className="squiggle">A structured commitment.</span></h2>
-            <p className="lead">At Skillversity, placement is not a promise — it is a structured, end-to-end commitment.</p>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div style={{ background: '#fff', border: '2px solid var(--ink)', borderRadius: 'var(--rad-lg)', padding: '40px', boxShadow: '8px 8px 0 var(--ink)' }}>
-              <div style={{ fontFamily: 'var(--display)', fontWeight: 800, fontSize: 'clamp(68px,12vw,140px)', lineHeight: '.85', background: 'var(--grad-brand)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', backgroundSize: '200% 100%', animation: 'gradShift 10s linear infinite' }}>
-                {stats.placements}<sup style={{ fontSize: '.35em' }}>+</sup>
-              </div>
-              <h3 className="h-section" style={{ marginTop: '12px', marginBottom: '12px' }}>Placements from 2014.</h3>
-              <p style={{ color: 'var(--ink-soft)', fontSize: '15.5px', maxWidth: '560px', lineHeight: 1.6 }}>
-                Hospital Administration, Logistics, Oil & Gas, and HR Management roles placed across leading employers in India and GCC.
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '18px' }}>
-                <span className="role-pill" style={{ background: '#DBE5FF', color: 'var(--brand-blue)', fontWeight: 700 }}>617+ Company Connections</span>
-                <span className="role-pill" style={{ background: '#FFE4ED', color: 'var(--brand-pink)', fontWeight: 700 }}>Dedicated Placement Team</span>
-                <span className="role-pill" style={{ background: '#D1FAE5', color: '#065F46', fontWeight: 700 }}>{stats.mentorshipYears}-Year Career Mentorship</span>
-                <span className="role-pill" style={{ background: '#FFF4D6', color: '#92400E', fontWeight: 700 }}>India + GCC Pathways</span>
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '22px' }}>
-                <Link href="/placements" className="btn btn-dark">View Full Placement Record →</Link>
-                <Link href="/contact?action=brochure" className="btn btn-ghost">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                  </svg>
-                  Download Report
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+
 
       {/* CERTIFICATIONS */}
       <section className="dark-sec section--sm">
