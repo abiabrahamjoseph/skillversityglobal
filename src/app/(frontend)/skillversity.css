@@ -1913,6 +1913,14 @@ footer ul a:hover { color: var(--brand-orange); }
   color: #8C6200;
 }
 
+.slide-rating-badge-mobile {
+  display: none !important;
+}
+
+.slide-rating-badge-desktop {
+  display: inline-flex !important;
+}
+
 /* Slide Highlight Checkbox Bullets */
 .slide-bullets-row {
   display: flex;
@@ -2077,15 +2085,25 @@ footer ul a:hover { color: var(--brand-orange); }
     gap: 20px;
     padding: 15px 0 35px;
   }
+  .slide-rating-badge-mobile {
+    display: inline-flex !important;
+    grid-row: 1 !important;
+    margin: 0 auto 10px !important;
+    z-index: 12 !important;
+  }
+  .slide-rating-badge-desktop {
+    display: none !important;
+  }
   .slide-image-col {
     height: 340px;
-    grid-row: 1; /* Image first on mobile/tablet */
+    grid-row: 2 !important; /* Image second on mobile, below mobile rating badge */
     justify-content: center;
   }
   .slide-image-wrapper {
     transform: scale(1.18) translateY(-10px);
   }
   .slide-content-col {
+    grid-row: 3 !important; /* Text column third on mobile */
     align-items: center;
     text-align: center;
     padding-bottom: 0; /* Reset vertical offset padding on mobile */
@@ -2105,7 +2123,7 @@ footer ul a:hover { color: var(--brand-orange); }
     display: flex !important;
     width: 36px;
     height: 36px;
-    top: 185px !important;
+    top: 231px !important; /* Vertically centered on the mobile image container */
     transform: translateY(-50%) !important;
   }
   .slider-arrow-prev {

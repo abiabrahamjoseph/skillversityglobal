@@ -168,12 +168,25 @@ export const HomePageClient: React.FC<Props> = ({
             >
               <div className="wrap">
                 <div className="slide-grid">
+                  {/* Google Reviews Badge for Mobile View (shows above image) */}
+                  <a
+                    href="https://www.google.com/search?q=skillversity&rlz=1C1OPNX_enIN1171IN1171&oq=skillvers&gs_lcrp=EgZjaHJvbWUqBggBECMYJzIGCAAQRRg8MgYIARAjGCcyBggCEEUYOTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGEHSAQgzNDE5ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3b080d665f30007f:0x1656ac17070f06af,1,,,,"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="slide-rating-badge slide-rating-badge-mobile"
+                    style={{ textDecoration: 'none', cursor: 'pointer' }}
+                  >
+                    <span className="stars">★★★★★</span>
+                    <span className="text">{liveReviews?.rating || '4.7'}/5 Google Rating ({animatedCount} Reviews)</span>
+                  </a>
+
                   <div className="slide-content-col">
+                    {/* Google Reviews Badge for Desktop View */}
                     <a
                       href="https://www.google.com/search?q=skillversity&rlz=1C1OPNX_enIN1171IN1171&oq=skillvers&gs_lcrp=EgZjaHJvbWUqBggBECMYJzIGCAAQRRg8MgYIARAjGCcyBggCEEUYOTIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGEHSAQgzNDE5ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x3b080d665f30007f:0x1656ac17070f06af,1,,,,"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="slide-rating-badge"
+                      className="slide-rating-badge slide-rating-badge-desktop"
                       style={{ textDecoration: 'none', cursor: 'pointer' }}
                     >
                       <span className="stars">★★★★★</span>
