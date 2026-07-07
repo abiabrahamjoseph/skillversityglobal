@@ -179,10 +179,7 @@ export const HomePageClient: React.FC<Props> = ({
                       <span className="stars">★★★★★</span>
                       <span className="text">{liveReviews?.rating || '4.7'}/5 Google Rating ({animatedCount} Reviews)</span>
                     </a>
-                    <span className="eyebrow" style={{ marginBottom: '14px' }}>
-                      <span className="dot" style={{ background: slide.color }} />
-                      {slide.eyebrow}
-                    </span>
+
                     <h1 className="h-hero" style={{ marginTop: '12px', lineHeight: 1.1 }}>
                       {slide.title}
                       <br />
