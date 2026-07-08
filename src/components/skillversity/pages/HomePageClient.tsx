@@ -7,6 +7,7 @@ import { GraduationCap, Briefcase, TrendingUp, Laptop, ChevronLeft, ChevronRight
 import { ScrollReveal } from '../ScrollReveal'
 import { LeadForm } from '../LeadForm'
 import { MediaPlaceholder } from '../MediaPlaceholder'
+import { PlacementsScroller } from '../PlacementsScroller'
 
 type MediaLike = { url?: string | null; alt?: string | null } | null
 
@@ -41,6 +42,11 @@ type Props = {
   heroHeadline: string
   heroHighlight: string
   heroDescription: string
+  placementsGallery?: Array<{
+    image?: MediaLike
+    firstName?: string | null
+    caption: string
+  }>
 }
 
 const companyLogos = [
@@ -197,7 +203,7 @@ const companyLogos = [
 
 export const HomePageClient: React.FC<Props> = ({
   stats, companies, certs, programCards, testimonialCards, heroCollage,
-  heroHeadline, heroHighlight, heroDescription,
+  heroHeadline, heroHighlight, heroDescription, placementsGallery,
 }) => {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [isVideoOpen, setIsVideoOpen] = React.useState(false)
@@ -551,6 +557,9 @@ export const HomePageClient: React.FC<Props> = ({
                 </Link>
               </div>
             </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <PlacementsScroller placements={placementsGallery} />
           </ScrollReveal>
         </div>
       </section>

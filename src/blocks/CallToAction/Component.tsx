@@ -56,15 +56,7 @@ export const CallToActionBlock: React.FC<Props> = ({
 
   return (
     <section className="dark-sec section">
-      <div
-        className="wrap"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: renderForm ? 'minmax(0,1fr) minmax(0,1fr)' : '1fr',
-          gap: '40px',
-          alignItems: 'start',
-        }}
-      >
+      <div className={`wrap cta-wrap ${!renderForm ? 'cta-no-form' : ''}`}>
         <ScrollReveal>
           <span className="eyebrow">
             <span className="dot" />

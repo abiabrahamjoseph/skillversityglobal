@@ -1695,6 +1695,9 @@ footer ul a:hover { color: var(--brand-orange); }
     grid-template-columns: 1.2fr 1fr;
     gap: 60px;
   }
+  .cta-no-form {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .cta-btn-group {

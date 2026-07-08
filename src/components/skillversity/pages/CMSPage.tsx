@@ -126,6 +126,7 @@ const getHomeData = async (page: SkillversityStructuredPage) => {
   const hero = page.skillversity.hero
 
   const heroCollage = Array.isArray(settings?.heroCollage) ? settings.heroCollage : []
+  const placementsGallery = Array.isArray(settings?.placementsGallery) ? settings.placementsGallery : []
 
   return {
     stats,
@@ -134,6 +135,7 @@ const getHomeData = async (page: SkillversityStructuredPage) => {
     programCards,
     testimonialCards,
     heroCollage,
+    placementsGallery,
     heroHeadline: hero.title || settings?.heroHeadline || defaultPages.home.skillversity.hero.title,
     heroHighlight: hero.highlight || settings?.heroHighlight || defaultPages.home.skillversity.hero.highlight || '',
     heroDescription: hero.description || settings?.heroDescription || defaultPages.home.skillversity.hero.description || '',

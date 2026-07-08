@@ -1,12 +1,14 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 import { ScrollReveal } from '@/components/skillversity/ScrollReveal'
 import { CTASection } from '@/components/skillversity/CTASection'
 import { PlacementsGalleryUI } from '@/components/skillversity/PlacementsGalleryUI'
+import { PlacementsBannersCarousel } from '@/components/skillversity/PlacementsBannersCarousel'
 
 export const metadata: Metadata = {
   title: 'Placements | 10141+ Students Placed from 2014 | Skillversity Global',
@@ -37,6 +39,8 @@ export default async function PlacementsPage() {
         </div>
       </section>
 
+      <PlacementsBannersCarousel />
+
       <PlacementsGalleryUI
         bigNumber="10141+"
         heading="Placements from 2014."
@@ -51,6 +55,40 @@ export default async function PlacementsPage() {
         statCardNum="+10100"
         statCardLabel="more alumni working across India & GCC"
       />
+
+      {/* Instagram Page Callout */}
+      <section style={{ background: '#ffffff', padding: '40px var(--gutter)', borderTop: '1px solid rgba(0,0,0,0.08)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
+        <div className="wrap" style={{ textAlign: 'center' }}>
+          <h3 style={{ fontFamily: 'var(--display)', fontWeight: 800, fontSize: '24px', margin: '0 0 10px', color: 'var(--ink)' }}>
+            Follow Our Placements on Instagram 📸
+          </h3>
+          <p style={{ color: 'var(--ink-soft)', fontSize: '15px', maxWidth: '600px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+            Stay updated with daily placement alerts, student success stories, and new company hiring drives on our active job bank channel.
+          </p>
+          <a
+            href="https://www.instagram.com/skillversityjobbank?igsh=enRzenZ2MG96ZjFp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+            style={{
+              background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+              borderColor: 'transparent',
+              color: '#ffffff',
+              boxShadow: '4px 4px 0 var(--ink)',
+              padding: '12px 28px',
+              fontSize: '15px',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '0.04em',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+          >
+            Visit Instagram Job Bank →
+          </a>
+        </div>
+      </section>
 
       <section className="section" style={{ background: 'var(--cream)' }}>
         <div className="wrap">
