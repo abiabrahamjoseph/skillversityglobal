@@ -89,6 +89,23 @@ export const plugins: Plugin[] = [
       },
     },
     formSubmissionOverrides: {
+      fields: ({ defaultFields }) => {
+        return defaultFields.map((field) => {
+          if ('name' in field && field.name === 'submissionData') {
+            return {
+              ...field,
+              admin: {
+                ...field.admin,
+                components: {
+                  ...field.admin?.components,
+                  Cell: '@/components/admin/SubmissionCell',
+                },
+              },
+            } as any
+          }
+          return field
+        }) as any
+      },
       hooks: {
         afterChange: [
           async ({ doc, req, operation }) => {
