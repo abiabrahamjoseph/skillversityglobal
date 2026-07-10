@@ -438,7 +438,7 @@ export const defaultMentors = [
     fullName: 'Dr. Abdul Kareem K',
     credential: 'Head of Academics · 31 yrs · In Mohd Fakhroo & Brothers Co. , Al-Ghanim Industries , Ardhiya Super Market Chains , Kuwait Finance House',
     roleType: 'hod',
-    image: null
+    image: { url: '/media/mentor-kareem.jpg', alt: 'Dr. Abdul Kareem K' }
   },
   {
     firstName: 'AJ',

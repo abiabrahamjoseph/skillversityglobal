@@ -233,7 +233,7 @@ export async function seedSkillversityData(payload: Payload, leadFormID?: number
   payload.logger.info('— Seeding Site Settings...')
 
   const mentorFiles = [
-    { filename: '', alt: 'Dr. Abdul Kareem K', name: 'Dr. Abdul Kareem K', init: 'AK', credential: 'Head of Academics · 31 yrs · In Mohd Fakhroo & Brothers Co. , Al-Ghanim Industries , Ardhiya Super Market Chains , Kuwait Finance House', roleType: 'hod' },
+    { filename: 'mentor-kareem.jpg', alt: 'Dr. Abdul Kareem K', name: 'Dr. Abdul Kareem K', init: 'AK', credential: 'Head of Academics · 31 yrs · In Mohd Fakhroo & Brothers Co. , Al-Ghanim Industries , Ardhiya Super Market Chains , Kuwait Finance House', roleType: 'hod' },
     { filename: '', alt: 'D. Antony Jerald', name: 'D. Antony Jerald', init: 'AJ', credential: 'Head of HR · 36 yrs. In Taj Indian Hotels, Iswaraya Fertility Center, Fasta Pizza Pvt. Ltd., TRDFIN Support Services, Stanworth Management', roleType: 'hod' },
     { filename: '', alt: 'Thulasidas M H', name: 'Thulasidas M H', init: 'TM', credential: 'Head of Oil and Gas · 31 yrs · Qatargas, RasGas, Phillips 66, Petroleum Development Oman, Larsen & Toubro', roleType: 'hod' },
     { filename: 'mentor-catherine.jpg', alt: 'Catherine Tom Thomas', name: 'Catherine Tom Thomas', init: 'CT', credential: 'Head of Hospital Administration · 19 yrs · Sunrise Hospital, Al Shumoos Medical Centre, Starcare Hospital, Aster Medical Centre, Al Raffah Hospital', roleType: 'hod' },
