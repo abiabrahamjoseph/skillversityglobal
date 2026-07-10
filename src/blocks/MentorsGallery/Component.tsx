@@ -3,6 +3,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 import { MentorsGalleryUI } from '@/components/skillversity/MentorsGalleryUI'
+import { defaultMentors } from '@/skillversity/defaultContent'
 
 type Props = {
   eyebrow?: string | null
@@ -21,6 +22,10 @@ export const MentorsGalleryBlock: React.FC<Props> = async (props) => {
     mentors = settings?.mentorsGallery || []
   } catch {
     // fall through with empty mentors
+  }
+
+  if (!mentors || mentors.length === 0) {
+    mentors = defaultMentors
   }
 
   return (

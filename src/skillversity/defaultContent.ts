@@ -431,3 +431,49 @@ export const defaultPages: Record<string, SkillversityStructuredPage> = {
     },
   },
 }
+
+export const defaultMentors = [
+  {
+    firstName: 'RK',
+    fullName: 'Dr. Rajesh Kumar',
+    credential: 'Ex-COO, Apollo Hospitals · 35 yrs exp',
+    roleType: 'hod',
+    image: { url: '/media/mentor-rajesh.png', alt: 'Dr Rajesh Kumar' }
+  },
+  {
+    firstName: 'SM',
+    fullName: 'Suresh Menon',
+    credential: 'VP Supply Chain, Maersk · 28 yrs exp',
+    roleType: 'hod',
+    image: { url: '/media/mentor-suresh.png', alt: 'Suresh Menon' }
+  },
+  {
+    firstName: 'AJ',
+    fullName: 'Anil Joseph',
+    credential: 'HSE Director, ADNOC · 32 yrs exp',
+    roleType: 'hod',
+    image: { url: '/media/mentor-anil.png', alt: 'Anil Joseph' }
+  },
+  {
+    firstName: 'PK',
+    fullName: 'Priya Krishnan',
+    credential: 'CHRO, Infosys BPM · 25 yrs exp',
+    roleType: 'hod',
+    image: { url: '/media/mentor-priya.png', alt: 'Priya Krishnan' }
+  },
+  {
+    firstName: 'VT',
+    fullName: 'Vijay Thomas',
+    credential: 'Director Operations, KIMS · 30 yrs exp',
+    roleType: 'mentor',
+    image: { url: '/media/mentor-vijay.png', alt: 'Vijay Thomas' }
+  },
+  {
+    firstName: 'NS',
+    fullName: 'Neethu Suresh',
+    credential: 'Logistics Head, Amazon India · 22 yrs exp',
+    roleType: 'mentor',
+    image: { url: '/media/mentor-neethu.png', alt: 'Neethu Suresh' }
+  }
+]
+

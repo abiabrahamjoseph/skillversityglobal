@@ -8,6 +8,7 @@ import { getPayload } from 'payload'
 import { ScrollReveal } from '@/components/skillversity/ScrollReveal'
 import { CTASection } from '@/components/skillversity/CTASection'
 import { MentorsGalleryUI } from '@/components/skillversity/MentorsGalleryUI'
+import { defaultMentors } from '@/skillversity/defaultContent'
 
 export const metadata: Metadata = {
   title: '43+ Industry Mentors | Skillversity Global',
@@ -25,7 +26,10 @@ async function getMentorsGallery() {
 }
 
 export default async function MentorsPage() {
-  const gallery = await getMentorsGallery()
+  let gallery = await getMentorsGallery()
+  if (!gallery || gallery.length === 0) {
+    gallery = defaultMentors
+  }
 
   const networkMentors = [
     { init: 'RK', name: 'Rajesh Kumar', role: 'Ex-COO, Apollo Hospitals', exp: '35 yrs', color: 'var(--brand-cyan)', domain: 'Hospital Administration', image: '/media/mentor-rajesh.png' },
