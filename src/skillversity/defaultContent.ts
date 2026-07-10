@@ -113,8 +113,8 @@ export const defaultCerts = [
 
 export const defaultPrograms = [
   {
-    title: 'Business Administration & Hospital Management',
-    slug: 'business-hospital-management',
+    title: 'Hospital Administration',
+    slug: 'hospital-administration',
     tag: 'Management',
     tagColor: '#00B6E8',
     accentColor: '#00B6E8',
@@ -126,7 +126,7 @@ export const defaultPrograms = [
     image: '/media/hospital-admin-hero.png',
   },
   {
-    title: 'Professional Diploma in HR Management',
+    title: 'HR Management',
     slug: 'hr-management',
     tag: 'Corporate HR',
     tagColor: '#C040A0',
@@ -139,7 +139,7 @@ export const defaultPrograms = [
     image: '/media/hr-management-hero.png',
   },
   {
-    title: 'Logistics & Supply Chain Management',
+    title: 'Logistics & Supply Chain',
     slug: 'logistics-supply-chain',
     tag: 'Global Trade',
     tagColor: '#1A3DB8',
@@ -152,7 +152,7 @@ export const defaultPrograms = [
     image: '/media/logistics-hero.png',
   },
   {
-    title: 'Oil & Gas Engineering',
+    title: 'Oil & Gas',
     slug: 'oil-gas',
     tag: 'Industrial',
     tagColor: '#FF2E1F',

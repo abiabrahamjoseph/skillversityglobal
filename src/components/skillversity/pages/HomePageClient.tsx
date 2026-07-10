@@ -221,7 +221,7 @@ export const HomePageClient: React.FC<Props> = ({
       description: "Master corporate management, financial planning, workflow automation, patient relations, and NABH healthcare quality standards.",
       image: '/media/hospital-admin-hero.png',
       color: '#00B6E8',
-      href: "/programs/business-hospital-management"
+      href: "/programs/hospital-administration"
     },
 
     {

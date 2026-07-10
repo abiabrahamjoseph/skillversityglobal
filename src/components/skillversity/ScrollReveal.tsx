@@ -26,7 +26,18 @@ export const ScrollReveal: React.FC<{
     )
 
     io.observe(el)
-    return () => io.disconnect()
+
+    // Fallback: automatically reveal after 500ms if the observer hasn't triggered yet
+    const timeoutId = setTimeout(() => {
+      if (el && !el.classList.contains('in')) {
+        el.classList.add('in')
+      }
+    }, 500)
+
+    return () => {
+      io.disconnect()
+      clearTimeout(timeoutId)
+    }
   }, [])
 
   return (
