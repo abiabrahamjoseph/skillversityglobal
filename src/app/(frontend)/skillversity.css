@@ -745,6 +745,13 @@ footer ul a:hover { color: var(--brand-orange); }
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: unset; will-change: auto; }
+@media (max-width: 767px) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
 .anchor { position: relative; top: -70px; visibility: hidden; height: 0; }
 
 /* ============================================================
