@@ -233,48 +233,50 @@ export async function seedSkillversityData(payload: Payload, leadFormID?: number
   payload.logger.info('— Seeding Site Settings...')
 
   const mentorFiles = [
-    { filename: 'mentor-rajesh.png', alt: 'Dr Rajesh Kumar', name: 'Dr. Rajesh Kumar', init: 'RK', credential: 'Ex-COO, Apollo Hospitals · 35 yrs exp', roleType: 'hod' },
-    { filename: 'mentor-suresh.png', alt: 'Suresh Menon', name: 'Suresh Menon', init: 'SM', credential: 'VP Supply Chain, Maersk · 28 yrs exp', roleType: 'hod' },
-    { filename: 'mentor-anil.png', alt: 'Anil Joseph', name: 'Anil Joseph', init: 'AJ', credential: 'HSE Director, ADNOC · 32 yrs exp', roleType: 'hod' },
-    { filename: 'mentor-priya.png', alt: 'Priya Krishnan', name: 'Priya Krishnan', init: 'PK', credential: 'CHRO, Infosys BPM · 25 yrs exp', roleType: 'hod' },
-    { filename: 'mentor-vijay.png', alt: 'Vijay Thomas', name: 'Vijay Thomas', init: 'VT', credential: 'Director Operations, KIMS · 30 yrs exp', roleType: 'mentor' },
-    { filename: 'mentor-neethu.png', alt: 'Neethu Suresh', name: 'Neethu Suresh', init: 'NS', credential: 'Logistics Head, Amazon India · 22 yrs exp', roleType: 'mentor' },
+    { filename: '', alt: 'Dr. Abdul Kareem K', name: 'Dr. Abdul Kareem K', init: 'AK', credential: 'Head of Academics · 31 yrs · In Mohd Fakhroo & Brothers Co. , Al-Ghanim Industries , Ardhiya Super Market Chains , Kuwait Finance House', roleType: 'hod' },
+    { filename: '', alt: 'D. Antony Jerald', name: 'D. Antony Jerald', init: 'AJ', credential: 'Head of HR · 36 yrs. In Taj Indian Hotels, Iswaraya Fertility Center, Fasta Pizza Pvt. Ltd., TRDFIN Support Services, Stanworth Management', roleType: 'hod' },
+    { filename: '', alt: 'Thulasidas M H', name: 'Thulasidas M H', init: 'TM', credential: 'Head of Oil and Gas · 31 yrs · Qatargas, RasGas, Phillips 66, Petroleum Development Oman, Larsen & Toubro', roleType: 'hod' },
+    { filename: 'mentor-catherine.jpg', alt: 'Catherine Tom Thomas', name: 'Catherine Tom Thomas', init: 'CT', credential: 'Head of Hospital Administration · 19 yrs · Sunrise Hospital, Al Shumoos Medical Centre, Starcare Hospital, Aster Medical Centre, Al Raffah Hospital', roleType: 'hod' },
+    { filename: 'mentor-jomon.jpg', alt: 'Jomon Thomas', name: 'Jomon Thomas', init: 'JT', credential: 'Head of Logistics · 18 yrs · Logistics', roleType: 'hod' },
+    { filename: '', alt: 'Mareena Antony', name: 'Mareena Antony', init: 'MA', credential: 'Head of Soft Skills · 15 yrs', roleType: 'hod' },
   ]
 
   const galleryItems = []
 
   for (const item of mentorFiles) {
-    const filePath = path.join(process.cwd(), 'public', 'media', item.filename)
     let mediaId: string | number | null = null
 
-    if (fs.existsSync(filePath)) {
-      const existingMedia = await payload.find({
-        collection: 'media',
-        where: {
-          filename: {
-            equals: item.filename,
-          },
-        },
-      })
-
-      if (existingMedia.totalDocs > 0) {
-        mediaId = existingMedia.docs[0].id
-      } else {
-        const fileBuffer = fs.readFileSync(filePath)
-        const fileSize = fs.statSync(filePath).size
-        const createdMedia = await payload.create({
+    if (item.filename) {
+      const filePath = path.join(process.cwd(), 'public', 'media', item.filename)
+      if (fs.existsSync(filePath)) {
+        const existingMedia = await payload.find({
           collection: 'media',
-          data: {
-            alt: item.alt,
-          },
-          file: {
-            name: item.filename,
-            data: fileBuffer,
-            mimetype: 'image/png',
-            size: fileSize,
+          where: {
+            filename: {
+              equals: item.filename,
+            },
           },
         })
-        mediaId = createdMedia.id
+
+        if (existingMedia.totalDocs > 0) {
+          mediaId = existingMedia.docs[0].id
+        } else {
+          const fileBuffer = fs.readFileSync(filePath)
+          const fileSize = fs.statSync(filePath).size
+          const createdMedia = await payload.create({
+            collection: 'media',
+            data: {
+              alt: item.alt,
+            },
+            file: {
+              name: item.filename,
+              data: fileBuffer,
+              mimetype: item.filename.endsWith('.jpg') ? 'image/jpeg' : 'image/png',
+              size: fileSize,
+            },
+          })
+          mediaId = createdMedia.id
+        }
       }
     }
 

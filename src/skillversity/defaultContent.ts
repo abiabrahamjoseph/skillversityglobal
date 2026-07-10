@@ -435,23 +435,51 @@ export const defaultPages: Record<string, SkillversityStructuredPage> = {
 export const defaultMentors = [
   {
     firstName: 'AK',
-    fullName: 'Abdul Kareem',
-    credential: 'Academic Head',
+    fullName: 'Dr. Abdul Kareem K',
+    credential: 'Head of Academics · 31 yrs · In Mohd Fakhroo & Brothers Co. , Al-Ghanim Industries , Ardhiya Super Market Chains , Kuwait Finance House',
     roleType: 'hod',
     image: null
   },
   {
+    firstName: 'AJ',
+    fullName: 'D. Antony Jerald',
+    credential: 'Head of HR · 36 yrs. In Taj Indian Hotels, Iswaraya Fertility Center, Fasta Pizza Pvt. Ltd., TRDFIN Support Services, Stanworth Management',
+    roleType: 'hod',
+    image: null
+  },
+  {
+    firstName: 'TM',
+    fullName: 'Thulasidas M H',
+    credential: 'Head of Oil and Gas · 31 yrs · Qatargas, RasGas, Phillips 66, Petroleum Development Oman, Larsen & Toubro',
+    roleType: 'hod',
+    image: null
+  },
+  {
+    firstName: 'CT',
+    fullName: 'Catherine Tom Thomas',
+    credential: 'Head of Hospital Administration · 19 yrs · Sunrise Hospital, Al Shumoos Medical Centre, Starcare Hospital, Aster Medical Centre, Al Raffah Hospital',
+    roleType: 'hod',
+    image: { url: '/media/mentor-catherine.jpg', alt: 'Catherine Tom Thomas' }
+  },
+  {
     firstName: 'JT',
     fullName: 'Jomon Thomas',
-    credential: 'HOD - Logistics',
+    credential: 'Head of Logistics · 18 yrs · Logistics',
     roleType: 'hod',
     image: { url: '/media/mentor-jomon.jpg', alt: 'Jomon Thomas' }
+  },
+  {
+    firstName: 'MA',
+    fullName: 'Mareena Antony',
+    credential: 'Head of Soft Skills · 15 yrs',
+    roleType: 'hod',
+    image: null
   }
 ]
 
 export const defaultAllMentors = [
   // Logistics
-  { name: 'Abdul Kareem', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Academic Head', color: 'var(--brand-blue)' },
+  { name: 'Dr. Abdul Kareem K', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Head of Academics', color: 'var(--brand-blue)' },
   { name: 'Anish Kumar S', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
   { name: 'Manoj K S', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
   { name: 'Harish Ahammed Khan', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
@@ -464,31 +492,31 @@ export const defaultAllMentors = [
   { name: 'Krishna Das P R', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
   { name: 'Lakshmy Kannan', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
   { name: 'Mukesh A', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
-  { name: 'Jomon Thomas', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'HOD - Logistics', color: 'var(--brand-blue)' },
+  { name: 'Jomon Thomas', dept: 'LOG' as const, label: 'Logistics & Supply Chain', subtitle: 'Head of Logistics', color: 'var(--brand-blue)' },
 
   // Oil & Gas / Tech
   { name: 'Roopak Ratnaraj', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },
   { name: 'Christopher Raju', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },
   { name: 'Jithin TJ', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },
-  { name: 'Thulasidas M H', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },
+  { name: 'Thulasidas M H', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Head of Oil and Gas', color: 'var(--brand-red)' },
   { name: 'Naseem Thampi', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },
   { name: 'Gokul Hari AK', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },
   { name: 'Henrich Varghese', dept: 'TECH' as const, label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },
 
   // Hospital Administration
-  { name: 'Catherine Tom Thomas K', dept: 'HA' as const, label: 'Hospital Administration', subtitle: 'Hospital Administration Mentor', color: 'var(--brand-cyan)' },
+  { name: 'Catherine Tom Thomas', dept: 'HA' as const, label: 'Hospital Administration', subtitle: 'Head of Hospital Administration', color: 'var(--brand-cyan)' },
   { name: 'Riby Elizabeth Thomas', dept: 'HA' as const, label: 'Hospital Administration', subtitle: 'Hospital Administration Mentor', color: 'var(--brand-cyan)' },
   { name: 'Jijimol George G', dept: 'HA' as const, label: 'Hospital Administration', subtitle: 'Hospital Administration Mentor', color: 'var(--brand-cyan)' },
   { name: 'Geethu V G', dept: 'HA' as const, label: 'Hospital Administration', subtitle: 'Hospital Administration Mentor', color: 'var(--brand-cyan)' },
   { name: 'Thanaz K A', dept: 'HA' as const, label: 'Hospital Administration', subtitle: 'Hospital Administration Mentor', color: 'var(--brand-cyan)' },
 
   // HR Management
-  { name: 'D Antony Gerald', dept: 'HR' as const, label: 'HR Management', subtitle: 'HR Management Mentor', color: 'var(--brand-magenta)' },
+  { name: 'D. Antony Jerald', dept: 'HR' as const, label: 'HR Management', subtitle: 'Head of HR', color: 'var(--brand-magenta)' },
   { name: 'Veena Ajit Nayar', dept: 'HR' as const, label: 'HR Management', subtitle: 'HR Management Mentor', color: 'var(--brand-magenta)' },
   { name: 'Rini Anna Babu', dept: 'HR' as const, label: 'HR Management', subtitle: 'HR Management Mentor', color: 'var(--brand-magenta)' },
 
   // I-CEP (Language & Confidence)
-  { name: 'Mareena Antony', dept: 'I-CEP' as const, label: 'I-CEP (Confidence & Language)', subtitle: 'I-CEP Language Coach', color: 'var(--brand-orange)' },
+  { name: 'Mareena Antony', dept: 'I-CEP' as const, label: 'I-CEP (Confidence & Language)', subtitle: 'Head of Soft Skills', color: 'var(--brand-orange)' },
   { name: 'Athira Nair T K', dept: 'I-CEP' as const, label: 'I-CEP (Confidence & Language)', subtitle: 'I-CEP Language Coach', color: 'var(--brand-orange)' },
   { name: 'Adila Anees', dept: 'I-CEP' as const, label: 'I-CEP (Confidence & Language)', subtitle: 'I-CEP Language Coach', color: 'var(--brand-orange)' },
   { name: 'Aardra Manampilly', dept: 'I-CEP' as const, label: 'I-CEP (Confidence & Language)', subtitle: 'I-CEP Language Coach', color: 'var(--brand-orange)' },
