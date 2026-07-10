@@ -9,6 +9,7 @@ import { ScrollReveal } from '@/components/skillversity/ScrollReveal'
 import { CTASection } from '@/components/skillversity/CTASection'
 import { MentorsGalleryUI } from '@/components/skillversity/MentorsGalleryUI'
 import { defaultMentors } from '@/skillversity/defaultContent'
+import { MentorsDirectory } from '@/components/skillversity/MentorsDirectory'
 
 export const metadata: Metadata = {
   title: '43+ Industry Mentors | Skillversity Global',
@@ -96,7 +97,14 @@ export default async function MentorsPage() {
               ))}
             </div>
           </div>
-          <p style={{ textAlign: 'center', marginTop: '32px', color: 'var(--ink-soft)', fontSize: '15px' }}>And <strong>37 more</strong> industry mentors across all four programs.</p>
+
+          <ScrollReveal className="section-head" style={{ marginTop: '80px', marginBottom: '20px' }}>
+            <span className="eyebrow"><span className="dot" />Faculty & Mentors Directory</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>Meet our 43+ <span className="squiggle">industry mentors.</span></h2>
+            <p className="lead" style={{ marginTop: '18px' }}>Browse the complete directory of our subject-matter experts, categorized by domain.</p>
+          </ScrollReveal>
+
+          <MentorsDirectory />
         </div>
       </section>
       <CTASection />
