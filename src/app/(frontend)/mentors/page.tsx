@@ -8,7 +8,7 @@ import { getPayload } from 'payload'
 import { ScrollReveal } from '@/components/skillversity/ScrollReveal'
 import { CTASection } from '@/components/skillversity/CTASection'
 import { MentorsGalleryUI } from '@/components/skillversity/MentorsGalleryUI'
-import { defaultMentors } from '@/skillversity/defaultContent'
+import { defaultMentors, defaultAllMentors } from '@/skillversity/defaultContent'
 import { MentorsDirectory } from '@/components/skillversity/MentorsDirectory'
 
 export const metadata: Metadata = {
@@ -32,16 +32,17 @@ export default async function MentorsPage() {
     gallery = defaultMentors
   }
 
-  const networkMentors = [
-    { init: 'AK', name: 'Abdul Kareem', role: 'Academic Head', exp: 'Academic Head', color: 'var(--brand-blue)', domain: 'Logistics & Supply Chain', image: null },
-    { init: 'JT', name: 'Jomon Thomas', role: 'HOD - Logistics', exp: 'HOD', color: 'var(--brand-blue)', domain: 'Logistics & Supply Chain', image: '/media/mentor-jomon.jpg' },
-    { init: 'RK', name: 'Rajesh Kumar', role: 'Ex-COO, Apollo Hospitals', exp: '35 yrs', color: 'var(--brand-cyan)', domain: 'Hospital Administration', image: '/media/mentor-rajesh.png' },
-    { init: 'SM', name: 'Suresh Menon', role: 'VP Supply Chain, Maersk', exp: '28 yrs', color: 'var(--brand-blue)', domain: 'Logistics & Supply Chain', image: '/media/mentor-suresh.png' },
-    { init: 'AJ', name: 'Anil Joseph', role: 'HSE Director, ADNOC', exp: '32 yrs', color: 'var(--brand-red)', domain: 'Oil & Gas', image: '/media/mentor-anil.png' },
-    { init: 'PK', name: 'Priya Krishnan', role: 'CHRO, Infosys BPM', exp: '25 yrs', color: 'var(--brand-magenta)', domain: 'HR Management', image: '/media/mentor-priya.png' },
-    { init: 'VT', name: 'Vijay Thomas', role: 'Director Operations, KIMS', exp: '30 yrs', color: 'var(--brand-orange)', domain: 'Hospital Administration', image: '/media/mentor-vijay.png' },
-    { init: 'NS', name: 'Neethu Suresh', role: 'Logistics Head, Amazon India', exp: '22 yrs', color: 'var(--brand-indigo)', domain: 'Logistics & Supply Chain', image: '/media/mentor-neethu.png' },
-  ]
+  const marqueeMentors = defaultAllMentors.filter((m) =>
+    ['Abdul Kareem', 'Jomon Thomas', 'Roopak Ratnaraj', 'Christopher Raju', 'Catherine Tom Thomas K', 'Riby Elizabeth Thomas', 'D Antony Gerald', 'Veena Ajit Nayar', 'Mareena Antony', 'Athira Nair T K', 'Mumthas Mubash', 'Risaldher Ali'].includes(m.name)
+  ).map((m) => ({
+    init: m.name.split(/\s+/).slice(0, 2).map((n) => n[0]).join('').toUpperCase(),
+    name: m.name,
+    role: m.subtitle,
+    exp: m.dept === 'LOG' ? 'Logistics' : m.dept === 'TECH' ? 'Oil & Gas' : m.dept === 'HA' ? 'Hospital Admin' : m.dept === 'HR' ? 'HR Management' : m.dept === 'I-CEP' ? 'Language Coach' : 'Student Affairs',
+    color: m.color,
+    domain: m.label,
+    image: m.name === 'Jomon Thomas' ? '/media/mentor-jomon.jpg' : null
+  }))
 
   return (
     <>
@@ -72,7 +73,7 @@ export default async function MentorsPage() {
           </ScrollReveal>
           <div className="mentors-marquee-wrap">
             <div className="mentors-track">
-              {networkMentors.concat(networkMentors).concat(networkMentors).map((m, i) => (
+              {marqueeMentors.concat(marqueeMentors).concat(marqueeMentors).map((m, i) => (
                 <div className="mentor-network-card" key={i}>
                   <div className="mentor-network-avatar" style={m.image ? { position: 'relative', overflow: 'hidden' } : { background: m.color }}>
                     {m.image ? (
