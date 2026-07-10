@@ -434,6 +434,13 @@ export const defaultPages: Record<string, SkillversityStructuredPage> = {
 
 export const defaultMentors = [
   {
+    firstName: 'AK',
+    fullName: 'Abdul Kareem',
+    credential: 'Academic Head',
+    roleType: 'hod',
+    image: null
+  },
+  {
     firstName: 'RK',
     fullName: 'Dr. Rajesh Kumar',
     credential: 'Ex-COO, Apollo Hospitals · 35 yrs exp',
