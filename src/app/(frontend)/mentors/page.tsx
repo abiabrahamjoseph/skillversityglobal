@@ -33,6 +33,8 @@ export default async function MentorsPage() {
   }
 
   const networkMentors = [
+    { init: 'AK', name: 'Abdul Kareem', role: 'Academic Head', exp: 'Academic Head', color: 'var(--brand-blue)', domain: 'Logistics & Supply Chain', image: null },
+    { init: 'JT', name: 'Jomon Thomas', role: 'HOD - Logistics', exp: 'HOD', color: 'var(--brand-blue)', domain: 'Logistics & Supply Chain', image: '/media/mentor-jomon.jpg' },
     { init: 'RK', name: 'Rajesh Kumar', role: 'Ex-COO, Apollo Hospitals', exp: '35 yrs', color: 'var(--brand-cyan)', domain: 'Hospital Administration', image: '/media/mentor-rajesh.png' },
     { init: 'SM', name: 'Suresh Menon', role: 'VP Supply Chain, Maersk', exp: '28 yrs', color: 'var(--brand-blue)', domain: 'Logistics & Supply Chain', image: '/media/mentor-suresh.png' },
     { init: 'AJ', name: 'Anil Joseph', role: 'HSE Director, ADNOC', exp: '32 yrs', color: 'var(--brand-red)', domain: 'Oil & Gas', image: '/media/mentor-anil.png' },

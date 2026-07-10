@@ -25,7 +25,7 @@ const mentorsList: Mentor[] = [
   { name: 'Krishna Das P R', dept: 'LOG', label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
   { name: 'Lakshmy Kannan', dept: 'LOG', label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
   { name: 'Mukesh A', dept: 'LOG', label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
-  { name: 'Jomon Thomas', dept: 'LOG', label: 'Logistics & Supply Chain', subtitle: 'Logistics Mentor', color: 'var(--brand-blue)' },
+  { name: 'Jomon Thomas', dept: 'LOG', label: 'Logistics & Supply Chain', subtitle: 'HOD - Logistics', color: 'var(--brand-blue)' },
 
   // Oil & Gas / Tech
   { name: 'Roopak Ratnaraj', dept: 'TECH', label: 'Oil & Gas', subtitle: 'Oil & Gas Technical Mentor', color: 'var(--brand-red)' },

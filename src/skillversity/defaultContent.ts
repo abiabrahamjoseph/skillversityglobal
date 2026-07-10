@@ -455,6 +455,13 @@ export const defaultMentors = [
     image: { url: '/media/mentor-suresh.png', alt: 'Suresh Menon' }
   },
   {
+    firstName: 'JT',
+    fullName: 'Jomon Thomas',
+    credential: 'HOD - Logistics',
+    roleType: 'hod',
+    image: { url: '/media/mentor-jomon.jpg', alt: 'Jomon Thomas' }
+  },
+  {
     firstName: 'AJ',
     fullName: 'Anil Joseph',
     credential: 'HSE Director, ADNOC · 32 yrs exp',
