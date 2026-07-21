@@ -332,40 +332,40 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.65)', boxShadow: '0 30px 60px rgba(0,0,0,0.15)', border: '1px solid rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(32px) saturate(150%)', WebkitBackdropFilter: 'blur(32px) saturate(150%)', maxWidth: '750px', margin: '0 auto' }}>
-          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.2)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'transparent', boxShadow: 'none', border: 'none', backdropFilter: 'none', WebkitBackdropFilter: 'none', maxWidth: '750px', margin: '0 auto' }}>
+          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0, 0, 0, 0.6)', border: '1px solid rgba(255, 46, 31, 0.4)', color: '#FF4D4D', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
             🌟 100% Placement Assistance
           </div>
-          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
+          <h2 className="placement-title" style={{ fontWeight: 900, color: '#FFFFFF', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px', textShadow: '0 4px 24px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.7)' }}>
             Over 2000+ Students <br/><span className="placement-title-highlight">Placed Successfully</span>
           </h2>
-          <p className="placement-desc" style={{ color: '#475569', marginTop: '16px', fontWeight: 500, maxWidth: '600px', margin: '16px auto 0' }}>
+          <p className="placement-desc" style={{ color: 'rgba(255, 255, 255, 0.95)', marginTop: '16px', fontWeight: 600, maxWidth: '600px', margin: '16px auto 0', textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}>
             Join our alumni network working at top global companies across India and the GCC.
           </p>
 
-          <div className="placement-bullet-container" style={{ marginTop: '28px', display: 'inline-flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start', color: '#334155', textAlign: 'left' }}>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div className="placement-bullet-container" style={{ marginTop: '28px', display: 'inline-flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start', color: '#FFFFFF', textAlign: 'left' }}>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 700, textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.9)', flexShrink: 0, boxShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               Dedicated Placement Cell & Corporate Tie-ups
             </div>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 700, textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.9)', flexShrink: 0, boxShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               Comprehensive Resume Building & Mock Interviews
             </div>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 700, textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.9)', flexShrink: 0, boxShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               Guaranteed & Unlimited Interview Opportunities
             </div>
           </div>
           
           <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '32px', justifyContent: 'center' }}>
-            <Link href="/placements" className="btn btn-brand btn-lg" style={{ boxShadow: '0 10px 25px rgba(255, 46, 31, 0.2)', padding: '12px 28px', fontSize: '0.9rem' }}>View Full Placement Record →</Link>
+            <Link href="/placements" className="btn btn-brand btn-lg" style={{ boxShadow: '0 10px 25px rgba(255, 46, 31, 0.4), 0 0 20px rgba(0,0,0,0.5)', padding: '12px 28px', fontSize: '0.9rem', border: '1px solid rgba(255,255,255,0.2)' }}>View Full Placement Record →</Link>
           </div>
         </div>
         
