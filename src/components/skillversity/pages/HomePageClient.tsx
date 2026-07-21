@@ -324,7 +324,8 @@ export const HomePageClient: React.FC<Props> = ({
                     key={colIdx} 
                     src={imgSrc} 
                     alt="Placement Post"
-                    style={{ width: '140px', height: '140px', borderRadius: '16px', objectFit: 'cover', flexShrink: 0 }} 
+                    className="placement-bg-img"
+                    style={{ borderRadius: '16px', objectFit: 'cover', flexShrink: 0 }} 
                   />
                 );
               })}
@@ -395,6 +396,10 @@ export const HomePageClient: React.FC<Props> = ({
           .placement-section {
             height: 700px;
           }
+          .placement-bg-img {
+            width: 140px;
+            height: 140px;
+          }
           .placement-glass-card {
             padding: 40px 48px;
             border-radius: 28px;
@@ -435,7 +440,12 @@ export const HomePageClient: React.FC<Props> = ({
           /* Mobile Responsiveness */
           @media (max-width: 768px) {
             .placement-section {
-              height: 520px;
+              height: 620px;
+            }
+            .placement-bg-img {
+              width: 100px;
+              height: 100px;
+              border-radius: 12px !important;
             }
             .placement-glass-card {
               padding: 24px 16px;
