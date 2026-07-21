@@ -304,8 +304,8 @@ export const HomePageClient: React.FC<Props> = ({
     <>
 
       {/* STUDENT TILES WALLPAPER SECTION */}
-      <section style={{ position: 'relative', width: '100%', height: '550px', overflow: 'hidden', background: '#0D2C54', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ position: 'absolute', width: '150%', height: '150%', display: 'flex', flexDirection: 'column', gap: '12px', transform: 'rotate(-6deg) scale(1.1)', opacity: 0.35, left: '-25%', top: '-25%' }}>
+      <section style={{ position: 'relative', width: '100%', height: '550px', overflow: 'hidden', background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ position: 'absolute', width: '150%', height: '150%', display: 'flex', flexDirection: 'column', gap: '12px', transform: 'rotate(-6deg) scale(1.1)', opacity: 1, left: '-25%', top: '-25%' }}>
           {[0, 1, 2, 3, 4, 5, 6, 7].map((rowIdx) => (
             <div key={rowIdx} style={{ display: 'flex', gap: '12px', width: '200%', animation: `marquee-${rowIdx % 2 === 0 ? 'left' : 'right'} ${50 + rowIdx * 5}s linear infinite` }}>
               {Array.from({ length: 40 }).map((_, colIdx) => {
@@ -324,7 +324,7 @@ export const HomePageClient: React.FC<Props> = ({
                     key={colIdx} 
                     src={imgSrc} 
                     alt="Placement Post"
-                    style={{ width: '140px', height: '140px', borderRadius: '16px', objectFit: 'cover', flexShrink: 0, filter: 'grayscale(15%)' }} 
+                    style={{ width: '140px', height: '140px', borderRadius: '16px', objectFit: 'cover', flexShrink: 0 }} 
                   />
                 );
               })}
@@ -332,40 +332,40 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.05)', boxShadow: '0 30px 60px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', maxWidth: '850px', margin: '0 auto' }}>
-          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.15)', border: '1px solid rgba(255, 46, 31, 0.3)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.95)', boxShadow: '0 30px 60px rgba(0,0,0,0.15)', border: '1px solid rgba(0,0,0,0.08)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', maxWidth: '750px', margin: '0 auto' }}>
+          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.2)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px' }}>
             🌟 100% Placement Assistance
           </div>
-          <h2 className="placement-title" style={{ fontWeight: 900, color: '#FFFFFF', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
+          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
             Over 2000+ Students <br/><span className="placement-title-highlight">Placed Successfully</span>
           </h2>
-          <p className="placement-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', marginTop: '20px', fontWeight: 500, maxWidth: '650px', margin: '20px auto 0' }}>
+          <p className="placement-desc" style={{ color: '#475569', marginTop: '16px', fontWeight: 500, maxWidth: '600px', margin: '16px auto 0' }}>
             Join our alumni network working at top global companies across India and the GCC.
           </p>
 
-          <div className="placement-bullet-container" style={{ marginTop: '36px', display: 'inline-flex', flexDirection: 'column', gap: '14px', alignItems: 'flex-start', color: '#FFF', textAlign: 'left' }}>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 500 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.2)', flexShrink: 0 }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div className="placement-bullet-container" style={{ marginTop: '28px', display: 'inline-flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start', color: '#334155', textAlign: 'left' }}>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               Dedicated Placement Cell & Corporate Tie-ups
             </div>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 500 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.2)', flexShrink: 0 }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               Comprehensive Resume Building & Mock Interviews
             </div>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 500 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.2)', flexShrink: 0 }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               Guaranteed & Unlimited Interview Opportunities
             </div>
           </div>
           
-          <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '40px', justifyContent: 'center' }}>
-            <Link href="/placements" className="btn btn-brand btn-lg" style={{ boxShadow: '0 10px 25px rgba(255, 46, 31, 0.3)' }}>View Full Placement Record →</Link>
+          <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '32px', justifyContent: 'center' }}>
+            <Link href="/placements" className="btn btn-brand btn-lg" style={{ boxShadow: '0 10px 25px rgba(255, 46, 31, 0.2)', padding: '12px 28px', fontSize: '0.9rem' }}>View Full Placement Record →</Link>
           </div>
         </div>
         
@@ -393,12 +393,12 @@ export const HomePageClient: React.FC<Props> = ({
             }
           }
           .placement-glass-card {
-            padding: 56px 64px;
-            border-radius: 32px;
+            padding: 48px 56px;
+            border-radius: 28px;
             width: calc(100% - 40px);
           }
           .placement-title {
-            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
             font-family: var(--display, inherit);
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
@@ -411,7 +411,7 @@ export const HomePageClient: React.FC<Props> = ({
             animation: colorRun 3s linear infinite;
           }
           .placement-desc {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0;
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
           }
@@ -420,10 +420,10 @@ export const HomePageClient: React.FC<Props> = ({
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
           }
           .placement-bullet {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
           }
           .placement-badge {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             padding: 6px 16px;
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
@@ -436,18 +436,18 @@ export const HomePageClient: React.FC<Props> = ({
               width: calc(100% - 32px);
             }
             .placement-title {
-              font-size: clamp(1.6rem, 7vw, 2rem);
+              font-size: clamp(1.3rem, 6vw, 1.7rem);
             }
             .placement-desc {
-              font-size: 0.9rem;
+              font-size: 0.85rem;
               margin-top: 12px;
             }
             .placement-bullet {
-              font-size: 0.85rem;
+              font-size: 0.8rem;
               gap: 8px !important;
             }
             .placement-badge {
-              font-size: 0.7rem;
+              font-size: 0.65rem;
               padding: 4px 12px;
             }
           }
