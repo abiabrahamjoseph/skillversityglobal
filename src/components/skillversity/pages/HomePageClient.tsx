@@ -343,7 +343,7 @@ export const HomePageClient: React.FC<Props> = ({
             Join our alumni network working at top global companies across India and the GCC.
           </p>
 
-          <div className="placement-bullet-container" style={{ marginTop: '36px', display: 'flex', flexDirection: 'column', gap: '14px', alignItems: 'flex-start', color: '#FFF', textAlign: 'left', display: 'inline-flex' }}>
+          <div className="placement-bullet-container" style={{ marginTop: '36px', display: 'inline-flex', flexDirection: 'column', gap: '14px', alignItems: 'flex-start', color: '#FFF', textAlign: 'left' }}>
             <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 500 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.2)', flexShrink: 0 }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
