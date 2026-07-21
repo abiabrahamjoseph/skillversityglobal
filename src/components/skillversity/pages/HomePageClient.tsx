@@ -304,7 +304,7 @@ export const HomePageClient: React.FC<Props> = ({
     <>
 
       {/* STUDENT TILES WALLPAPER SECTION */}
-      <section style={{ position: 'relative', width: '100%', height: '700px', overflow: 'hidden', background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <section className="placement-section" style={{ position: 'relative', width: '100%', overflow: 'hidden', background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ position: 'absolute', width: '150%', height: '150%', display: 'flex', flexDirection: 'column', gap: '12px', transform: 'rotate(-6deg) scale(1.1)', opacity: 1, left: '-25%', top: '-25%' }}>
           {[0, 1, 2, 3, 4, 5, 6, 7].map((rowIdx) => (
             <div key={rowIdx} style={{ display: 'flex', gap: '12px', width: '200%', animation: `marquee-${rowIdx % 2 === 0 ? 'left' : 'right'} ${50 + rowIdx * 5}s linear infinite` }}>
@@ -392,6 +392,9 @@ export const HomePageClient: React.FC<Props> = ({
               transform: translateY(0);
             }
           }
+          .placement-section {
+            height: 700px;
+          }
           .placement-glass-card {
             padding: 40px 48px;
             border-radius: 28px;
@@ -431,25 +434,34 @@ export const HomePageClient: React.FC<Props> = ({
           
           /* Mobile Responsiveness */
           @media (max-width: 768px) {
+            .placement-section {
+              height: 520px;
+            }
             .placement-glass-card {
-              padding: 32px 24px;
+              padding: 24px 16px;
               border-radius: 20px;
-              width: fit-content;
+              width: 92vw;
+              max-width: 400px;
             }
             .placement-title {
-              font-size: clamp(1.3rem, 6vw, 1.7rem);
+              font-size: clamp(1.2rem, 5.5vw, 1.5rem);
             }
             .placement-desc {
-              font-size: 0.85rem;
+              font-size: 0.8rem;
               margin-top: 12px;
             }
+            .placement-bullet-container {
+              margin-top: 20px !important;
+            }
             .placement-bullet {
-              font-size: 0.8rem;
+              font-size: 0.75rem;
               gap: 8px !important;
+              align-items: flex-start !important;
             }
             .placement-badge {
               font-size: 0.65rem;
               padding: 4px 12px;
+              margin-bottom: 12px !important;
             }
           }
         `}} />
