@@ -39,6 +39,76 @@ export default async function PlacementsPage() {
         </div>
       </section>
 
+      {/* STUDENT TILES WALLPAPER SECTION */}
+      <section style={{ position: 'relative', width: '100%', height: '450px', overflow: 'hidden', background: '#0D2C54', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ position: 'absolute', width: '150%', height: '150%', display: 'flex', flexDirection: 'column', gap: '12px', transform: 'rotate(-6deg) scale(1.1)', opacity: 0.35, left: '-25%', top: '-25%' }}>
+          {[0, 1, 2, 3, 4, 5, 6].map((rowIdx) => (
+            <div key={rowIdx} style={{ display: 'flex', gap: '12px', width: '200%', animation: `marquee-${rowIdx % 2 === 0 ? 'left' : 'right'} ${50 + rowIdx * 5}s linear infinite` }}>
+              {Array.from({ length: 40 }).map((_, colIdx) => {
+                const bgImages = [
+                  '/media/insta-1.jpg',
+                  '/media/insta-2.jpg',
+                  '/media/insta-3.jpg',
+                  '/media/insta-4.jpg',
+                  '/media/insta-5.jpg',
+                  '/media/insta-6.jpg'
+                ];
+                const imgSrc = bgImages[(rowIdx * 13 + colIdx) % bgImages.length];
+                
+                return (
+                  <img 
+                    key={colIdx} 
+                    src={imgSrc} 
+                    alt="Placement Post"
+                    style={{ width: '120px', height: '120px', borderRadius: '16px', objectFit: 'cover', flexShrink: 0, filter: 'grayscale(15%)' }} 
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+        
+        <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.95)', padding: '48px 64px', borderRadius: '24px', boxShadow: '0 24px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,1)', backdropFilter: 'blur(16px)', maxWidth: '900px' }}>
+          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-2px' }}>
+            10141+ <br/><span style={{ color: '#FF2E1F', fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Placements from 2014.</span>
+          </h2>
+          
+          <p style={{ fontSize: '1.25rem', color: '#555', fontWeight: 500, lineHeight: 1.6, maxWidth: '750px', margin: '24px auto 0' }}>
+            Hospital Administration, Logistics, Oil & Gas, and HR Management roles placed across leading employers in India and GCC.
+          </p>
+
+          <div style={{ marginTop: '36px', display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', color: '#444' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.1rem', fontWeight: 700, background: '#f8fafc', padding: '12px 24px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              617+ Company Connections
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.1rem', fontWeight: 700, background: '#f8fafc', padding: '12px 24px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Dedicated Placement Team
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.1rem', fontWeight: 700, background: '#f8fafc', padding: '12px 24px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              5-Year Career Mentorship
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.1rem', fontWeight: 700, background: '#f8fafc', padding: '12px 24px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              India + GCC Pathways
+            </div>
+          </div>
+        </div>
+        
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes marquee-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          @keyframes marquee-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+          }
+        `}} />
+      </section>
+
       <PlacementsBannersCarousel />
 
       <PlacementsGalleryUI

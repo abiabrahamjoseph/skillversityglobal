@@ -302,6 +302,160 @@ export const HomePageClient: React.FC<Props> = ({
 
   return (
     <>
+
+      {/* STUDENT TILES WALLPAPER SECTION */}
+      <section style={{ position: 'relative', width: '100%', height: '550px', overflow: 'hidden', background: '#0D2C54', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ position: 'absolute', width: '150%', height: '150%', display: 'flex', flexDirection: 'column', gap: '12px', transform: 'rotate(-6deg) scale(1.1)', opacity: 0.35, left: '-25%', top: '-25%' }}>
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((rowIdx) => (
+            <div key={rowIdx} style={{ display: 'flex', gap: '12px', width: '200%', animation: `marquee-${rowIdx % 2 === 0 ? 'left' : 'right'} ${50 + rowIdx * 5}s linear infinite` }}>
+              {Array.from({ length: 40 }).map((_, colIdx) => {
+                const bgImages = [
+                  '/media/anagha-1.png',
+                  '/media/ebin-joy-1.png',
+                  '/media/sabith-1.png',
+                  '/media/vinayan-1.png',
+                  '/media/vishnu-1.png',
+                  '/media/placement-banner-july.png'
+                ];
+                const imgSrc = bgImages[(rowIdx * 13 + colIdx) % bgImages.length];
+                
+                return (
+                  <img 
+                    key={colIdx} 
+                    src={imgSrc} 
+                    alt="Placement Post"
+                    style={{ width: '140px', height: '140px', borderRadius: '16px', objectFit: 'cover', flexShrink: 0, filter: 'grayscale(15%)' }} 
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+        
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.05)', boxShadow: '0 30px 60px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', maxWidth: '850px', margin: '0 auto' }}>
+          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.15)', border: '1px solid rgba(255, 46, 31, 0.3)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px' }}>
+            🌟 100% Placement Assistance
+          </div>
+          <h2 className="placement-title" style={{ fontWeight: 900, color: '#FFFFFF', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
+            Over 2000+ Students <br/><span className="placement-title-highlight">Placed Successfully</span>
+          </h2>
+          <p className="placement-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', marginTop: '20px', fontWeight: 500, maxWidth: '650px', margin: '20px auto 0' }}>
+            Join our alumni network working at top global companies across India and the GCC.
+          </p>
+
+          <div className="placement-bullet-container" style={{ marginTop: '36px', display: 'flex', flexDirection: 'column', gap: '14px', alignItems: 'flex-start', color: '#FFF', textAlign: 'left', display: 'inline-flex' }}>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 500 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.2)', flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              Dedicated Placement Cell & Corporate Tie-ups
+            </div>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 500 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.2)', flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              Comprehensive Resume Building & Mock Interviews
+            </div>
+            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 500 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.2)', flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              Guaranteed & Unlimited Interview Opportunities
+            </div>
+          </div>
+          
+          <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '40px', justifyContent: 'center' }}>
+            <Link href="/placements" className="btn btn-brand btn-lg" style={{ boxShadow: '0 10px 25px rgba(255, 46, 31, 0.3)' }}>View Full Placement Record →</Link>
+          </div>
+        </div>
+        
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes marquee-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          @keyframes marquee-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+          }
+          @keyframes colorRun {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+          }
+          @keyframes fadeUp {
+            from {
+              opacity: 0;
+              transform: translateY(24px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .placement-glass-card {
+            padding: 56px 64px;
+            border-radius: 32px;
+            width: calc(100% - 40px);
+          }
+          .placement-title {
+            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            font-family: var(--display, inherit);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+          .placement-title-highlight {
+            background: linear-gradient(90deg, #00A0E2, #9D00FF, #FF2E1F, #FF8C00, #00A0E2);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: colorRun 3s linear infinite;
+          }
+          .placement-desc {
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+          }
+          .placement-bullet-container {
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+          }
+          .placement-bullet {
+            font-size: 0.95rem;
+          }
+          .placement-badge {
+            font-size: 0.75rem;
+            padding: 6px 16px;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+          
+          /* Mobile Responsiveness */
+          @media (max-width: 768px) {
+            .placement-glass-card {
+              padding: 32px 20px;
+              border-radius: 20px;
+              width: calc(100% - 32px);
+            }
+            .placement-title {
+              font-size: clamp(1.6rem, 7vw, 2rem);
+            }
+            .placement-desc {
+              font-size: 0.9rem;
+              margin-top: 12px;
+            }
+            .placement-bullet {
+              font-size: 0.85rem;
+              gap: 8px !important;
+            }
+            .placement-badge {
+              font-size: 0.7rem;
+              padding: 4px 12px;
+            }
+          }
+        `}} />
+      </section>
+
+
+
       {/* HERO SLIDER / CAROUSEL (SKILLAGE STYLE) */}
       <section className="hero-slider-wrap">
         <div className="hero-slider-container">
@@ -491,78 +645,9 @@ export const HomePageClient: React.FC<Props> = ({
         </div>
       </section>
 
-      {/* MARQUEE */}
-      <section className="marquee-wrap">
-        <div style={{ textAlign: 'center', marginBottom: '14px', fontSize: '11.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--ink-mute)' }}>
-          Our Students Get Hired By {stats.hiringPartners}+ Companies Including
-        </div>
-        <div className="marquee-track">
-          {marqueeLogos.map((c, i) => (
-            <span 
-              className="m-logo-pill" 
-              key={i}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '10px 22px',
-                borderRadius: '999px',
-                border: '1px solid rgba(255,255,255,0.12)',
-                background: c.bg,
-                color: c.color || '#ffffff',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
-                whiteSpace: 'nowrap',
-                transition: 'transform 0.25s var(--ease), box-shadow 0.25s var(--ease)',
-                cursor: 'default'
-              }}
-            >
-              {c.svg}
-            </span>
-          ))}
-        </div>
-      </section>
 
-      {/* PLACEMENTS */}
-      <section className="section" style={{ background: 'var(--cream)' }}>
-        <div className="wrap">
-          <ScrollReveal className="section-head">
-            <span className="eyebrow"><span className="dot" />Placement Commitment</span>
-            <h2 className="h-section" style={{ marginTop: '14px' }}>{stats.placements}+ Placements from 2014.<br /><span className="squiggle">A structured commitment.</span></h2>
-            <p className="lead">At Skillversity, placement is not a promise — it is a structured, end-to-end commitment.</p>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div style={{ background: '#fff', border: '2px solid var(--ink)', borderRadius: 'var(--rad-lg)', padding: '40px', boxShadow: '8px 8px 0 var(--ink)' }}>
-              <div style={{ fontFamily: 'var(--display)', fontWeight: 800, fontSize: 'clamp(68px,12vw,140px)', lineHeight: '.85', background: 'var(--grad-brand)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', backgroundSize: '200% 100%', animation: 'gradShift 10s linear infinite' }}>
-                {stats.placements}<sup style={{ fontSize: '.35em' }}>+</sup>
-              </div>
-              <h3 className="h-section" style={{ marginTop: '12px', marginBottom: '12px' }}>Placements from 2014.</h3>
-              <p style={{ color: 'var(--ink-soft)', fontSize: '15.5px', maxWidth: '560px', lineHeight: 1.6 }}>
-                Hospital Administration, Logistics, Oil & Gas, and HR Management roles placed across leading employers in India and GCC.
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '18px' }}>
-                <span className="role-pill" style={{ background: '#DBE5FF', color: 'var(--brand-blue)', fontWeight: 700 }}>617+ Company Connections</span>
-                <span className="role-pill" style={{ background: '#FFE4ED', color: 'var(--brand-pink)', fontWeight: 700 }}>Dedicated Placement Team</span>
-                <span className="role-pill" style={{ background: '#D1FAE5', color: '#065F46', fontWeight: 700 }}>{stats.mentorshipYears}-Year Career Mentorship</span>
-                <span className="role-pill" style={{ background: '#FFF4D6', color: '#92400E', fontWeight: 700 }}>India + GCC Pathways</span>
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '22px' }}>
-                <Link href="/placements" className="btn btn-dark">View Full Placement Record →</Link>
-                <Link href="/contact?action=brochure" className="btn btn-ghost">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                  </svg>
-                  Download Report
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal>
-            <PlacementsScroller placements={placementsGallery} />
-          </ScrollReveal>
-        </div>
-      </section>
+
+
 
       {/* STUDENT REALITY CHECK */}
       <section className="dark-sec section">
@@ -606,6 +691,37 @@ export const HomePageClient: React.FC<Props> = ({
               </Link>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* MARQUEE */}
+      <section className="marquee-wrap">
+        <div style={{ textAlign: 'center', marginBottom: '14px', fontSize: '11.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--ink-mute)' }}>
+          Our Students Get Hired By 2000+ Companies Including
+        </div>
+        <div className="marquee-track">
+          {marqueeLogos.map((c, i) => (
+            <span 
+              className="m-logo-pill" 
+              key={i}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '10px 22px',
+                borderRadius: '999px',
+                border: '1px solid rgba(255,255,255,0.12)',
+                background: c.bg,
+                color: c.color || '#ffffff',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
+                whiteSpace: 'nowrap',
+                transition: 'transform 0.25s var(--ease), box-shadow 0.25s var(--ease)',
+                cursor: 'default'
+              }}
+            >
+              {c.svg}
+            </span>
+          ))}
         </div>
       </section>
 
