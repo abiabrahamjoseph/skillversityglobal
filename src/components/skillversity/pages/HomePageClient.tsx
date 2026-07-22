@@ -368,7 +368,7 @@ export const HomePageClient: React.FC<Props> = ({
           </div>
           
           <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '32px', justifyContent: 'center' }}>
-            <Link href="/placements" className="btn btn-brand btn-lg placement-btn" style={{ padding: '12px 28px', fontSize: '0.9rem', transition: 'all 0.3s ease' }}>View Full Placement Record →</Link>
+            <Link href="/placements" className="btn btn-brand btn-lg placement-btn">View Full Placement Record →</Link>
           </div>
         </div>
         
@@ -432,7 +432,7 @@ export const HomePageClient: React.FC<Props> = ({
             max-width: 90vw;
           }
           .placement-title {
-            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
             font-family: var(--display, inherit);
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
@@ -445,7 +445,7 @@ export const HomePageClient: React.FC<Props> = ({
             animation: colorRun 3s linear infinite;
           }
           .placement-desc {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             opacity: 0;
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
           }
@@ -454,7 +454,7 @@ export const HomePageClient: React.FC<Props> = ({
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
           }
           .placement-bullet {
-            font-size: 0.85rem;
+            font-size: 1rem;
             transition: transform 0.3s ease;
             cursor: default;
           }
@@ -463,11 +463,14 @@ export const HomePageClient: React.FC<Props> = ({
             color: #FF2E1F !important;
           }
           .placement-badge {
-            font-size: 0.7rem;
-            padding: 6px 16px;
+            font-size: 0.85rem;
+            padding: 8px 18px;
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, badgePulse 2.5s infinite;
           }
           .placement-btn {
+            font-size: 1.05rem;
+            padding: 16px 36px;
+            transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(255, 46, 31, 0.3);
           }
           .placement-btn:hover {
@@ -510,6 +513,10 @@ export const HomePageClient: React.FC<Props> = ({
               font-size: 0.65rem;
               padding: 4px 12px;
               margin-bottom: 12px !important;
+            }
+            .placement-btn {
+              font-size: 0.9rem;
+              padding: 12px 28px;
             }
           }
         `}} />
