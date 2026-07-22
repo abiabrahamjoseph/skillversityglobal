@@ -333,8 +333,10 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.4)', boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.15)', border: '1px solid rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(32px) saturate(150%)', WebkitBackdropFilter: 'blur(32px) saturate(150%)', margin: '0 auto' }}>
-          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.2)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px' }}>
+        <div className="placement-glow-orb"></div>
+
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.45)', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.25)', border: '1px solid rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(32px) saturate(200%)', WebkitBackdropFilter: 'blur(32px) saturate(200%)', margin: '0 auto' }}>
+          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.25)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px', boxShadow: '0 0 20px rgba(255,46,31,0.15)' }}>
             🌟 100% Placement Assistance
           </div>
           <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
@@ -366,7 +368,7 @@ export const HomePageClient: React.FC<Props> = ({
           </div>
           
           <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '32px', justifyContent: 'center' }}>
-            <Link href="/placements" className="btn btn-brand btn-lg" style={{ boxShadow: '0 10px 25px rgba(255, 46, 31, 0.2)', padding: '12px 28px', fontSize: '0.9rem' }}>View Full Placement Record →</Link>
+            <Link href="/placements" className="btn btn-brand btn-lg placement-btn" style={{ padding: '12px 28px', fontSize: '0.9rem', transition: 'all 0.3s ease' }}>View Full Placement Record →</Link>
           </div>
         </div>
         
@@ -393,12 +395,35 @@ export const HomePageClient: React.FC<Props> = ({
               transform: translateY(0);
             }
           }
+          @keyframes orbPulse {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+          }
+          @keyframes badgePulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,46,31,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255,46,31,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,46,31,0); }
+          }
           .placement-section {
             height: 700px;
           }
           .placement-bg-img {
             width: 140px;
             height: 140px;
+          }
+          .placement-glow-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,46,31,0.5) 0%, rgba(157,0,255,0.35) 50%, rgba(0,160,226,0.1) 100%);
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: 5;
+            animation: orbPulse 6s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+            pointer-events: none;
           }
           .placement-glass-card {
             padding: 40px 48px;
@@ -430,11 +455,24 @@ export const HomePageClient: React.FC<Props> = ({
           }
           .placement-bullet {
             font-size: 0.85rem;
+            transition: transform 0.3s ease;
+            cursor: default;
+          }
+          .placement-bullet:hover {
+            transform: translateX(6px);
+            color: #FF2E1F !important;
           }
           .placement-badge {
             font-size: 0.7rem;
             padding: 6px 16px;
-            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, badgePulse 2.5s infinite;
+          }
+          .placement-btn {
+            box-shadow: 0 10px 25px rgba(255, 46, 31, 0.3);
+          }
+          .placement-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(255, 46, 31, 0.4);
           }
           
           /* Mobile Responsiveness */
