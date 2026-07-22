@@ -405,16 +405,6 @@ export const HomePageClient: React.FC<Props> = ({
             width: 140px;
             height: 140px;
           }
-          .placement-glass-card {
-            padding: 40px 48px;
-            border-radius: 28px;
-            width: fit-content;
-            max-width: 90vw;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-          }
           .placement-title {
             font-size: clamp(2.2rem, 5vw, 3.6rem);
             font-family: var(--display, inherit);
