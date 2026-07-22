@@ -333,7 +333,7 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.75)', boxShadow: '0 30px 60px rgba(0,0,0,0.15)', border: '1px solid rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(32px) saturate(150%)', WebkitBackdropFilter: 'blur(32px) saturate(150%)', margin: '0 auto' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.4)', boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.15)', border: '1px solid rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(32px) saturate(150%)', WebkitBackdropFilter: 'blur(32px) saturate(150%)', margin: '0 auto' }}>
           <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.2)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px' }}>
             🌟 100% Placement Assistance
           </div>
