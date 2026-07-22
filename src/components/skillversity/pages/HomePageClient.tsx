@@ -333,7 +333,7 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.5)', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.15)', border: '1px solid rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(40px)', WebkitBackdropFilter: 'blur(40px)', margin: '0 auto' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.15)', margin: '0 auto' }}>
           <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.25)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px', boxShadow: '0 0 20px rgba(255,46,31,0.15)' }}>
             🌟 100% Placement Assistance
           </div>
@@ -410,6 +410,10 @@ export const HomePageClient: React.FC<Props> = ({
             border-radius: 28px;
             width: fit-content;
             max-width: 90vw;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
           }
           .placement-title {
             font-size: clamp(2.2rem, 5vw, 3.6rem);
