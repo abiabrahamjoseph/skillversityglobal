@@ -333,9 +333,7 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glow-orb"></div>
-
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.15)', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.25)', border: '1px solid rgba(255, 255, 255, 0.3)', backdropFilter: 'blur(32px)', WebkitBackdropFilter: 'blur(32px)', margin: '0 auto' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.8)', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.15)', border: '1px solid rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(32px)', WebkitBackdropFilter: 'blur(32px)', margin: '0 auto' }}>
           <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.25)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px', boxShadow: '0 0 20px rgba(255,46,31,0.15)' }}>
             🌟 100% Placement Assistance
           </div>
@@ -395,10 +393,6 @@ export const HomePageClient: React.FC<Props> = ({
               transform: translateY(0);
             }
           }
-          @keyframes orbPulse {
-            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
-            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-          }
           @keyframes badgePulse {
             0% { box-shadow: 0 0 0 0 rgba(255,46,31,0.4); }
             70% { box-shadow: 0 0 0 10px rgba(255,46,31,0); }
@@ -410,20 +404,6 @@ export const HomePageClient: React.FC<Props> = ({
           .placement-bg-img {
             width: 140px;
             height: 140px;
-          }
-          .placement-glow-orb {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 600px;
-            height: 600px;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(255,46,31,0.5) 0%, rgba(157,0,255,0.35) 50%, rgba(0,160,226,0.1) 100%);
-            filter: blur(100px);
-            border-radius: 50%;
-            z-index: 5;
-            animation: orbPulse 6s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
-            pointer-events: none;
           }
           .placement-glass-card {
             padding: 40px 48px;
