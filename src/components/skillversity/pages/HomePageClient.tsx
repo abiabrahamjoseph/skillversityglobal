@@ -310,12 +310,12 @@ export const HomePageClient: React.FC<Props> = ({
             <div key={rowIdx} style={{ display: 'flex', gap: '12px', width: '200%', animation: `marquee-${rowIdx % 2 === 0 ? 'left' : 'right'} ${50 + rowIdx * 5}s linear infinite` }}>
               {Array.from({ length: 40 }).map((_, colIdx) => {
                 const bgImages = [
-                  '/media/anagha-1.png',
-                  '/media/ebin-joy-1.png',
-                  '/media/sabith-1.png',
-                  '/media/vinayan-1.png',
-                  '/media/vishnu-1.png',
-                  '/media/placement-banner-july.png'
+                  '/media/post-1.png',
+                  '/media/post-2.png',
+                  '/media/post-3.png',
+                  '/media/post-4.png',
+                  '/media/post-5.png',
+                  '/media/post-6.png'
                 ];
                 const imgSrc = bgImages[(rowIdx * 13 + colIdx) % bgImages.length];
                 
@@ -961,16 +961,16 @@ export const HomePageClient: React.FC<Props> = ({
                 { img: '/media/post-1.png', likes: '584', comments: '62' },
                 { img: '/media/post-2.png', likes: '489', comments: '54' },
                 { img: '/media/post-3.png', likes: '621', comments: '89' },
-                { img: '/media/insta-4.jpg', likes: '267', comments: '22' },
-                { img: '/media/insta-5.jpg', likes: '382', comments: '41' },
-                { img: '/media/insta-6.jpg', likes: '354', comments: '30' }
+                { img: '/media/post-4.png', likes: '892', comments: '112' },
+                { img: '/media/post-5.png', likes: '741', comments: '94' },
+                { img: '/media/post-6.png', likes: '655', comments: '78' }
               ].concat([
                 { img: '/media/post-1.png', likes: '584', comments: '62' },
                 { img: '/media/post-2.png', likes: '489', comments: '54' },
                 { img: '/media/post-3.png', likes: '621', comments: '89' },
-                { img: '/media/insta-4.jpg', likes: '267', comments: '22' },
-                { img: '/media/insta-5.jpg', likes: '382', comments: '41' },
-                { img: '/media/insta-6.jpg', likes: '354', comments: '30' }
+                { img: '/media/post-4.png', likes: '892', comments: '112' },
+                { img: '/media/post-5.png', likes: '741', comments: '94' },
+                { img: '/media/post-6.png', likes: '655', comments: '78' }
               ]).map((post, idx) => (
                 <div className="instagram-card" key={idx}>
                   <Image
