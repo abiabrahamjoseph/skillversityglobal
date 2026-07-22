@@ -335,7 +335,7 @@ export const HomePageClient: React.FC<Props> = ({
         
         <div className="placement-glow-orb"></div>
 
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.45)', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.25)', border: '1px solid rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(32px) saturate(200%)', WebkitBackdropFilter: 'blur(32px) saturate(200%)', margin: '0 auto' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.15)', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.25)', border: '1px solid rgba(255, 255, 255, 0.3)', backdropFilter: 'blur(32px)', WebkitBackdropFilter: 'blur(32px)', margin: '0 auto' }}>
           <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.25)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px', boxShadow: '0 0 20px rgba(255,46,31,0.15)' }}>
             🌟 100% Placement Assistance
           </div>
@@ -432,7 +432,7 @@ export const HomePageClient: React.FC<Props> = ({
             max-width: 90vw;
           }
           .placement-title {
-            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
             font-family: var(--display, inherit);
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
@@ -445,7 +445,7 @@ export const HomePageClient: React.FC<Props> = ({
             animation: colorRun 3s linear infinite;
           }
           .placement-desc {
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             opacity: 0;
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
           }
@@ -454,7 +454,7 @@ export const HomePageClient: React.FC<Props> = ({
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
           }
           .placement-bullet {
-            font-size: 1rem;
+            font-size: 1.15rem;
             transition: transform 0.3s ease;
             cursor: default;
           }
@@ -463,12 +463,12 @@ export const HomePageClient: React.FC<Props> = ({
             color: #FF2E1F !important;
           }
           .placement-badge {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             padding: 8px 18px;
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, badgePulse 2.5s infinite;
           }
           .placement-btn {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             padding: 16px 36px;
             transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(255, 46, 31, 0.3);
