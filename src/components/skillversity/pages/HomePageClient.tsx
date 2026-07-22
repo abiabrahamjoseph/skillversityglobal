@@ -340,7 +340,7 @@ export const HomePageClient: React.FC<Props> = ({
             🌟 100% Placement Assistance
           </div>
           <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
-            Over 2000+ Students <br/><span className="placement-title-highlight">Placed Successfully</span>
+            Over 10141 Students <br/><span className="placement-title-highlight">Placed Successfully from 2014.</span>
           </h2>
           <p className="placement-desc" style={{ color: '#475569', marginTop: '16px', fontWeight: 600, maxWidth: '600px', margin: '16px auto 0' }}>
             Join our alumni network working at top global companies across India and the GCC.
