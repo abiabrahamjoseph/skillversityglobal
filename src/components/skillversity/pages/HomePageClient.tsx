@@ -344,6 +344,17 @@ export const HomePageClient: React.FC<Props> = ({
             Join our alumni network working at top global companies across India and the GCC.
           </p>
 
+          <div className="placement-insta-grid" style={{ gap: '16px', marginTop: '32px', marginBottom: '24px', maxWidth: '800px', margin: '32px auto 24px' }}>
+            {['/media/post-1.png', '/media/post-2.png', '/media/post-3.png'].map((src, i) => (
+              <div key={i} className="insta-post-card" style={{ position: 'relative', aspectRatio: '4/5', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.15)', cursor: 'pointer', transition: 'transform 0.3s ease, box-shadow 0.3s ease' }}>
+                <img src={src} alt="Instagram Post" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} className="insta-post-img" />
+                <div style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', borderRadius: '50%', padding: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div className="placement-bullet-container" style={{ marginTop: '28px', display: 'inline-flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start', color: '#334155', textAlign: 'left' }}>
             <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
@@ -441,6 +452,19 @@ export const HomePageClient: React.FC<Props> = ({
             padding: 8px 18px;
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, badgePulse 2.5s infinite;
           }
+          .placement-insta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+          }
+          .insta-post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+          }
+          .insta-post-card:hover .insta-post-img {
+            transform: scale(1.05);
+          }
           .placement-btn {
             font-size: 1.15rem;
             padding: 16px 36px;
@@ -461,6 +485,11 @@ export const HomePageClient: React.FC<Props> = ({
               width: 100px;
               height: 100px;
               border-radius: 12px !important;
+            }
+            .placement-insta-grid {
+              grid-template-columns: 1fr;
+              gap: 20px;
+              max-width: 320px;
             }
             .placement-glass-card {
               padding: 24px 16px;
