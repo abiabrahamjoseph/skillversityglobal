@@ -81,6 +81,7 @@ export default buildConfig({
         pool: {
           connectionString: databaseUrl,
         },
+        push: true,
         migrationDir: path.resolve(dirname, 'migrations-postgres'),
       })
     : sqliteAdapter({
