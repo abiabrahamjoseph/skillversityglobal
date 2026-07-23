@@ -8,6 +8,44 @@ import { ScrollReveal } from '../ScrollReveal'
 import { LeadForm } from '../LeadForm'
 import { MediaPlaceholder } from '../MediaPlaceholder'
 import { PlacementsScroller } from '../PlacementsScroller'
+import { CampusAlbumUI } from '../CampusAlbumUI'
+import { MentorsGalleryUI } from '../MentorsGalleryUI'
+
+function AnimatedCounter({ target, start = 0, duration = 2000 }: { target: number, start?: number, duration?: number }) {
+  const [count, setCount] = React.useState(start);
+  const [isVisible, setIsVisible] = React.useState(false);
+  const ref = React.useRef<HTMLSpanElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (!isVisible) return;
+    let startTimestamp: number;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(start + progress * (target - start)));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [target, start, duration, isVisible]);
+
+  return <span ref={ref}>{count}</span>;
+}
 
 type MediaLike = { url?: string | null; alt?: string | null } | null
 
@@ -30,7 +68,7 @@ type Props = {
     image?: MediaLike
   }>
   testimonialCards: Array<{
-    q: string; name: string; role: string; init: string; color: string
+    q: string; name: string; role: string; init: string; color: string; photo?: string | null;
   }>
   heroCollage?: Array<{
     image?: MediaLike
@@ -47,6 +85,7 @@ type Props = {
     firstName?: string | null
     caption: string
   }>
+  mentorsGallery?: any[]
 }
 
 const companyLogos = [
@@ -203,7 +242,7 @@ const companyLogos = [
 
 export const HomePageClient: React.FC<Props> = ({
   stats, companies, certs, programCards, testimonialCards, heroCollage,
-  heroHeadline, heroHighlight, heroDescription, placementsGallery,
+  heroHeadline, heroHighlight, heroDescription, placementsGallery, mentorsGallery
 }) => {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [isVideoOpen, setIsVideoOpen] = React.useState(false)
@@ -333,37 +372,21 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', boxShadow: '0 12px 40px 0 rgba(31, 38, 135, 0.15)', margin: '0 auto' }}>
-          <div className="placement-badge" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255, 46, 31, 0.1)', border: '1px solid rgba(255, 46, 31, 0.25)', color: '#FF2E1F', fontWeight: 800, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '30px', boxShadow: '0 0 20px rgba(255,46,31,0.15)' }}>
-            🌟 100% Placement Assistance
-          </div>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.4)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.5)', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)', margin: '0 auto' }}>
+          <style>{`
+            @keyframes numberColorPulse {
+              0% { color: var(--brand-blue, #1A3DB8); text-shadow: 0 0 10px rgba(26,61,184,0.2); }
+              50% { color: var(--brand-red, #FF2E1F); text-shadow: 0 0 20px rgba(255,46,31,0.6); }
+              100% { color: var(--brand-blue, #1A3DB8); text-shadow: 0 0 10px rgba(26,61,184,0.2); }
+            }
+            .number-animated-pulse {
+              animation: numberColorPulse 3s infinite ease-in-out;
+            }
+          `}</style>
           <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
-            Over 10141 Students <br/><span className="placement-title-highlight">Placed Successfully from 2014.</span>
+            <span className="number-animated-pulse" style={{ fontSize: 'clamp(5rem, 12vw, 8rem)', lineHeight: 1, background: 'transparent', padding: '4px 16px', borderRadius: '12px', display: 'inline-block', marginBottom: '16px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
+            Students <span className="placement-title-highlight" style={{ display: 'inline-block' }}>Placed Successfully from 2014.</span>
           </h2>
-          <p className="placement-desc" style={{ color: '#475569', marginTop: '16px', fontWeight: 600, maxWidth: '600px', margin: '16px auto 0' }}>
-            Join our alumni network working at top global companies across India and the GCC.
-          </p>
-
-          <div className="placement-bullet-container" style={{ marginTop: '28px', display: 'inline-flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start', color: '#334155', textAlign: 'left' }}>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              Dedicated Placement Cell & Corporate Tie-ups
-            </div>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              Comprehensive Resume Building & Mock Interviews
-            </div>
-            <div className="placement-bullet" style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255, 46, 31, 0.15)', flexShrink: 0 }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF2E1F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              Guaranteed & Unlimited Interview Opportunities
-            </div>
-          </div>
           
           <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '32px', justifyContent: 'center' }}>
             <Link href="/placements" className="btn btn-brand btn-lg placement-btn">View Full Placement Record →</Link>
@@ -709,6 +732,8 @@ export const HomePageClient: React.FC<Props> = ({
 
 
 
+      <CampusAlbumUI />
+
       {/* STUDENT REALITY CHECK */}
       <section className="dark-sec section">
         <div className="wrap" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }}>
@@ -785,6 +810,16 @@ export const HomePageClient: React.FC<Props> = ({
         </div>
       </section>
 
+      {/* MENTORS GALLERY */}
+      {mentorsGallery && mentorsGallery.length > 0 && (
+        <MentorsGalleryUI 
+          title="Learn from industry leaders" 
+          description="Be mentored by professionals who have spent decades building the systems you will work on." 
+          mentors={mentorsGallery} 
+          background="cream" 
+        />
+      )}
+
       {/* PROGRAMS */}
       <section className="section grid-paper">
         <div className="wrap">
@@ -821,8 +856,6 @@ export const HomePageClient: React.FC<Props> = ({
           </div>
         </div>
       </section>
-
-
 
       {/* CERTIFICATIONS */}
       <section className="dark-sec section--sm">
@@ -861,7 +894,15 @@ export const HomePageClient: React.FC<Props> = ({
                   <div className="stars">★★★★★</div>
                   <p className="quote">{t.q}</p>
                   <div className="person">
-                    <div className="ava" style={{ background: t.color }}>{t.init}</div>
+                    {(() => {
+                      const fallbackPhotos = ['/media/anagha-1.png', '/media/ebin-joy-1.png', '/media/sabith-1.png', '/media/vinayan-1.png', '/media/vishnu-1.png'];
+                      const photoUrl = t.photo || fallbackPhotos[i % fallbackPhotos.length];
+                      return (
+                        <div className="ava" style={{ background: t.color, overflow: 'hidden', padding: 0 }}>
+                          <img src={photoUrl} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                        </div>
+                      )
+                    })()}
                     <div className="meta"><b>{t.name}</b><span>{t.role}</span></div>
                   </div>
                 </div>

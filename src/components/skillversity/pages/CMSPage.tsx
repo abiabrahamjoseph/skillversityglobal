@@ -120,6 +120,7 @@ const getHomeData = async (page: SkillversityStructuredPage) => {
         role: `${testimonial.role} · ${testimonial.company}`,
         init: testimonial.initials,
         color: testimonial.accentColor,
+        photo: testimonial.photo?.url || null,
       }))
     : []
 
@@ -127,6 +128,19 @@ const getHomeData = async (page: SkillversityStructuredPage) => {
 
   const heroCollage = Array.isArray(settings?.heroCollage) ? settings.heroCollage : []
   const placementsGallery = Array.isArray(settings?.placementsGallery) ? settings.placementsGallery : []
+  let mentorsGallery = Array.isArray(settings?.mentorsGallery) ? [...settings.mentorsGallery] : []
+  
+  // Apply user requested overrides for mentors
+  mentorsGallery = mentorsGallery.filter((m: any) => !m.fullName?.includes('Rajesh Kumar'))
+  if (!mentorsGallery.some((m: any) => m.fullName?.includes('Abdul Karim'))) {
+    mentorsGallery.unshift({
+      fullName: 'Abdul Karim',
+      firstName: 'Abdul',
+      credential: 'Ex-COO, Apollo Hospitals · 35 yrs exp',
+      roleType: 'hod',
+      image: { url: '/media/mentor-kareem.jpg', alt: 'Abdul Karim' }
+    })
+  }
 
   return {
     stats,
@@ -136,6 +150,7 @@ const getHomeData = async (page: SkillversityStructuredPage) => {
     testimonialCards,
     heroCollage,
     placementsGallery,
+    mentorsGallery,
     heroHeadline: hero.title || settings?.heroHeadline || defaultPages.home.skillversity.hero.title,
     heroHighlight: hero.highlight || settings?.heroHighlight || defaultPages.home.skillversity.hero.highlight || '',
     heroDescription: hero.description || settings?.heroDescription || defaultPages.home.skillversity.hero.description || '',

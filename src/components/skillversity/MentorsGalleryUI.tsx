@@ -53,7 +53,7 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
                 <ScrollReveal key={i}>
                   <div className="hod-card">
                     <div className="hod-avatar">
-                      <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} shape="circle" editUrl="/admin/globals/site-settings" />
+                      <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} style={{ objectFit: 'contain', objectPosition: 'bottom' }} editUrl="/admin/globals/site-settings" />
                     </div>
                     <h4 className="hod-name">{m.fullName}</h4>
                     {m.credential && <p className="hod-credential">{m.credential}</p>}
@@ -77,7 +77,7 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
                 <ScrollReveal key={i}>
                   <div className="mentor-card">
                     <div className="mentor-avatar">
-                      <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} shape="circle" editUrl="/admin/globals/site-settings" />
+                      <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} style={{ objectFit: 'contain', objectPosition: 'bottom' }} editUrl="/admin/globals/site-settings" />
                     </div>
                     <h3 className="mentor-name">{m.fullName}</h3>
                     {m.credential && <p className="mentor-credential">{m.credential}</p>}
