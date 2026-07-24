@@ -14,6 +14,7 @@ import { SkillversityHeader } from '@/components/skillversity/Header'
 import { SkillversityFooter } from '@/components/skillversity/Footer'
 import { MobileBar } from '@/components/skillversity/MobileBar'
 import { WhatsAppFloat } from '@/components/skillversity/WhatsAppFloat'
+import { RecentPlacementsPopup } from '@/components/skillversity/RecentPlacementsPopup'
 import { Analytics } from '@/components/Analytics'
 import { MetaPixel } from '@/components/MetaPixel'
 import configPromise from '@payload-config'
@@ -233,6 +234,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
           <MobileBar />
           <WhatsAppFloat phoneLink={contact.phoneLink} whatsapp={contact.whatsapp} />
+          <RecentPlacementsPopup />
           <Analytics googleAnalyticsId={googleAnalyticsId} />
           <MetaPixel pixelId={metaPixelId} />
         </Providers>
