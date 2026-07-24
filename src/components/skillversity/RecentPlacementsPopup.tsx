@@ -41,10 +41,10 @@ export const RecentPlacementsPopup: React.FC = () => {
       setIsOpen(true)
     }, 2000)
 
-    // Show floating placement counter badge after 8 seconds
+    // Show floating placement counter badge after 12 seconds
     const counterTimer = setTimeout(() => {
       setShowFloatingCounter(true)
-    }, 8000)
+    }, 12000)
 
     return () => {
       clearTimeout(popupTimer)
