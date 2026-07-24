@@ -36,10 +36,10 @@ export const RecentPlacementsPopup: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
-    // Show popup after 6 seconds of page load
+    // Show popup after 5 seconds of page load
     const timer = setTimeout(() => {
       setIsOpen(true)
-    }, 6000)
+    }, 5000)
 
     return () => clearTimeout(timer)
   }, [])
