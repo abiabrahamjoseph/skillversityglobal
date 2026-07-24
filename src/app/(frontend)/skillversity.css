@@ -2479,19 +2479,20 @@ footer ul a:hover { color: var(--brand-orange); }
 }
 
 /* ============================================================
-   RECENT PLACEMENTS CELEBRATION POPUP
+   RECENT PLACEMENTS CELEBRATION POPUP (MOBILE-OPTIMIZED)
    ============================================================ */
 .placement-popup-overlay {
   position: fixed;
   inset: 0;
-  z-index: 99999;
-  background: rgba(8, 6, 30, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  z-index: 999999;
+  background: rgba(8, 6, 30, 0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
+  overflow-y: auto;
   animation: popupFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -2507,13 +2508,27 @@ footer ul a:hover { color: var(--brand-orange); }
 .placement-popup-modal {
   position: relative;
   width: 100%;
-  max-width: 840px;
+  max-width: 800px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  margin: auto;
   background: linear-gradient(145deg, #FFFFFF 0%, #FAF8F5 100%);
   border-radius: 28px;
-  box-shadow: 0 30px 90px -20px rgba(10, 0, 122, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  padding: 36px 32px 28px;
-  overflow: hidden;
+  box-shadow: 0 30px 90px -20px rgba(10, 0, 122, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  padding: 32px 28px 24px;
   animation: popupScaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Custom scrollbar for modal */
+.placement-popup-modal::-webkit-scrollbar {
+  width: 4px;
+}
+.placement-popup-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+.placement-popup-modal::-webkit-scrollbar-thumb {
+  background: rgba(10, 0, 122, 0.15);
+  border-radius: 4px;
 }
 
 @keyframes popupScaleUp {
@@ -2562,14 +2577,14 @@ footer ul a:hover { color: var(--brand-orange); }
 
 .placement-popup-close {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 16px;
+  right: 16px;
   z-index: 10;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: rgba(10, 10, 31, 0.05);
-  border: 1px solid rgba(10, 10, 31, 0.08);
+  background: rgba(10, 10, 31, 0.06);
+  border: 1px solid rgba(10, 10, 31, 0.1);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -2590,7 +2605,7 @@ footer ul a:hover { color: var(--brand-orange); }
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .placement-popup-pill {
@@ -2599,15 +2614,15 @@ footer ul a:hover { color: var(--brand-orange); }
   gap: 8px;
   background: linear-gradient(135deg, #FFF6E5 0%, #FFEACC 100%);
   border: 1px solid #FFD188;
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: 999px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   box-shadow: 0 4px 14px rgba(255, 122, 26, 0.12);
 }
 
 .placement-popup-pill-text {
   font-family: var(--body);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #B25900;
@@ -2635,52 +2650,39 @@ footer ul a:hover { color: var(--brand-orange); }
 
 .placement-popup-title {
   font-family: var(--display);
-  font-size: clamp(24px, 3.2vw, 32px);
+  font-size: clamp(20px, 3vw, 30px);
   font-weight: 800;
   color: #0A0A1F;
   line-height: 1.15;
-  margin: 0 0 6px;
+  margin: 0;
   letter-spacing: -0.02em;
 }
 
-.placement-popup-counter {
-  color: #FF7A1A;
-  font-size: 1.15em;
-}
-
-.placement-popup-subtitle {
-  font-size: 14px;
-  color: #555570;
-  margin: 0;
-}
-
-/* 3 Students Grid */
-.placement-popup-students-grid {
+/* Pure Images Grid - No text details */
+.placement-popup-pure-images-grid {
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-.placement-student-card {
-  background: #FFFFFF;
-  border-radius: 20px;
-  padding: 18px 16px;
+.placement-pure-image-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px -8px rgba(10, 0, 122, 0.16);
   border: 1px solid rgba(10, 0, 122, 0.08);
-  box-shadow: 0 10px 25px -8px rgba(10, 0, 122, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: #FFFFFF;
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
   animation: studentCardPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 
 @keyframes studentCardPop {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.95);
+    transform: translateY(16px) scale(0.95);
   }
   to {
     opacity: 1;
@@ -2688,135 +2690,18 @@ footer ul a:hover { color: var(--brand-orange); }
   }
 }
 
-.placement-student-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 36px -10px rgba(10, 0, 122, 0.16);
-  border-color: rgba(0, 182, 232, 0.3);
+.placement-pure-image-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 45px -10px rgba(10, 0, 122, 0.28);
+  border-color: rgba(255, 122, 26, 0.4);
 }
 
-.placement-student-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.placement-student-avatar-wrapper {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-
-.placement-student-avatar-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+.placement-pure-img {
+  width: 100%;
+  height: 100%;
+  max-height: 260px;
   object-fit: cover;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-.placement-student-avatar-fallback {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: #FFFFFF;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 17px;
-  box-shadow: 0 4px 12px rgba(10, 0, 122, 0.2);
-}
-
-.placement-student-check {
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #10B981;
-  border: 2px solid #FFFFFF;
-  display: grid;
-  place-items: center;
-}
-
-.placement-company-badge {
-  font-family: var(--body);
-  font-size: 11px;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 8px;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.placement-student-info {
-  margin-bottom: 14px;
-}
-
-.placement-student-name-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  margin-bottom: 4px;
-}
-
-.placement-student-name {
-  font-family: var(--display);
-  font-size: 16px;
-  font-weight: 800;
-  color: #0A0A1F;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.placement-badge-tag {
-  font-size: 10px;
-  font-weight: 700;
-  background: #F0FDF4;
-  color: #166534;
-  padding: 2px 6px;
-  border-radius: 6px;
-  border: 1px solid #BBF7D0;
-  white-space: nowrap;
-}
-
-.placement-student-role {
-  font-size: 12.5px;
-  color: #64748B;
-  margin: 0;
-  line-height: 1.35;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.placement-student-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px dashed rgba(10, 0, 122, 0.1);
-  font-size: 11px;
-}
-
-.placement-verified-text {
-  color: #64748B;
-  font-weight: 600;
-}
-
-.placement-salary-badge {
-  font-weight: 800;
-  color: #0A0A1F;
-  background: #F1F5F9;
-  padding: 2px 6px;
-  border-radius: 4px;
+  display: block;
 }
 
 /* Footer Action */
@@ -2829,7 +2714,7 @@ footer ul a:hover { color: var(--brand-orange); }
   background: rgba(10, 0, 122, 0.03);
   border: 1px solid rgba(10, 0, 122, 0.06);
   border-radius: 16px;
-  padding: 14px 20px;
+  padding: 12px 18px;
 }
 
 .placement-total-counter {
@@ -2856,11 +2741,12 @@ footer ul a:hover { color: var(--brand-orange); }
   color: #FFFFFF !important;
   font-weight: 700;
   font-size: 13.5px;
-  padding: 10px 20px;
+  padding: 9px 18px;
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(255, 46, 31, 0.3);
   transition: all 0.25s ease;
   text-decoration: none !important;
+  white-space: nowrap;
 }
 
 .placement-popup-btn-primary:hover {
@@ -2877,10 +2763,11 @@ footer ul a:hover { color: var(--brand-orange); }
   border: 1.5px solid rgba(10, 0, 122, 0.15);
   font-weight: 700;
   font-size: 13.5px;
-  padding: 9.5px 18px;
+  padding: 8.5px 16px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .placement-popup-btn-secondary:hover {
@@ -2889,68 +2776,92 @@ footer ul a:hover { color: var(--brand-orange); }
   border-color: #0A0A1F;
 }
 
-/* Pure Images Grid - No text details */
-.placement-popup-pure-images-grid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
+/* Mobile Responsiveness Overrides */
+@media (max-width: 640px) {
+  .placement-popup-overlay {
+    padding: 12px;
+  }
 
-.placement-pure-image-card {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px -8px rgba(10, 0, 122, 0.16);
-  border: 1px solid rgba(10, 0, 122, 0.08);
-  background: #FFFFFF;
-  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
-  animation: studentCardPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-}
-
-.placement-pure-image-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 22px 45px -10px rgba(10, 0, 122, 0.28);
-  border-color: rgba(255, 122, 26, 0.4);
-}
-
-.placement-pure-img {
-  width: 100%;
-  height: 100%;
-  max-height: 280px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
   .placement-popup-modal {
-    padding: 28px 20px 20px;
-    border-radius: 22px;
+    padding: 22px 14px 14px;
+    border-radius: 20px;
+    max-height: 92dvh;
   }
-  .placement-popup-students-grid,
+
+  .placement-popup-close {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .placement-popup-header {
+    margin-bottom: 12px;
+  }
+
+  .placement-popup-pill {
+    padding: 4px 10px;
+    margin-bottom: 6px;
+  }
+
+  .placement-popup-pill-text {
+    font-size: 10px;
+  }
+
+  .placement-popup-title {
+    font-size: 18px;
+  }
+
+  /* Keep 3 images side-by-side in 3 columns on mobile so all 3 fit on screen! */
   .placement-popup-pure-images-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 14px;
   }
+
+  .placement-pure-image-card {
+    border-radius: 12px;
+    box-shadow: 0 6px 16px -4px rgba(10, 0, 122, 0.12);
+  }
+
   .placement-pure-img {
-    max-height: 240px;
+    height: 145px;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
   }
+
   .placement-popup-action {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    padding: 10px 12px;
     text-align: center;
+    border-radius: 12px;
   }
+
+  .placement-total-counter {
+    font-size: 11.5px;
+  }
+
   .placement-popup-btn-group {
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 8px;
   }
-  .placement-popup-btn-primary,
+
+  .placement-popup-btn-primary {
+    flex: 1;
+    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
   .placement-popup-btn-secondary {
-    width: 100%;
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
   }
 }
+
 
 
