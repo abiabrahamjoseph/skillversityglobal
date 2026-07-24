@@ -36,15 +36,15 @@ export const RecentPlacementsPopup: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
-    // Show main celebration popup after 2 seconds
+    // Show main celebration popup after 3 seconds
     const popupTimer = setTimeout(() => {
       setIsOpen(true)
-    }, 2000)
+    }, 3000)
 
-    // Show floating placement counter badge after 12 seconds
+    // Show floating placement counter badge after 15 seconds
     const counterTimer = setTimeout(() => {
       setShowFloatingCounter(true)
-    }, 12000)
+    }, 15000)
 
     return () => {
       clearTimeout(popupTimer)
