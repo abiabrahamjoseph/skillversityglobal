@@ -158,7 +158,7 @@ export const LeadForm: React.FC = () => {
   }
 
   return (
-    <div className="form-card">
+    <div className="form-card" id="lead-form">
       <span className="form-tape">⚡ Free · No Obligation</span>
       {!submitted ? (
         <>

@@ -51,7 +51,7 @@ export const SkillversityHeader: React.FC<Props> = ({
             ))}
           </nav>
           <div className="nav-right">
-            <Link href="/contact" className="btn btn-brand btn-sm">
+            <Link href="/contact#lead-form" className="btn btn-brand btn-sm">
               Get an Admission
             </Link>
             <button
@@ -92,7 +92,7 @@ export const SkillversityHeader: React.FC<Props> = ({
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/contact#lead-form"
             onClick={() => setDrawerOpen(false)}
             style={{ color: 'var(--brand-pink)' }}
           >
