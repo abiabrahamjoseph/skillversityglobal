@@ -2863,5 +2863,127 @@ footer ul a:hover { color: var(--brand-orange); }
   }
 }
 
+/* ============================================================
+   FLOATING PLACEMENT COUNTER WIDGET (TRIGGERED AFTER POPUP CLOSE)
+   ============================================================ */
+.floating-placement-counter-widget {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 99998;
+  animation: counterSlideUp 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes counterSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-counter-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #0A0A1F 0%, #121838 100%);
+  border: 1.5px solid rgba(255, 203, 40, 0.4);
+  border-radius: 20px;
+  padding: 12px 18px 12px 14px;
+  box-shadow: 0 16px 40px -10px rgba(10, 0, 122, 0.45), 0 0 20px rgba(255, 122, 26, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.floating-counter-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(circle at top left, rgba(255, 203, 40, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+.floating-counter-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FF7A1A 0%, #FF2E1F 100%);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(255, 46, 31, 0.35);
+}
+
+.floating-counter-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-counter-number {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 900;
+  color: #FFCB28;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.floating-counter-plus {
+  color: #FF7A1A;
+}
+
+.floating-counter-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #E2E8F0;
+  white-space: nowrap;
+}
+
+.floating-counter-close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #94A3B8;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: all 0.2s ease;
+}
+
+.floating-counter-close-btn:hover {
+  background: #FF2E1F;
+  color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .floating-placement-counter-widget {
+    bottom: 84px; /* Sits cleanly above mobile bottom bar */
+    left: 14px;
+    right: 14px;
+  }
+  .floating-counter-content {
+    padding: 10px 14px;
+    border-radius: 16px;
+    justify-content: space-between;
+  }
+  .floating-counter-number {
+    font-size: 17px;
+  }
+  .floating-counter-label {
+    font-size: 10.5px;
+  }
+}
+
+
 
 
