@@ -1008,7 +1008,7 @@ export const HomePageClient: React.FC<Props> = ({
                   boxShadow: '0 10px 25px -8px rgba(0,0,0,0.06)',
                   display: 'flex',
                   flexDirection: 'column',
-                  justify: 'space-between',
+                  justifyContent: 'space-between',
                   cursor: 'pointer',
                   margin: 0,
                 }}
