@@ -834,63 +834,6 @@ export const HomePageClient: React.FC<Props> = ({
         </div>
       </section>
 
-      {/* TESTIMONIALS - STUDENT VOICES (MOVING MARQUEE) */}
-      <section className="section" style={{ background: '#fff', overflow: 'hidden' }}>
-        <div className="wrap">
-          <ScrollReveal className="section-head">
-            <span className="eyebrow"><span className="dot" />Student Voices</span>
-            <h2 className="h-section" style={{ marginTop: '14px' }}>Students <span className="squiggle">feel the difference.</span></h2>
-            <p className="lead">The strongest feedback is about confidence, practical learning, and the feeling that Skillversity is a launchpad — not just an institution.</p>
-          </ScrollReveal>
-        </div>
-
-        <div className="mentors-marquee-wrap" style={{ marginTop: '32px' }}>
-          <div className="mentors-track">
-            {[...testimonialCards, ...testimonialCards, ...testimonialCards].map((t, i) => (
-              <div 
-                key={i} 
-                className="t-card"
-                style={{
-                  flex: '0 0 340px',
-                  width: '340px',
-                  background: 'var(--cream)',
-                  borderRadius: '20px',
-                  padding: '24px 20px',
-                  border: '1.5px solid var(--line)',
-                  boxShadow: '0 10px 25px -8px rgba(0,0,0,0.06)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justify: 'space-between',
-                  cursor: 'pointer',
-                  margin: 0,
-                }}
-              >
-                <div>
-                  <div className="qmark" style={{ fontSize: '40px', opacity: 0.2, lineHeight: 1, marginBottom: '6px' }}>&quot;</div>
-                  <div className="stars" style={{ color: '#FFD400', fontSize: '14px', marginBottom: '12px' }}>★★★★★</div>
-                  <p className="quote" style={{ fontSize: '14.5px', color: 'var(--ink-soft)', lineHeight: 1.6, margin: 0 }}>{t.q}</p>
-                </div>
-                <div className="person" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                  {(() => {
-                    const fallbackPhotos = ['/media/anagha-1.png', '/media/ebin-joy-1.png', '/media/sabith-1.png', '/media/vinayan-1.png', '/media/vishnu-1.png'];
-                    const photoUrl = t.photo || fallbackPhotos[i % fallbackPhotos.length];
-                    return (
-                      <div className="ava" style={{ width: '46px', height: '46px', borderRadius: '50%', background: t.color, overflow: 'hidden', padding: 0, flexShrink: 0, border: '2px solid #ffffff', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
-                        <img src={photoUrl} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-                      </div>
-                    )
-                  })()}
-                  <div className="meta" style={{ textAlign: 'left' }}>
-                    <b style={{ display: 'block', fontSize: '15px', color: 'var(--ink)', fontWeight: 800 }}>{t.name}</b>
-                    <span style={{ fontSize: '12.5px', color: 'var(--brand-blue)', fontWeight: 600 }}>{t.role}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* GOOGLE REVIEWS SECTION */}
       <section className="section google-reviews-section">
         <div className="wrap">
@@ -1035,6 +978,63 @@ export const HomePageClient: React.FC<Props> = ({
               </svg>
               Follow us on Instagram
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS - STUDENT VOICES (MOVING MARQUEE) */}
+      <section className="section" style={{ background: '#fff', overflow: 'hidden' }}>
+        <div className="wrap">
+          <ScrollReveal className="section-head">
+            <span className="eyebrow"><span className="dot" />Student Voices</span>
+            <h2 className="h-section" style={{ marginTop: '14px' }}>Students <span className="squiggle">feel the difference.</span></h2>
+            <p className="lead">The strongest feedback is about confidence, practical learning, and the feeling that Skillversity is a launchpad — not just an institution.</p>
+          </ScrollReveal>
+        </div>
+
+        <div className="mentors-marquee-wrap" style={{ marginTop: '32px' }}>
+          <div className="mentors-track">
+            {[...testimonialCards, ...testimonialCards, ...testimonialCards].map((t, i) => (
+              <div 
+                key={i} 
+                className="t-card"
+                style={{
+                  flex: '0 0 340px',
+                  width: '340px',
+                  background: 'var(--cream)',
+                  borderRadius: '20px',
+                  padding: '24px 20px',
+                  border: '1.5px solid var(--line)',
+                  boxShadow: '0 10px 25px -8px rgba(0,0,0,0.06)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justify: 'space-between',
+                  cursor: 'pointer',
+                  margin: 0,
+                }}
+              >
+                <div>
+                  <div className="qmark" style={{ fontSize: '40px', opacity: 0.2, lineHeight: 1, marginBottom: '6px' }}>&quot;</div>
+                  <div className="stars" style={{ color: '#FFD400', fontSize: '14px', marginBottom: '12px' }}>★★★★★</div>
+                  <p className="quote" style={{ fontSize: '14.5px', color: 'var(--ink-soft)', lineHeight: 1.6, margin: 0 }}>{t.q}</p>
+                </div>
+                <div className="person" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                  {(() => {
+                    const fallbackPhotos = ['/media/anagha-1.png', '/media/ebin-joy-1.png', '/media/sabith-1.png', '/media/vinayan-1.png', '/media/vishnu-1.png'];
+                    const photoUrl = t.photo || fallbackPhotos[i % fallbackPhotos.length];
+                    return (
+                      <div className="ava" style={{ width: '46px', height: '46px', borderRadius: '50%', background: t.color, overflow: 'hidden', padding: 0, flexShrink: 0, border: '2px solid #ffffff', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
+                        <img src={photoUrl} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                      </div>
+                    )
+                  })()}
+                  <div className="meta" style={{ textAlign: 'left' }}>
+                    <b style={{ display: 'block', fontSize: '15px', color: 'var(--ink)', fontWeight: 800 }}>{t.name}</b>
+                    <span style={{ fontSize: '12.5px', color: 'var(--brand-blue)', fontWeight: 600 }}>{t.role}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
