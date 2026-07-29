@@ -45,8 +45,8 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
 
         {/* Head of Departments Display - Moving Marquee */}
         {hods.length > 0 && (
-          <div style={{ marginBottom: '40px' }}>
-            <h3 style={{ fontFamily: 'var(--display)', fontSize: '22px', fontWeight: 800, textAlign: 'center', marginBottom: '24px', color: 'var(--ink)' }}>
+          <div style={{ marginBottom: '44px' }}>
+            <h3 style={{ fontFamily: 'var(--display)', fontSize: '24px', fontWeight: 800, textAlign: 'center', marginBottom: '24px', color: 'var(--ink)' }}>
               Head of Departments
             </h3>
             <div className="mentors-marquee-wrap">
@@ -59,10 +59,10 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
                       flex: '0 0 280px',
                       width: '280px',
                       background: '#ffffff',
-                      borderRadius: '20px',
-                      padding: '24px 20px',
-                      border: '2px solid var(--brand-blue)',
-                      boxShadow: '0 12px 30px -10px rgba(26,61,184,0.15)',
+                      borderRadius: '24px',
+                      padding: '16px',
+                      border: 'none',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
                       textAlign: 'center',
                       transition: 'transform 0.25s ease, box-shadow 0.25s ease',
                       cursor: 'pointer',
@@ -71,19 +71,19 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
                     <div 
                       className="hod-avatar"
                       style={{
-                        width: '130px',
-                        height: '130px',
-                        borderRadius: '50%',
-                        margin: '0 auto 14px',
+                        width: '100%',
+                        height: '270px',
+                        borderRadius: '18px',
+                        margin: '0 0 14px',
                         overflow: 'hidden',
                         background: 'var(--ice)',
-                        border: '4px solid #ffffff',
-                        boxShadow: '0 8px 20px rgba(0,0,0,0.1)'
+                        border: 'none',
+                        boxShadow: 'none'
                       }}
                     >
-                      <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} style={{ objectFit: 'cover' }} editUrl="/admin/globals/site-settings" />
+                      <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} style={{ objectFit: 'cover', objectPosition: 'top', width: '100%', height: '100%' }} editUrl="/admin/globals/site-settings" />
                     </div>
-                    <span className="role-pill" style={{ background: 'var(--brand-blue)', color: '#ffffff', fontSize: '11px', fontWeight: 800, marginBottom: '8px', display: 'inline-block' }}>
+                    <span className="role-pill" style={{ background: 'var(--brand-blue)', color: '#ffffff', fontSize: '11px', fontWeight: 800, padding: '4px 12px', borderRadius: '999px', marginBottom: '8px', display: 'inline-block' }}>
                       Head of Department
                     </span>
                     <h4 className="hod-name" style={{ fontSize: '18px', fontWeight: 800, color: 'var(--ink)', marginTop: '4px', marginBottom: '4px' }}>
@@ -104,7 +104,7 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
 
       {/* CONTINUOUS RIGHT-TO-LEFT MARQUEE FOR MENTORS */}
       <div style={{ marginTop: '20px' }}>
-        <h3 style={{ fontFamily: 'var(--display)', fontSize: '22px', fontWeight: 800, textAlign: 'center', marginBottom: '24px', color: 'var(--ink)' }}>
+        <h3 style={{ fontFamily: 'var(--display)', fontSize: '24px', fontWeight: 800, textAlign: 'center', marginBottom: '24px', color: 'var(--ink)' }}>
           Industry Mentors & Faculty
         </h3>
 
@@ -115,13 +115,13 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
                 key={i} 
                 className="mentor-card"
                 style={{
-                  flex: '0 0 240px',
-                  width: '240px',
+                  flex: '0 0 250px',
+                  width: '250px',
                   background: '#ffffff',
-                  borderRadius: '20px',
-                  padding: '20px 16px',
-                  border: '1.5px solid var(--line)',
-                  boxShadow: '0 10px 25px -8px rgba(0,0,0,0.06)',
+                  borderRadius: '24px',
+                  padding: '14px',
+                  border: 'none',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
                   textAlign: 'center',
                   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
                   cursor: 'pointer',
@@ -130,17 +130,17 @@ export const MentorsGalleryUI: React.FC<MentorsGalleryUIProps> = ({
                 <div 
                   className="mentor-avatar"
                   style={{
-                    width: '120px',
-                    height: '120px',
-                    borderRadius: '50%',
-                    margin: '0 auto 14px',
+                    width: '100%',
+                    height: '240px',
+                    borderRadius: '18px',
+                    margin: '0 0 12px',
                     overflow: 'hidden',
                     background: 'var(--ice)',
-                    border: '3px solid #ffffff',
-                    boxShadow: '0 6px 16px rgba(0,0,0,0.08)'
+                    border: 'none',
+                    boxShadow: 'none'
                   }}
                 >
-                  <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} style={{ objectFit: 'cover' }} editUrl="/admin/globals/site-settings" />
+                  <MediaPlaceholder media={m.image} label={m.firstName || m.fullName} style={{ objectFit: 'cover', objectPosition: 'top', width: '100%', height: '100%' }} editUrl="/admin/globals/site-settings" />
                 </div>
                 <h3 className="mentor-name" style={{ fontSize: '16px', fontWeight: 800, color: 'var(--ink)', marginBottom: '4px' }}>
                   {m.fullName}
