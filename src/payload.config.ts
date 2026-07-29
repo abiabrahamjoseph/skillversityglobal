@@ -24,7 +24,10 @@ import { canRunJobs } from './access/roles'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-const databaseUrl = process.env.DATABASE_URL || 'file:./payload.db'
+let databaseUrl = process.env.DATABASE_URL || 'file:./payload.db'
+if (process.env.VERCEL && (databaseUrl === 'file:./payload.db' || databaseUrl === './payload.db')) {
+  databaseUrl = 'file:/tmp/payload.db'
+}
 const isPostgres = databaseUrl.startsWith('postgres:') || databaseUrl.startsWith('postgresql:')
 
 export default buildConfig({
@@ -102,7 +105,7 @@ export default buildConfig({
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],
   plugins,
-  secret: process.env.PAYLOAD_SECRET,
+  secret: process.env.PAYLOAD_SECRET || '7ca71a6e9a65d75cb98e4f1a6039542df98c3e80b2a75cd9df4e91a0c8b672b1',
   sharp,
   ...(process.env.SMTP_HOST
     ? {
