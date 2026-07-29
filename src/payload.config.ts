@@ -92,7 +92,7 @@ export default buildConfig({
   db: isPostgres
     ? postgresAdapter({
         pool: {
-          connectionString: databaseUrl,
+          connectionString: process.env.POSTGRES_URL_NON_POOLING || databaseUrl,
           ssl: {
             rejectUnauthorized: false,
           },
