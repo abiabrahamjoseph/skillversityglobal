@@ -24,17 +24,23 @@ import { canRunJobs } from './access/roles'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-let databaseUrl =
+const rawDbUrl =
   process.env.POSTGRES_URL ||
   process.env.POSTGRES_PRISMA_URL ||
   process.env.POSTGRES_URL_NON_POOLING ||
   process.env.DATABASE_URL ||
-  'file:./payload.db'
+  ''
 
-if (process.env.VERCEL && (databaseUrl.startsWith('file:') || databaseUrl.endsWith('.db'))) {
-  databaseUrl = 'file::memory:?cache=shared'
-}
-const isPostgres = databaseUrl.startsWith('postgres:') || databaseUrl.startsWith('postgresql:')
+const isPostgres =
+  Boolean(rawDbUrl) &&
+  (rawDbUrl.startsWith('postgres') ||
+    rawDbUrl.startsWith('postgresql') ||
+    rawDbUrl.includes('neon.tech') ||
+    rawDbUrl.includes('supabase') ||
+    rawDbUrl.includes('vercel-storage') ||
+    rawDbUrl.includes('postgres'))
+
+const databaseUrl = rawDbUrl || 'file:./payload.db'
 
 const serverUrl = getServerSideURL()
 const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null
