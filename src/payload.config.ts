@@ -38,7 +38,16 @@ const isPostgres = databaseUrl.startsWith('postgres:') || databaseUrl.startsWith
 
 const serverUrl = getServerSideURL()
 const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null
-const allowedOrigins = Array.from(new Set([serverUrl, vercelUrl, 'http://localhost:3000'].filter(Boolean) as string[]))
+const vercelProductionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null
+const allowedOrigins = Array.from(
+  new Set([
+    serverUrl,
+    vercelUrl,
+    vercelProductionUrl,
+    'https://skillversityglobal.vercel.app',
+    'http://localhost:3000',
+  ].filter(Boolean) as string[])
+)
 
 export default buildConfig({
   admin: {
@@ -97,7 +106,7 @@ export default buildConfig({
             rejectUnauthorized: false,
           },
         },
-        push: true,
+        push: process.env.NODE_ENV !== 'production' || process.env.PAYLOAD_PUSH === 'true',
         migrationDir: path.resolve(dirname, 'migrations-postgres'),
       })
     : sqliteAdapter({
