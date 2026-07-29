@@ -91,6 +91,7 @@ export default buildConfig({
         client: {
           url: databaseUrl,
         },
+        push: true,
         migrationDir: path.resolve(dirname, 'migrations-sqlite'),
       }),
   collections: [
