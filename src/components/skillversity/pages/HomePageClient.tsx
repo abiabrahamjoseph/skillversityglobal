@@ -10,6 +10,7 @@ import { MediaPlaceholder } from '../MediaPlaceholder'
 import { PlacementsScroller } from '../PlacementsScroller'
 import { CampusAlbumUI } from '../CampusAlbumUI'
 import { MentorsGalleryUI } from '../MentorsGalleryUI'
+import { AppShowcaseSection } from '../AppShowcaseSection'
 
 function AnimatedCounter({ target, start = 0, duration = 2000 }: { target: number, start?: number, duration?: number }) {
   const [count, setCount] = React.useState(start);
@@ -734,51 +735,6 @@ export const HomePageClient: React.FC<Props> = ({
 
       <CampusAlbumUI />
 
-      {/* STUDENT REALITY CHECK */}
-      <section className="dark-sec section">
-        <div className="wrap" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }}>
-          <ScrollReveal>
-            <span className="eyebrow"><span className="dot" />Student Reality Check</span>
-            <h2 className="h-section" style={{ color: '#fff', marginTop: '18px' }}>
-              You have the degree.<br /><em style={{ fontStyle: 'normal', color: 'var(--brand-yellow)' }}>But are you really job-ready?</em>
-            </h2>
-            <p className="lead" style={{ marginTop: '16px' }}>
-              Many students graduate with certificates, yet feel completely stuck the moment real interviews and workplace pressure show up. Skillversity closes that gap — permanently.
-            </p>
-            <ul className="check-list" style={{ marginTop: '28px' }}>
-              <li>Degree in hand but no job-relevant practical skills</li>
-              <li>Interview confidence crumbles under real pressure</li>
-              <li>Resumes sent weekly — zero callbacks received</li>
-              <li>No experience — the classic hiring catch-22</li>
-              <li>Career path unclear, every decision delayed</li>
-            </ul>
-            <style>{`.check-list li::before{background:var(--brand-pink)}`}</style>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div style={{ background: 'var(--grad-warm)', borderRadius: 'var(--rad-lg)', padding: '36px', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 60px -20px rgba(255,46,31,.45)' }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
-              <span className="tape">Skillversity closes this gap</span>
-              <h3 style={{ fontSize: '26px', color: '#fff', marginTop: '16px', lineHeight: 1.1 }}>Job Ready. Life Ready. Future Ready.</h3>
-              <p style={{ color: 'rgba(255,255,255,.9)', marginTop: '14px', fontSize: '15px' }}>A complete transformation — real projects, industry mentors, confidence training, structured placement support. From day one.</p>
-              <ul style={{ marginTop: '20px', display: 'grid', gap: '9px' }}>
-                {['Real workplace projects from week one',`${stats.mentors} mentors with 30+ years of industry experience`,`${stats.mentorshipYears}-year career mentorship post-placement`,'India + GCC pathways in every program'].map((item, i) => (
-                  <li key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center', color: '#fff', fontWeight: 600, fontSize: '14.5px' }}>
-                    <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255,255,255,.25)', display: 'grid', placeItems: 'center', fontSize: '11px', fontWeight: 800, flex: 'none' }}>✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/contact" className="btn btn-ghost-white btn-lg" style={{ marginTop: '24px', width: '100%' }}>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                Book Free Counselling Call
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* MARQUEE */}
       <section className="marquee-wrap">
         <div style={{ textAlign: 'center', marginBottom: '14px', fontSize: '11.5px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--ink-mute)' }}>
@@ -987,6 +943,9 @@ export const HomePageClient: React.FC<Props> = ({
         </div>
       </section>
 
+      {/* MOBILE APP SHOWCASE SECTION */}
+      <AppShowcaseSection />
+
       {/* INSTAGRAM FEED SECTION */}
       <section className="section instagram-section">
         <div className="wrap">
@@ -1101,6 +1060,52 @@ export const HomePageClient: React.FC<Props> = ({
           </div>
         </div>
       </section>
+
+      {/* STUDENT REALITY CHECK */}
+      <section className="dark-sec section">
+        <div className="wrap" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }}>
+          <ScrollReveal>
+            <span className="eyebrow"><span className="dot" />Student Reality Check</span>
+            <h2 className="h-section" style={{ color: '#fff', marginTop: '18px' }}>
+              You have the degree.<br /><em style={{ fontStyle: 'normal', color: 'var(--brand-yellow)' }}>But are you really job-ready?</em>
+            </h2>
+            <p className="lead" style={{ marginTop: '16px' }}>
+              Many students graduate with certificates, yet feel completely stuck the moment real interviews and workplace pressure show up. Skillversity closes that gap — permanently.
+            </p>
+            <ul className="check-list" style={{ marginTop: '28px' }}>
+              <li>Degree in hand but no job-relevant practical skills</li>
+              <li>Interview confidence crumbles under real pressure</li>
+              <li>Resumes sent weekly — zero callbacks received</li>
+              <li>No experience — the classic hiring catch-22</li>
+              <li>Career path unclear, every decision delayed</li>
+            </ul>
+            <style>{`.check-list li::before{background:var(--brand-pink)}`}</style>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div style={{ background: 'var(--grad-warm)', borderRadius: 'var(--rad-lg)', padding: '36px', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 60px -20px rgba(255,46,31,.45)' }}>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
+              <span className="tape">Skillversity closes this gap</span>
+              <h3 style={{ fontSize: '26px', color: '#fff', marginTop: '16px', lineHeight: 1.1 }}>Job Ready. Life Ready. Future Ready.</h3>
+              <p style={{ color: 'rgba(255,255,255,.9)', marginTop: '14px', fontSize: '15px' }}>A complete transformation — real projects, industry mentors, confidence training, structured placement support. From day one.</p>
+              <ul style={{ marginTop: '20px', display: 'grid', gap: '9px' }}>
+                {['Real workplace projects from week one',`${stats.mentors} mentors with 30+ years of industry experience`,`${stats.mentorshipYears}-year career mentorship post-placement`,'India + GCC pathways in every program'].map((item, i) => (
+                  <li key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center', color: '#fff', fontWeight: 600, fontSize: '14.5px' }}>
+                    <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(255,255,255,.25)', display: 'grid', placeItems: 'center', fontSize: '11px', fontWeight: 800, flex: 'none' }}>✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/contact" className="btn btn-ghost-white btn-lg" style={{ marginTop: '24px', width: '100%' }}>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Book Free Counselling Call
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* CTA + FORM */}
       <section className="dark-sec section">
         <div className="wrap cta-wrap">

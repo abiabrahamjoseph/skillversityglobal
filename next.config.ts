@@ -12,7 +12,7 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   : process.env.__NEXT_PRIVATE_ORIGIN || 'http://localhost:3000'
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['localhost:3000', '192.168.29.117', '065fa154591d8c.lhr.life', 'af5b5d709f00ba.lhr.life', '077780dfcbc6dc.lhr.life', '28c34f41a725d9.lhr.life', '6fb04a9f0109e2.lhr.life', 'gifts-clause-hamilton-bracket.trycloudflare.com'],
+  allowedDevOrigins: ['localhost:3000', '192.168.29.118', '192.168.29.118:3000', '192.168.29.117', '192.168.29.117:3000', '065fa154591d8c.lhr.life', 'af5b5d709f00ba.lhr.life', '077780dfcbc6dc.lhr.life', '28c34f41a725d9.lhr.life', '6fb04a9f0109e2.lhr.life', 'gifts-clause-hamilton-bracket.trycloudflare.com'],
   // Temporarily required on Windows until Next.js fixes Turbopack Sass resolution.
   // See: https://github.com/vercel/next.js/issues/86431
   sassOptions: {

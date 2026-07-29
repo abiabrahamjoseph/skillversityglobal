@@ -60,6 +60,9 @@ const resolveNavLink = (item: any) => {
   if (relationTo === 'posts') {
     return { label: link.label, href: `/blog/${slug}`, newTab: Boolean(link.newTab) }
   }
+  if (relationTo === 'programs') {
+    return { label: link.label, href: `/programs/${slug}`, newTab: Boolean(link.newTab) }
+  }
 
   return { label: link.label, href: slug === 'home' ? '/' : `/${slug}`, newTab: Boolean(link.newTab) }
 }

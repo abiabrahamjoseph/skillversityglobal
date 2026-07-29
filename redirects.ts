@@ -27,10 +27,10 @@ export const redirects: NextConfig['redirects'] = async () => {
     { source: '/campus-life.html', destination: '/campus-life', permanent: true },
     { source: '/admissions.html', destination: '/admissions', permanent: true },
     { source: '/blog.html', destination: '/blog', permanent: true },
-    { source: '/contact.html', destination: '/contact', permanent: true },
-    { source: '/skillfolio.html', destination: '/skillfolio', permanent: true },
-    { source: '/blog-hospital-admin-guide.html', destination: '/blog/hospital-admin-guide', permanent: true },
-    { source: '/blog-logistics-career-guide.html', destination: '/blog/logistics-career-guide', permanent: true },
+    { source: '/hospital-administration', destination: '/programs/hospital-administration', permanent: true },
+    { source: '/logistics-supply-chain', destination: '/programs/logistics-supply-chain', permanent: true },
+    { source: '/oil-gas', destination: '/programs/oil-gas', permanent: true },
+    { source: '/hr-management', destination: '/programs/hr-management', permanent: true },
   ]
 
   return [internetExplorerRedirect, ...legacyHtmlRedirects]
