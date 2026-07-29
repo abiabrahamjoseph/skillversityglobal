@@ -24,7 +24,13 @@ import { canRunJobs } from './access/roles'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-let databaseUrl = process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL || process.env.DATABASE_URL || 'file:./payload.db'
+let databaseUrl =
+  process.env.POSTGRES_URL ||
+  process.env.POSTGRES_PRISMA_URL ||
+  process.env.POSTGRES_URL_NON_POOLING ||
+  process.env.DATABASE_URL ||
+  'file:./payload.db'
+
 if (process.env.VERCEL && (databaseUrl.startsWith('file:') || databaseUrl.endsWith('.db'))) {
   databaseUrl = 'file::memory:?cache=shared'
 }
@@ -87,6 +93,9 @@ export default buildConfig({
     ? postgresAdapter({
         pool: {
           connectionString: databaseUrl,
+          ssl: {
+            rejectUnauthorized: false,
+          },
         },
         push: true,
         migrationDir: path.resolve(dirname, 'migrations-postgres'),
