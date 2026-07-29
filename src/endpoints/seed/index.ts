@@ -99,36 +99,17 @@ export const seed = async ({
     ),
   ])
 
-  const [adminUser, image1Doc, image2Doc, image3Doc, imageHomeDoc] = await Promise.all([
-    payload.create({
-      collection: 'users',
-      data: {
-        name: 'Skillversity Admin',
-        email: 'admin@skillversityglobal.com',
-        password: 'skillversity2026',
-        role: 'admin',
-      } as any,
-    }),
-    payload.create({
-      collection: 'media',
-      data: image1,
-      file: image1Buffer,
-    }),
-    payload.create({
-      collection: 'media',
-      data: image2,
-      file: image2Buffer,
-    }),
-    payload.create({
-      collection: 'media',
-      data: image2,
-      file: image3Buffer,
-    }),
-    payload.create({
-      collection: 'media',
-      data: imageHero1,
-      file: hero1Buffer,
-    }),
+  const adminUser = await payload.create({
+    collection: 'users',
+    data: {
+      name: 'Skillversity Admin',
+      email: 'admin@skillversityglobal.com',
+      password: 'skillversity2026',
+      role: 'admin',
+    } as any,
+  })
+
+  await Promise.all(
     categories.map((category) =>
       payload.create({
         collection: 'categories',
@@ -138,7 +119,27 @@ export const seed = async ({
         },
       }),
     ),
-  ])
+  )
+
+  let image1Doc: any = null
+  let image2Doc: any = null
+  let image3Doc: any = null
+  let imageHomeDoc: any = null
+
+  try {
+    const [img1, img2, img3, imgHero] = await Promise.all([
+      payload.create({ collection: 'media', data: image1, file: image1Buffer }),
+      payload.create({ collection: 'media', data: image2, file: image2Buffer }),
+      payload.create({ collection: 'media', data: image2, file: image3Buffer }),
+      payload.create({ collection: 'media', data: imageHero1, file: hero1Buffer }),
+    ])
+    image1Doc = img1
+    image2Doc = img2
+    image3Doc = img3
+    imageHomeDoc = imgHero
+  } catch (err) {
+    payload.logger.warn('Media file creation skipped (read-only serverless filesystem): ' + err)
+  }
 
   payload.logger.info(`— Seeding blog posts...`)
 
