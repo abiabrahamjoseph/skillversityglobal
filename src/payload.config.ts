@@ -107,14 +107,14 @@ export default buildConfig({
           },
         },
         push: true,
-        migrationDir: path.resolve(dirname, 'migrations-postgres'),
+        migrationDir: path.resolve(dirname, 'migrations'),
       })
     : sqliteAdapter({
         client: {
           url: databaseUrl,
         },
         push: true,
-        migrationDir: path.resolve(dirname, 'migrations-sqlite'),
+        migrationDir: path.resolve(dirname, 'migrations'),
       }),
   collections: [
     Pages,
