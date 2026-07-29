@@ -26,7 +26,7 @@ const dirname = path.dirname(filename)
 
 let databaseUrl = process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL || process.env.DATABASE_URL || 'file:./payload.db'
 if (process.env.VERCEL && (databaseUrl.startsWith('file:') || databaseUrl.endsWith('.db'))) {
-  databaseUrl = 'file:/tmp/payload.db?mode=rwc'
+  databaseUrl = 'file::memory:?cache=shared'
 }
 const isPostgres = databaseUrl.startsWith('postgres:') || databaseUrl.startsWith('postgresql:')
 
