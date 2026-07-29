@@ -101,12 +101,12 @@ export default buildConfig({
   db: isPostgres
     ? postgresAdapter({
         pool: {
-          connectionString: process.env.POSTGRES_URL_NON_POOLING || databaseUrl,
+          connectionString: process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || databaseUrl,
           ssl: {
             rejectUnauthorized: false,
           },
         },
-        push: process.env.NODE_ENV !== 'production' || process.env.PAYLOAD_PUSH === 'true',
+        push: true,
         migrationDir: path.resolve(dirname, 'migrations-postgres'),
       })
     : sqliteAdapter({

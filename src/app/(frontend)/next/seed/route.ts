@@ -11,12 +11,17 @@ export async function GET(): Promise<Response> {
   const payload = await getPayload({ config })
 
   // Check if users already exist — if so, block unauthenticated seeding
-  const existingUsers = await payload.find({
-    collection: 'users',
-    limit: 1,
-  })
+  let existingUsers: any = { totalDocs: 0 }
+  try {
+    existingUsers = await payload.find({
+      collection: 'users',
+      limit: 1,
+    })
+  } catch (err) {
+    payload.logger.warn('Initial seeding users query notice: ' + err)
+  }
 
-  if (existingUsers.totalDocs > 0) {
+  if (existingUsers?.totalDocs > 0) {
     return new Response('Database already seeded. Use POST with authentication to re-seed.', {
       status: 403,
     })
