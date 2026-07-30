@@ -409,7 +409,7 @@ export const HomePageClient: React.FC<Props> = ({
               }
             }
             .number-animated-pulse {
-              background: linear-gradient(90deg, #0A0A1F 0%, #1A3DB8 25%, #D40511 50%, #00243D 75%, #0A0A1F 100%);
+              background: linear-gradient(90deg, #FF1F5C 0%, #FF7A1A 25%, #FFCB28 50%, #00B6E8 75%, #FF1F5C 100%);
               background-size: 250% 100%;
               animation: numberFloatAndColor 4s ease-in-out infinite;
               -webkit-background-clip: text;

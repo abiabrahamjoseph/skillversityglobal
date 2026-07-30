@@ -13,6 +13,7 @@ const staticRoutes: Array<{ path: string; changeFrequency: MetadataRoute.Sitemap
   { path: '/programs', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/placements', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/mentors', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/campus-events', changeFrequency: 'weekly', priority: 0.8 },
   { path: '/campus-life', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/blog', changeFrequency: 'weekly', priority: 0.7 },

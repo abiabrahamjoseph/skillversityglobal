@@ -26,6 +26,7 @@ const defaultHeaderNav = [
   { label: 'Programs', href: '/programs' },
   { label: 'Placements', href: '/placements' },
   { label: 'Mentors', href: '/mentors' },
+  { label: 'Campus Events', href: '/campus-events' },
   { label: 'Campus Life', href: '/campus-life' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
@@ -34,6 +35,7 @@ const defaultHeaderNav = [
 const defaultFooterNav = [
   { label: 'Placements', href: '/placements' },
   { label: 'Mentors', href: '/mentors' },
+  { label: 'Campus Events', href: '/campus-events' },
   { label: 'Campus Life', href: '/campus-life' },
   { label: 'About Us', href: '/about' },
   { label: 'Admissions', href: '/admissions' },
