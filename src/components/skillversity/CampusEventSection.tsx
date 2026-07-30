@@ -109,77 +109,30 @@ export const CampusEventSection: React.FC = () => {
         }}
       />
 
-      {/* CONTINUOUS RUNNING TICKER MARQUEE */}
-      <div
-        style={{
-          width: '100%',
-          background: 'linear-gradient(90deg, #FF1F5C 0%, #FF7A1A 50%, #00B6E8 100%)',
-          padding: '10px 0',
-          overflow: 'hidden',
-          marginBottom: '40px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-          position: 'relative',
-          zIndex: 2,
-        }}
-      >
-        <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes eventMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+      <style dangerouslySetInnerHTML={{ __html: `
+        .event-poster-card:hover {
+          transform: translateY(-4px) scale(1.01);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 122, 26, 0.4) !important;
+        }
+        .register-btn-pulse:hover {
+          transform: scale(1.03) !important;
+          box-shadow: 0 10px 30px rgba(255, 31, 92, 0.6) !important;
+        }
+        @media (max-width: 768px) {
+          .event-grid-layout {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
           }
-          .event-marquee-track {
-            display: flex;
-            gap: 28px;
-            width: max-content;
-            animation: eventMarquee 25s linear infinite;
+          .event-details-card {
+            padding: 24px 18px !important;
           }
-          .event-marquee-track:hover {
-            animation-play-state: paused;
+          .event-tab-btn {
+            padding: 10px 14px !important;
+            font-size: 13px !important;
+            flex: 1 1 auto;
           }
-          .event-poster-card:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 122, 26, 0.4) !important;
-          }
-          .register-btn-pulse:hover {
-            transform: scale(1.03) !important;
-            box-shadow: 0 10px 30px rgba(255, 31, 92, 0.6) !important;
-          }
-          @media (max-width: 768px) {
-            .event-grid-layout {
-              grid-template-columns: 1fr !important;
-              gap: 24px !important;
-            }
-            .event-details-card {
-              padding: 24px 18px !important;
-            }
-            .event-tab-btn {
-              padding: 10px 14px !important;
-              font-size: 13px !important;
-              flex: 1 1 auto;
-            }
-          }
-        `}} />
-        <div className="event-marquee-track">
-          {repeatedMarquee.map((text, idx) => (
-            <span
-              key={idx}
-              style={{
-                color: '#ffffff',
-                fontWeight: 900,
-                fontSize: '13px',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {text}
-            </span>
-          ))}
-        </div>
-      </div>
+        }
+      `}} />
 
       <div className="wrap" style={{ position: 'relative', zIndex: 2 }}>
         <ScrollReveal className="section-head" style={{ textAlign: 'center', marginBottom: '32px' }}>
