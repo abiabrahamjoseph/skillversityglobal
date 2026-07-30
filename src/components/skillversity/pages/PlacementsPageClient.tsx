@@ -26,7 +26,61 @@ const defaultPlacementsData: PlacementItem[] = [
     firstName: 'Subash M',
     caption: 'Subash M · Quality Checking, Coimbatore · Oil & Gas',
     programSlug: 'oil-gas',
-    image: { url: '/media/subash-m-placed.jpg', alt: 'Subash M - Placed in Quality Checking, Coimbatore' }
+    image: { url: '/media/subash-m-placed.jpg', alt: 'Subash M' }
+  },
+  {
+    firstName: 'Sidharth P',
+    caption: 'Sidharth P · Quality Checking, Coimbatore · Oil & Gas',
+    programSlug: 'oil-gas',
+    image: { url: '/media/sidharth-p-placed.jpg', alt: 'Sidharth P' }
+  },
+  {
+    firstName: 'Muhammad Anas C',
+    caption: 'Muhammad Anas C · Quality Checking, Coimbatore · Oil & Gas',
+    programSlug: 'oil-gas',
+    image: { url: '/media/muhammad-anas-placed.jpg', alt: 'Muhammad Anas C' }
+  },
+  {
+    firstName: 'Mohammed Ashique P T',
+    caption: 'Mohammed Ashique P T · Quality Checking, Chennai · Oil & Gas',
+    programSlug: 'oil-gas',
+    image: { url: '/media/mohammed-ashique-placed.jpg', alt: 'Mohammed Ashique P T' }
+  },
+  {
+    firstName: 'Ajin A',
+    caption: 'Ajin A · Quality Checking, Karnataka · Oil & Gas',
+    programSlug: 'oil-gas',
+    image: { url: '/media/ajin-a-placed.jpg', alt: 'Ajin A' }
+  },
+  {
+    firstName: 'Siril John',
+    caption: 'Siril John · Quality Checking, Karnataka · Oil & Gas',
+    programSlug: 'oil-gas',
+    image: { url: '/media/siril-john-placed.jpg', alt: 'Siril John' }
+  },
+  {
+    firstName: 'Sonu Augustin',
+    caption: 'Sonu Augustin · Quality Checking, Karnataka · Oil & Gas',
+    programSlug: 'oil-gas',
+    image: { url: '/media/sonu-augustin-placed.jpg', alt: 'Sonu Augustin' }
+  },
+  {
+    firstName: 'Adithya D',
+    caption: 'Adithya D · HR Recruiter, Malappuram · HR Management',
+    programSlug: 'hr-management',
+    image: { url: '/media/adithya-d-placed.jpg', alt: 'Adithya D' }
+  },
+  {
+    firstName: 'Bhumika Das',
+    caption: 'Bhumika Das · Commercial Executive, Kottayam · Logistics',
+    programSlug: 'logistics-supply-chain',
+    image: { url: '/media/bhumika-das-placed.jpg', alt: 'Bhumika Das' }
+  },
+  {
+    firstName: 'Avinash K A',
+    caption: 'Avinash K A · Fleet Coordinator, Calicut · Logistics',
+    programSlug: 'logistics-supply-chain',
+    image: { url: '/media/avinash-k-a-placed.jpg', alt: 'Avinash K A' }
   },
   {
     firstName: 'Vishnu',

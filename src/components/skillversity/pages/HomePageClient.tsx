@@ -351,11 +351,15 @@ export const HomePageClient: React.FC<Props> = ({
               {Array.from({ length: 40 }).map((_, colIdx) => {
                 const bgImages = [
                   '/media/subash-m-placed.jpg',
-                  '/media/subash-m-placed.jpg',
-                  '/media/post-1.png',
-                  '/media/subash-m-placed.jpg',
-                  '/media/post-3.png',
-                  '/media/subash-m-placed.jpg'
+                  '/media/sidharth-p-placed.jpg',
+                  '/media/muhammad-anas-placed.jpg',
+                  '/media/mohammed-ashique-placed.jpg',
+                  '/media/ajin-a-placed.jpg',
+                  '/media/siril-john-placed.jpg',
+                  '/media/sonu-augustin-placed.jpg',
+                  '/media/adithya-d-placed.jpg',
+                  '/media/bhumika-das-placed.jpg',
+                  '/media/avinash-k-a-placed.jpg'
                 ];
                 const imgSrc = bgImages[(rowIdx * 13 + colIdx) % bgImages.length];
                 
