@@ -174,8 +174,8 @@ li { list-style: none; }
 .brand-mark::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg,rgba(255,255,255,.28),transparent 55%); }
 .brand-name em { font-style: normal; background: var(--grad-mid); -webkit-background-clip: text; background-clip: text; color: transparent; }
 /* Image logo (header) — full-color SVG on the light nav background */
-.brand-logo { height: 34px; width: auto; display: block; }
-@media(max-width:520px) { .brand-logo { height: 30px; } }
+.brand-logo { height: 38px; max-width: 180px; width: auto; display: block; object-fit: contain; }
+@media(max-width:520px) { .brand-logo { height: 34px; max-width: 160px; } }
 .nav-links { display: none; gap: 20px; font-weight: 600; font-size: 14px; }
 .nav-links a { padding: 5px 2px; border-bottom: 2px solid transparent; transition: border-color .2s, color .2s; }
 .nav-links a:hover, .nav-links a.active { border-color: var(--brand-pink); color: var(--brand-indigo); }
@@ -2967,9 +2967,7 @@ footer ul a:hover { color: var(--brand-orange); }
 
 @media (max-width: 640px) {
   .floating-placement-counter-widget {
-    bottom: 84px; /* Sits cleanly above mobile bottom bar */
-    left: 14px;
-    right: 14px;
+    display: none !important; /* Hidden on mobile to prevent blocking screen content & bottom actions */
   }
   .floating-counter-content {
     padding: 10px 14px;
