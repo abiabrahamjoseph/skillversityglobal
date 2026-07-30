@@ -391,28 +391,28 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.88)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '2px solid rgba(255, 255, 255, 0.9)', boxShadow: '0 20px 60px rgba(10, 0, 122, 0.25), 0 0 40px rgba(255, 122, 26, 0.15)', margin: '0 auto', padding: '40px 24px', borderRadius: '32px' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.45)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1.5px solid rgba(255, 255, 255, 0.7)', boxShadow: '0 20px 50px rgba(0, 36, 61, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.5)', margin: '0 auto', padding: '40px 28px', borderRadius: '32px' }}>
           <style>{`
-            @keyframes counterGlowNeon {
+            @keyframes logoColorShift {
               0% {
-                filter: drop-shadow(0 0 15px rgba(255, 31, 92, 0.7)) drop-shadow(0 0 35px rgba(255, 203, 40, 0.5));
-                transform: scale(1);
+                background-position: 0% 50%;
               }
               50% {
-                filter: drop-shadow(0 0 35px rgba(255, 122, 26, 0.95)) drop-shadow(0 0 65px rgba(0, 182, 232, 0.85)) drop-shadow(0 0 95px rgba(255, 31, 92, 0.6));
-                transform: scale(1.04);
+                background-position: 100% 50%;
               }
               100% {
-                filter: drop-shadow(0 0 15px rgba(255, 31, 92, 0.7)) drop-shadow(0 0 35px rgba(255, 203, 40, 0.5));
-                transform: scale(1);
+                background-position: 0% 50%;
               }
             }
             .number-animated-pulse {
-              animation: counterGlowNeon 3s infinite ease-in-out;
-              background: linear-gradient(135deg, #FF1F5C 0%, #FF7A1A 30%, #FFA61F 60%, #1A3DB8 100%);
+              background: linear-gradient(90deg, #1A3DB8 0%, #00B6E8 25%, #FF7A1A 50%, #FF2E1F 75%, #1A3DB8 100%);
+              background-size: 250% 100%;
+              animation: logoColorShift 6s ease-in-out infinite;
               -webkit-background-clip: text;
               background-clip: text;
               color: transparent;
+              filter: none !important;
+              text-shadow: none !important;
             }
           `}</style>
           <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-1px' }}>
