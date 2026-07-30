@@ -51,33 +51,6 @@ export const SkillversityHeader: React.FC<Props> = ({
             ))}
           </nav>
           <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.app.skillversity"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline btn-sm hide-mobile"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                fontSize: '13px',
-                fontWeight: 700,
-                padding: '6px 12px',
-                borderRadius: '8px',
-                border: '1.5px solid var(--ink)',
-              }}
-              title="Download Skillversity App on Google Play"
-            >
-              <svg viewBox="0 0 512 512" width="15" height="15">
-                <path fill="#415A6C" d="M30 40c0-10 7-17 17-17h.3L275 251 47.3 479H47c-10 0-17-7-17-17V40z" />
-                <path fill="#13B5EA" d="M30 40c0-5 2-10 6-13l240 224L47.3 479c-4-3-6-8-6-13V40z" />
-                <path fill="#00C1A8" d="m276 251 68-68 111 63c8 4 8 13 0 17l-111 63-68-75z" opacity=".2" />
-                <path fill="#FF3333" d="M344 183 47.3 27C44 25 40 23 36 23l240 228 68-68z" />
-                <path fill="#FFD400" d="M455 245 344 183l-68 68 68 68 111-62c8-5 8-12 0-12z" />
-                <path fill="#00E676" d="M344 319 276 251 36 479c4 0 8-2 11.3-4L344 319z" />
-              </svg>
-              Get App
-            </a>
             <Link href="/contact#lead-form" className="btn btn-brand btn-sm">
               Get an Admission
             </Link>
