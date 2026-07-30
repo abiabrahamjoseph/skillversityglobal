@@ -391,19 +391,32 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.4)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.5)', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)', margin: '0 auto' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.88)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '2px solid rgba(255, 255, 255, 0.9)', boxShadow: '0 20px 60px rgba(10, 0, 122, 0.25), 0 0 40px rgba(255, 122, 26, 0.15)', margin: '0 auto', padding: '40px 24px', borderRadius: '32px' }}>
           <style>{`
-            @keyframes numberColorPulse {
-              0% { color: var(--brand-blue, #1A3DB8); text-shadow: 0 0 10px rgba(26,61,184,0.2); }
-              50% { color: var(--brand-red, #FF2E1F); text-shadow: 0 0 20px rgba(255,46,31,0.6); }
-              100% { color: var(--brand-blue, #1A3DB8); text-shadow: 0 0 10px rgba(26,61,184,0.2); }
+            @keyframes counterGlowNeon {
+              0% {
+                filter: drop-shadow(0 0 15px rgba(255, 31, 92, 0.7)) drop-shadow(0 0 35px rgba(255, 203, 40, 0.5));
+                transform: scale(1);
+              }
+              50% {
+                filter: drop-shadow(0 0 35px rgba(255, 122, 26, 0.95)) drop-shadow(0 0 65px rgba(0, 182, 232, 0.85)) drop-shadow(0 0 95px rgba(255, 31, 92, 0.6));
+                transform: scale(1.04);
+              }
+              100% {
+                filter: drop-shadow(0 0 15px rgba(255, 31, 92, 0.7)) drop-shadow(0 0 35px rgba(255, 203, 40, 0.5));
+                transform: scale(1);
+              }
             }
             .number-animated-pulse {
-              animation: numberColorPulse 3s infinite ease-in-out;
+              animation: counterGlowNeon 3s infinite ease-in-out;
+              background: linear-gradient(135deg, #FF1F5C 0%, #FF7A1A 30%, #FFA61F 60%, #1A3DB8 100%);
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
             }
           `}</style>
-          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.2, letterSpacing: '-0.5px' }}>
-            <span className="number-animated-pulse" style={{ fontSize: 'clamp(5rem, 12vw, 8rem)', lineHeight: 1, background: 'transparent', padding: '4px 16px', borderRadius: '12px', display: 'inline-block', marginBottom: '16px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
+          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-1px' }}>
+            <span className="number-animated-pulse" style={{ fontSize: 'clamp(5.5rem, 15vw, 10.5rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '12px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
             Students <span className="placement-title-highlight" style={{ display: 'inline-block' }}>Placed Successfully from 2014.</span>
           </h2>
           
