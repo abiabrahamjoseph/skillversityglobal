@@ -68,27 +68,27 @@ const fallbackPlacements: PlacementItem[] = [
   {
     firstName: 'Vishnu',
     caption: 'Vishnu · Logistics & Supply · DHL',
-    image: { url: '/api/media/file/vishnu-1.png', alt: 'Vishnu' }
+    image: { url: '/media/vishnu-1.png', alt: 'Vishnu' }
   },
   {
     firstName: 'Vinayan T V',
     caption: 'Vinayan T V · Logistics · Maersk',
-    image: { url: '/api/media/file/vinayan-1.png', alt: 'Vinayan T V' }
+    image: { url: '/media/vinayan-1.png', alt: 'Vinayan T V' }
   },
   {
     firstName: 'Anagha Ratheesh',
     caption: 'Anagha Ratheesh · Oil & Gas · Gulf Inspector',
-    image: { url: '/api/media/file/anagha-1.png', alt: 'Anagha Ratheesh' }
+    image: { url: '/media/anagha-1.png', alt: 'Anagha Ratheesh' }
   },
   {
     firstName: 'Ebin Joy',
     caption: 'Ebin Joy · HR Management · Lulu Group',
-    image: { url: '/api/media/file/ebin-joy-1.png', alt: 'Ebin Joy' }
+    image: { url: '/media/ebin-joy-1.png', alt: 'Ebin Joy' }
   },
   {
     firstName: 'Muhammed Sabith P N',
     caption: 'Muhammed Sabith P N · Logistics · Palakkad',
-    image: { url: '/api/media/file/sabith.png', alt: 'Muhammed Sabith P N' }
+    image: { url: '/media/sabith.png', alt: 'Muhammed Sabith P N' }
   }
 ]
 

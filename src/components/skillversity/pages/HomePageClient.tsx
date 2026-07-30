@@ -352,14 +352,28 @@ export const HomePageClient: React.FC<Props> = ({
                 const bgImages = [
                   '/media/subash-m-placed.jpg',
                   '/media/sidharth-p-placed.jpg',
+                  '/media/post-1.png',
                   '/media/muhammad-anas-placed.jpg',
+                  '/media/post-2.png',
                   '/media/mohammed-ashique-placed.jpg',
+                  '/media/post-3.png',
                   '/media/ajin-a-placed.jpg',
+                  '/media/post-4.png',
                   '/media/siril-john-placed.jpg',
+                  '/media/post-5.png',
                   '/media/sonu-augustin-placed.jpg',
+                  '/media/post-6.png',
                   '/media/adithya-d-placed.jpg',
+                  '/media/placement-banner-june.png',
                   '/media/bhumika-das-placed.jpg',
-                  '/media/avinash-k-a-placed.jpg'
+                  '/media/placement-banner-july.png',
+                  '/media/avinash-k-a-placed.jpg',
+                  '/media/vishnu-1.png',
+                  '/media/vinayan-1.png',
+                  '/media/anagha-1.png',
+                  '/media/ebin-joy-1.png',
+                  '/media/sabith.png',
+                  '/media/ann-mary.jpg'
                 ];
                 const imgSrc = bgImages[(rowIdx * 13 + colIdx) % bgImages.length];
                 
