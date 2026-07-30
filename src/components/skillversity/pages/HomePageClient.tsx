@@ -415,8 +415,8 @@ export const HomePageClient: React.FC<Props> = ({
               text-shadow: none !important;
             }
           `}</style>
-          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-1px' }}>
-            <span className="number-animated-pulse" style={{ fontSize: 'clamp(5.5rem, 15vw, 10.5rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '12px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
+          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-0.5px', fontSize: 'clamp(1.4rem, 3.2vw, 2.2rem)' }}>
+            <span className="number-animated-pulse" style={{ fontSize: 'clamp(3.8rem, 10vw, 6.5rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '8px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
             Students <span className="placement-title-highlight" style={{ display: 'inline-block' }}>Placed Successfully from 2014.</span>
           </h2>
           
