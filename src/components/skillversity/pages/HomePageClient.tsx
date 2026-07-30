@@ -392,7 +392,7 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.22)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1.5px solid rgba(255, 255, 255, 0.45)', boxShadow: '0 16px 45px rgba(0, 10, 40, 0.12), inset 0 0 30px rgba(255, 255, 255, 0.35)', margin: '0 auto', padding: '44px 28px', borderRadius: '32px' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.88)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '2px solid rgba(255, 255, 255, 0.95)', boxShadow: '0 20px 60px rgba(0, 10, 40, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.9)', margin: '0 auto', padding: '44px 28px', borderRadius: '32px' }}>
           <style>{`
             @keyframes numberFloatAndColor {
               0% {
@@ -409,9 +409,9 @@ export const HomePageClient: React.FC<Props> = ({
               }
             }
             .number-animated-pulse {
-              background: linear-gradient(90deg, #C2185B 0%, #D84315 25%, #0077B6 50%, #0D47A1 75%, #C2185B 100%);
+              background: linear-gradient(90deg, #1A3DB8 0%, #D40511 25%, #FF7A1A 50%, #0077B6 75%, #1A3DB8 100%);
               background-size: 250% 100%;
-              animation: numberFloatAndColor 4s ease-in-out infinite;
+              animation: numberFloatAndColor 3.5s ease-in-out infinite;
               -webkit-background-clip: text;
               background-clip: text;
               color: transparent;
@@ -423,7 +423,7 @@ export const HomePageClient: React.FC<Props> = ({
           `}</style>
           <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-0.5px', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)' }}>
             <span className="number-animated-pulse" style={{ fontSize: 'clamp(5rem, 13.5vw, 8.8rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '10px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
-            Students <span className="placement-title-highlight" style={{ display: 'inline-block' }}>Placed Successfully from 2014.</span>
+            Students <span className="placement-title-highlight" style={{ display: 'inline-block', color: '#0D2C54' }}>Placed Successfully from 2014.</span>
           </h2>
           
           <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '32px', justifyContent: 'center' }}>
