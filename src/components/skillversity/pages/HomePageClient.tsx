@@ -392,7 +392,7 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.88)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '2px solid rgba(255, 255, 255, 0.95)', boxShadow: '0 20px 60px rgba(0, 10, 40, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.9)', margin: '0 auto', padding: '44px 28px', borderRadius: '32px' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.25)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1.5px solid rgba(255, 255, 255, 0.5)', boxShadow: '0 16px 45px rgba(0, 10, 40, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.3)', margin: '0 auto', padding: '36px 24px', borderRadius: '32px' }}>
           <style>{`
             @keyframes numberFloatAndColor {
               0% {
@@ -421,12 +421,16 @@ export const HomePageClient: React.FC<Props> = ({
               will-change: transform;
             }
           `}</style>
-          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-0.5px', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)' }}>
-            <span className="number-animated-pulse" style={{ fontSize: 'clamp(5rem, 13.5vw, 8.8rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '10px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
-            Students <span className="placement-title-highlight" style={{ display: 'inline-block', color: '#0D2C54' }}>Placed Successfully from 2014.</span>
-          </h2>
           
-          <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '32px', justifyContent: 'center' }}>
+          {/* FITTED WHITE BOX AROUND TEXT */}
+          <div className="placement-text-white-box" style={{ display: 'inline-block', background: '#FFFFFF', padding: '24px 32px', borderRadius: '24px', boxShadow: '0 12px 35px rgba(0, 10, 40, 0.18), 0 0 0 1px rgba(0,0,0,0.06)', maxWidth: '100%' }}>
+            <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-0.5px', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)' }}>
+              <span className="number-animated-pulse" style={{ fontSize: 'clamp(4.8rem, 12.5vw, 8.2rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '8px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
+              Students <span className="placement-title-highlight" style={{ display: 'inline-block', color: '#0D2C54' }}>Placed Successfully from 2014.</span>
+            </h2>
+          </div>
+          
+          <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '28px', justifyContent: 'center' }}>
             <Link href="/placements" className="btn btn-brand btn-lg placement-btn">View Full Placement Record →</Link>
           </div>
         </div>
