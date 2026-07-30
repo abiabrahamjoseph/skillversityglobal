@@ -16,6 +16,11 @@ type Props = {
 
 const fallbackPlacements: PlacementItem[] = [
   {
+    firstName: 'Subash M',
+    caption: 'Subash M · Quality Checking, Coimbatore · Oil & Gas',
+    image: { url: '/media/subash-m-placed.jpg', alt: 'Subash M' }
+  },
+  {
     firstName: 'Vishnu',
     caption: 'Vishnu · Logistics & Supply · DHL',
     image: { url: '/api/media/file/vishnu-1.png', alt: 'Vishnu' }

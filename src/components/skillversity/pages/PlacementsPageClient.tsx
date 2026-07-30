@@ -23,6 +23,12 @@ type Props = {
 
 const defaultPlacementsData: PlacementItem[] = [
   {
+    firstName: 'Subash M',
+    caption: 'Subash M · Quality Checking, Coimbatore · Oil & Gas',
+    programSlug: 'oil-gas',
+    image: { url: '/media/subash-m-placed.jpg', alt: 'Subash M - Placed in Quality Checking, Coimbatore' }
+  },
+  {
     firstName: 'Vishnu',
     caption: 'Vishnu · Logistics & Supply · DHL',
     programSlug: 'logistics-supply-chain',

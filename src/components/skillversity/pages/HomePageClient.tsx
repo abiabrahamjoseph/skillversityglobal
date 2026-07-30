@@ -350,12 +350,12 @@ export const HomePageClient: React.FC<Props> = ({
             <div key={rowIdx} style={{ display: 'flex', gap: '12px', width: '200%', animation: `marquee-${rowIdx % 2 === 0 ? 'left' : 'right'} ${50 + rowIdx * 5}s linear infinite` }}>
               {Array.from({ length: 40 }).map((_, colIdx) => {
                 const bgImages = [
+                  '/media/subash-m-placed.jpg',
+                  '/media/subash-m-placed.jpg',
                   '/media/post-1.png',
-                  '/media/post-2.png',
+                  '/media/subash-m-placed.jpg',
                   '/media/post-3.png',
-                  '/media/post-4.png',
-                  '/media/post-5.png',
-                  '/media/post-6.png'
+                  '/media/subash-m-placed.jpg'
                 ];
                 const imgSrc = bgImages[(rowIdx * 13 + colIdx) % bgImages.length];
                 
