@@ -10,6 +10,7 @@ import { MediaPlaceholder } from '../MediaPlaceholder'
 import { PlacementsScroller } from '../PlacementsScroller'
 import { CampusAlbumUI } from '../CampusAlbumUI'
 import { MentorsGalleryUI } from '../MentorsGalleryUI'
+import { CampusEventSection } from '../CampusEventSection'
 import { AppShowcaseSection } from '../AppShowcaseSection'
 
 function AnimatedCounter({ target, start = 0, duration = 2000 }: { target: number, start?: number, duration?: number }) {
@@ -811,6 +812,9 @@ export const HomePageClient: React.FC<Props> = ({
           background="cream" 
         />
       )}
+
+      {/* FEATURED CAMPUS EVENT */}
+      <CampusEventSection />
 
       {/* PROGRAMS */}
       <section className="section grid-paper">
