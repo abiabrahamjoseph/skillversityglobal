@@ -391,32 +391,37 @@ export const HomePageClient: React.FC<Props> = ({
           ))}
         </div>
         
-        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.45)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1.5px solid rgba(255, 255, 255, 0.7)', boxShadow: '0 20px 50px rgba(0, 36, 61, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.5)', margin: '0 auto', padding: '40px 28px', borderRadius: '32px' }}>
+        <div className="placement-glass-card" style={{ position: 'relative', zIndex: 10, textAlign: 'center', background: 'rgba(255, 255, 255, 0.22)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1.5px solid rgba(255, 255, 255, 0.45)', boxShadow: '0 16px 45px rgba(0, 10, 40, 0.12), inset 0 0 30px rgba(255, 255, 255, 0.35)', margin: '0 auto', padding: '44px 28px', borderRadius: '32px' }}>
           <style>{`
-            @keyframes logoColorShift {
+            @keyframes numberFloatAndColor {
               0% {
                 background-position: 0% 50%;
+                transform: translateY(0px) scale(1);
               }
               50% {
                 background-position: 100% 50%;
+                transform: translateY(-10px) scale(1.03);
               }
               100% {
                 background-position: 0% 50%;
+                transform: translateY(0px) scale(1);
               }
             }
             .number-animated-pulse {
               background: linear-gradient(90deg, #1A3DB8 0%, #00B6E8 25%, #FF7A1A 50%, #FF2E1F 75%, #1A3DB8 100%);
               background-size: 250% 100%;
-              animation: logoColorShift 6s ease-in-out infinite;
+              animation: numberFloatAndColor 4s ease-in-out infinite;
               -webkit-background-clip: text;
               background-clip: text;
               color: transparent;
               filter: none !important;
               text-shadow: none !important;
+              display: inline-block;
+              will-change: transform;
             }
           `}</style>
-          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-0.5px', fontSize: 'clamp(1.4rem, 3.2vw, 2.2rem)' }}>
-            <span className="number-animated-pulse" style={{ fontSize: 'clamp(3.8rem, 10vw, 6.5rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '8px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
+          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-0.5px', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)' }}>
+            <span className="number-animated-pulse" style={{ fontSize: 'clamp(5rem, 13.5vw, 8.8rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '10px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
             Students <span className="placement-title-highlight" style={{ display: 'inline-block' }}>Placed Successfully from 2014.</span>
           </h2>
           
