@@ -131,7 +131,7 @@ const getHomeData = async (page: SkillversityStructuredPage) => {
   let mentorsGallery = Array.isArray(settings?.mentorsGallery) ? [...settings.mentorsGallery] : []
   
   // Apply user requested overrides for mentors
-  mentorsGallery = mentorsGallery.filter((m: any) => !m.fullName?.includes('Rajesh Kumar') && !m.fullName?.includes('Priya Krishnan'))
+  mentorsGallery = mentorsGallery.filter((m: any) => !m.fullName?.includes('Rajesh Kumar') && !m.fullName?.includes('Priya Krishnan') && !m.fullName?.includes('Neethu') && !m.fullName?.includes('neethu'))
   if (!mentorsGallery.some((m: any) => m.fullName?.includes('Abdul Karim'))) {
     mentorsGallery.unshift({
       fullName: 'Abdul Karim',
