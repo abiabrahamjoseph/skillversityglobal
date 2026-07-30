@@ -136,10 +136,26 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     if (resolvedHeaderNav?.length) {
       headerNavItems = resolvedHeaderNav
     }
+    if (!headerNavItems.some((item) => item.href === '/campus-events')) {
+      const mentorsIdx = headerNavItems.findIndex((item) => item.href === '/mentors')
+      if (mentorsIdx !== -1) {
+        headerNavItems.splice(mentorsIdx + 1, 0, { label: 'Campus Events', href: '/campus-events' })
+      } else {
+        headerNavItems.push({ label: 'Campus Events', href: '/campus-events' })
+      }
+    }
 
     const resolvedFooterNav = footer?.navItems?.map(resolveNavLink).filter(Boolean)
     if (resolvedFooterNav?.length) {
       footerNavItems = resolvedFooterNav
+    }
+    if (!footerNavItems.some((item) => item.href === '/campus-events')) {
+      const mentorsIdx = footerNavItems.findIndex((item) => item.href === '/mentors')
+      if (mentorsIdx !== -1) {
+        footerNavItems.splice(mentorsIdx + 1, 0, { label: 'Campus Events', href: '/campus-events' })
+      } else {
+        footerNavItems.push({ label: 'Campus Events', href: '/campus-events' })
+      }
     }
 
     const programsResult = await payload.find({
