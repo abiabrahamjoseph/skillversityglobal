@@ -13,8 +13,7 @@ next-env.d.ts
 .idea/
 
 # Payload default media upload directory
-public/media/
-!public/media/*placed.jpg
+# public/media/
 
 # Databases
 *.db
