@@ -26,7 +26,7 @@ const defaultHeaderNav = [
   { label: 'Programs', href: '/programs' },
   { label: 'Placements', href: '/placements' },
   { label: 'Mentors', href: '/mentors' },
-  { label: 'Campus Events', href: '/campus-events' },
+  { label: 'Events', href: '/campus-events' },
   { label: 'Campus Life', href: '/campus-life' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
@@ -35,7 +35,7 @@ const defaultHeaderNav = [
 const defaultFooterNav = [
   { label: 'Placements', href: '/placements' },
   { label: 'Mentors', href: '/mentors' },
-  { label: 'Campus Events', href: '/campus-events' },
+  { label: 'Events', href: '/campus-events' },
   { label: 'Campus Life', href: '/campus-life' },
   { label: 'About Us', href: '/about' },
   { label: 'Admissions', href: '/admissions' },
@@ -139,9 +139,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     if (!headerNavItems.some((item) => item.href === '/campus-events')) {
       const mentorsIdx = headerNavItems.findIndex((item) => item.href === '/mentors')
       if (mentorsIdx !== -1) {
-        headerNavItems.splice(mentorsIdx + 1, 0, { label: 'Campus Events', href: '/campus-events' })
+        headerNavItems.splice(mentorsIdx + 1, 0, { label: 'Events', href: '/campus-events' })
       } else {
-        headerNavItems.push({ label: 'Campus Events', href: '/campus-events' })
+        headerNavItems.push({ label: 'Events', href: '/campus-events' })
       }
     }
 
@@ -152,9 +152,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     if (!footerNavItems.some((item) => item.href === '/campus-events')) {
       const mentorsIdx = footerNavItems.findIndex((item) => item.href === '/mentors')
       if (mentorsIdx !== -1) {
-        footerNavItems.splice(mentorsIdx + 1, 0, { label: 'Campus Events', href: '/campus-events' })
+        footerNavItems.splice(mentorsIdx + 1, 0, { label: 'Events', href: '/campus-events' })
       } else {
-        footerNavItems.push({ label: 'Campus Events', href: '/campus-events' })
+        footerNavItems.push({ label: 'Events', href: '/campus-events' })
       }
     }
 
