@@ -106,13 +106,19 @@ export default buildConfig({
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
-  db: isPostgres
+  db: (isPostgres || Boolean(process.env.VERCEL))
     ? postgresAdapter({
         pool: {
-          connectionString: process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || databaseUrl,
-          ssl: {
-            rejectUnauthorized: false,
-          },
+          connectionString:
+            process.env.POSTGRES_URL_NON_POOLING ||
+            process.env.POSTGRES_URL ||
+            process.env.DATABASE_URL ||
+            process.env.DATABASE_URI ||
+            (rawDbUrl ? rawDbUrl : 'postgres://postgres:postgres@localhost:5432/skillversity'),
+          ssl:
+            rawDbUrl && (rawDbUrl.includes('neon.tech') || rawDbUrl.includes('supabase') || rawDbUrl.includes('postgres'))
+              ? { rejectUnauthorized: false }
+              : false,
         },
         push: true,
         migrationDir: path.resolve(dirname, 'migrations'),
