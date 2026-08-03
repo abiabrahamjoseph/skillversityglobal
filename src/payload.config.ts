@@ -30,7 +30,7 @@ const rawDbUrl =
   process.env.POSTGRES_URL_NON_POOLING ||
   process.env.DATABASE_URL ||
   process.env.DATABASE_URI ||
-  ''
+  'postgresql://neondb_owner:npg_HnMAX38ISrmq@ep-lingering-wildflower-avincw96-pooler.c-11.us-east-1.aws.neon.tech/neondb?sslmode=require'
 
 const isPostgres =
   Boolean(rawDbUrl) &&
