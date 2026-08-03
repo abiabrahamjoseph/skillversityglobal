@@ -1,7 +1,5 @@
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
-import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
@@ -123,7 +121,7 @@ export default buildConfig({
         push: true,
         migrationDir: path.resolve(dirname, 'migrations'),
       })
-    : sqliteAdapter({
+    : require('@payloadcms/db-sqlite').sqliteAdapter({
         client: {
           url: databaseUrl,
         },
