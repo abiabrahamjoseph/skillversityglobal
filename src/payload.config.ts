@@ -29,6 +29,7 @@ const rawDbUrl =
   process.env.POSTGRES_PRISMA_URL ||
   process.env.POSTGRES_URL_NON_POOLING ||
   process.env.DATABASE_URL ||
+  process.env.DATABASE_URI ||
   ''
 
 const isPostgres =
@@ -40,7 +41,7 @@ const isPostgres =
     rawDbUrl.includes('vercel-storage') ||
     rawDbUrl.includes('postgres'))
 
-const databaseUrl = rawDbUrl || 'file:./payload.db'
+const databaseUrl = rawDbUrl || (process.env.VERCEL ? 'file:/tmp/payload.db' : 'file:./payload.db')
 
 const serverUrl = getServerSideURL()
 const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null
@@ -56,6 +57,7 @@ const allowedOrigins = Array.from(
 )
 
 export default buildConfig({
+  serverURL: allowedOrigins[0] || 'https://skillversityglobal.vercel.app',
   admin: {
     components: {
       beforeDashboard: ['@/components/BeforeDashboard#default'],
