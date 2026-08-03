@@ -57,14 +57,6 @@ const allowedOrigins = Array.from(
 export default buildConfig({
   serverURL: allowedOrigins[0] || 'https://skillversityglobal.vercel.app',
   admin: {
-    components: {
-      beforeDashboard: ['@/components/BeforeDashboard#default'],
-      beforeLogin: ['@/components/BeforeLogin#default'],
-      graphics: {
-        Icon: '@/components/admin/Icon#SkillversityIcon',
-        Logo: '@/components/admin/Logo#SkillversityLogo',
-      },
-    },
     meta: {
       titleSuffix: '— Skillversity Admin',
       icons: [
