@@ -52,6 +52,18 @@ export const RecentPlacementsPopup: React.FC = () => {
     }
   }, [])
 
+  // Automatically close celebration popup after 5 seconds
+  useEffect(() => {
+    if (!isOpen) return
+
+    const autoCloseTimer = setTimeout(() => {
+      setIsOpen(false)
+      setShowFloatingCounter(true)
+    }, 5000)
+
+    return () => clearTimeout(autoCloseTimer)
+  }, [isOpen])
+
   // Start count up animation when floating counter is activated after popup close
   useEffect(() => {
     if (!showFloatingCounter) return
