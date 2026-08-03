@@ -422,13 +422,10 @@ export const HomePageClient: React.FC<Props> = ({
             }
           `}</style>
           
-          {/* FITTED WHITE BOX AROUND TEXT */}
-          <div className="placement-text-white-box" style={{ display: 'inline-block', background: '#FFFFFF', padding: '14px 24px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0, 10, 40, 0.15), 0 0 0 1px rgba(0,0,0,0.05)', maxWidth: '100%' }}>
-            <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.05, letterSpacing: '-0.5px', fontSize: 'clamp(1.15rem, 2.4vw, 1.75rem)' }}>
-              <span className="number-animated-pulse" style={{ fontSize: 'clamp(4.5rem, 12vw, 7.8rem)', fontWeight: 900, lineHeight: 0.95, display: 'inline-block', marginBottom: '2px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
-              Students <span className="placement-title-highlight" style={{ display: 'inline-block', color: '#0D2C54' }}>Placed Successfully from 2014.</span>
-            </h2>
-          </div>
+          <h2 className="placement-title" style={{ fontWeight: 900, color: '#0D2C54', margin: 0, lineHeight: 1.1, letterSpacing: '-0.5px', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)' }}>
+            <span className="number-animated-pulse" style={{ fontSize: 'clamp(5rem, 13.5vw, 8.8rem)', fontWeight: 900, lineHeight: 1, display: 'inline-block', marginBottom: '10px' }}><AnimatedCounter target={10141} start={10100} />+</span> <br/>
+            Students <span className="placement-title-highlight" style={{ display: 'inline-block', color: '#0D2C54' }}>Placed Successfully from 2014.</span>
+          </h2>
           
           <div className="placement-bullet-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '28px', justifyContent: 'center' }}>
             <Link href="/placements" className="btn btn-brand btn-lg placement-btn">View Full Placement Record →</Link>
