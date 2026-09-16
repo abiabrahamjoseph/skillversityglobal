@@ -34,12 +34,37 @@ export const SkillversityHeader: React.FC<Props> = ({
               item.href === '/programs' ? (
                 <span className="has-drop" key={item.href}>
                   <Link href="/programs">{item.label} ▾</Link>
-                  <div className="drop">
+                  <div className="drop" style={{ minWidth: '320px', padding: '12px' }}>
                     {programs.map((p) => (
-                      <Link key={p.slug} href={`/programs/${p.slug}`}>
-                        <span className="drop-dot" style={{ background: p.color }} />
-                        {p.title}
-                      </Link>
+                      <React.Fragment key={p.slug}>
+                        <Link href={`/programs/${p.slug}`} className="drop-item-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                            <span className="drop-dot" style={{ background: p.color }} />
+                            <strong style={{ fontWeight: 700 }}>{p.title}</strong>
+                          </span>
+                          {p.slug === 'hospital-administration' && (
+                            <span style={{ fontSize: '10px', background: '#E0F7FD', color: '#00B6E8', padding: '2px 6px', borderRadius: '4px', fontWeight: 800 }}>
+                              4 TRACKS
+                            </span>
+                          )}
+                        </Link>
+                        {p.slug === 'hospital-administration' && (
+                          <div style={{ paddingLeft: '24px', margin: '4px 0 10px 0', display: 'flex', flexDirection: 'column', gap: '3px', borderLeft: '2px solid #E0F7FD' }}>
+                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
+                              🏥 Advanced Diploma (ADHA)
+                            </Link>
+                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
+                              💳 Hospital Billing & TPA Desk
+                            </Link>
+                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
+                              💻 HIS & Medical Records (EMR)
+                            </Link>
+                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
+                              🛡️ Patient Care & NABH Quality
+                            </Link>
+                          </div>
+                        )}
+                      </React.Fragment>
                     ))}
                   </div>
                 </span>
@@ -124,12 +149,37 @@ export const SkillversityHeader: React.FC<Props> = ({
           </Link>
         </nav>
         <div className="drawer-programs">
-          <h5>Our Programs</h5>
+          <h5>Our Programs & Specializations</h5>
           {programs.map((p) => (
-            <Link key={p.slug} href={`/programs/${p.slug}`} onClick={() => setDrawerOpen(false)}>
-              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: p.color, display: 'inline-block', marginRight: '8px' }} />
-              {p.title}
-            </Link>
+            <React.Fragment key={p.slug}>
+              <Link href={`/programs/${p.slug}`} onClick={() => setDrawerOpen(false)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: p.color, display: 'inline-block', marginRight: '8px' }} />
+                  {p.title}
+                </span>
+                {p.slug === 'hospital-administration' && (
+                  <span style={{ fontSize: '10px', background: '#E0F7FD', color: '#00B6E8', padding: '2px 6px', borderRadius: '4px', fontWeight: 800 }}>
+                    4 TRACKS
+                  </span>
+                )}
+              </Link>
+              {p.slug === 'hospital-administration' && (
+                <div style={{ paddingLeft: '22px', margin: '4px 0 10px 0', display: 'flex', flexDirection: 'column', gap: '6px', borderLeft: '2px solid #E0F7FD' }}>
+                  <Link href="/programs/hospital-administration" onClick={() => setDrawerOpen(false)} style={{ fontSize: '13.5px', color: 'var(--ink-soft)', padding: '2px 0' }}>
+                    🏥 Advanced Diploma (ADHA)
+                  </Link>
+                  <Link href="/programs/hospital-administration" onClick={() => setDrawerOpen(false)} style={{ fontSize: '13.5px', color: 'var(--ink-soft)', padding: '2px 0' }}>
+                    💳 Hospital Billing & TPA Desk
+                  </Link>
+                  <Link href="/programs/hospital-administration" onClick={() => setDrawerOpen(false)} style={{ fontSize: '13.5px', color: 'var(--ink-soft)', padding: '2px 0' }}>
+                    💻 HIS & Medical Records (EMR)
+                  </Link>
+                  <Link href="/programs/hospital-administration" onClick={() => setDrawerOpen(false)} style={{ fontSize: '13.5px', color: 'var(--ink-soft)', padding: '2px 0' }}>
+                    🛡️ Patient Care & NABH Quality
+                  </Link>
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>
