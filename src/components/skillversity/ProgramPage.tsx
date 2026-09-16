@@ -59,6 +59,18 @@ export type ProgramDetail = {
     accentColor?: string
   }>
   faqs?: Array<{ question: string; answer: string }>
+  subCourses?: Array<{
+    id: string
+    title: string
+    icon?: string
+    tag?: string
+    duration?: string
+    eligibility?: string
+    salary?: string
+    shortDesc?: string
+    highlights?: string[]
+    careerRoles?: string[]
+  }>
 }
 
 export const ProgramPage: React.FC<{ program: ProgramDetail }> = ({ program }) => {
@@ -215,7 +227,115 @@ export const ProgramPage: React.FC<{ program: ProgramDetail }> = ({ program }) =
             </ScrollReveal>
           </div>
         </section>
-      )}
+      {/* SUB-COURSES & SPECIALIZATION TRACKS */}
+      {program.subCourses?.length ? (
+        <section className="section" style={{ background: '#ffffff', padding: '72px 0' }}>
+          <div className="wrap">
+            <ScrollReveal className="section-head" style={{ textAlign: 'center', marginBottom: '44px' }}>
+              <span className="eyebrow" style={{ borderColor: primaryColor, color: primaryColor }}><span className="dot" />Specialization Tracks</span>
+              <h2 className="h-section" style={{ marginTop: '14px' }}>
+                Explore All 4 Sub-Courses <br />
+                <span className="squiggle" style={{ color: primaryColor }}>under {program.title}</span>
+              </h2>
+              <p className="lead" style={{ marginTop: '14px', maxWidth: '680px', margin: '14px auto 0' }}>
+                Choose your specific career track — from full hospital operations management to healthcare billing, digital EMR medical records, and NABH quality administration.
+              </p>
+            </ScrollReveal>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
+              {program.subCourses.map((track) => (
+                <ScrollReveal key={track.id}>
+                  <div
+                    style={{
+                      background: 'var(--cream)',
+                      borderRadius: '24px',
+                      border: '2px solid var(--ink)',
+                      padding: '28px 24px',
+                      boxShadow: '6px 6px 0 var(--ink)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: '100%',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                      <span style={{ fontSize: '36px' }}>{track.icon || '🎓'}</span>
+                      {track.tag && (
+                        <span
+                          style={{
+                            background: primaryColor,
+                            color: '#ffffff',
+                            fontSize: '11px',
+                            fontWeight: 800,
+                            padding: '4px 12px',
+                            borderRadius: '999px',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.06em',
+                          }}
+                        >
+                          {track.tag}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 style={{ fontFamily: 'var(--display)', fontSize: '19px', fontWeight: 800, color: 'var(--ink)', marginBottom: '8px', lineHeight: 1.25 }}>
+                      {track.title}
+                    </h3>
+
+                    <p style={{ fontSize: '14px', color: 'var(--ink-soft)', lineHeight: 1.55, marginBottom: '20px', flex: 1 }}>
+                      {track.shortDesc}
+                    </p>
+
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+                      {track.duration && (
+                        <span style={{ background: '#ffffff', border: '1px solid var(--line)', padding: '6px 12px', borderRadius: '8px', fontSize: '12.5px', fontWeight: 700, color: 'var(--ink)' }}>
+                          ⏱️ {track.duration}
+                        </span>
+                      )}
+                      {track.salary && (
+                        <span style={{ background: '#FFE4ED', border: '1px solid var(--brand-pink)', padding: '6px 12px', borderRadius: '8px', fontSize: '12.5px', fontWeight: 700, color: 'var(--brand-pink)' }}>
+                          💼 {track.salary}
+                        </span>
+                      )}
+                    </div>
+
+                    {track.highlights?.length ? (
+                      <div style={{ background: '#ffffff', borderRadius: '16px', border: '1px solid var(--line)', padding: '16px', marginBottom: '24px' }}>
+                        <div style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink-mute)', letterSpacing: '0.06em', marginBottom: '8px' }}>
+                          Core Training Highlights:
+                        </div>
+                        <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '13px', color: 'var(--ink-soft)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          {track.highlights.map((h, i) => (
+                            <li key={i}>{h}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+
+                    <Link
+                      href="/contact#lead-form"
+                      className="btn btn-brand"
+                      style={{
+                        width: '100%',
+                        justifyContent: 'center',
+                        padding: '12px 18px',
+                        borderRadius: '12px',
+                        fontSize: '14.5px',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.04em',
+                      }}
+                    >
+                      Enquire For This Track →
+                    </Link>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {program.modules?.length ? (
         <section className="section" style={{ background: '#fff' }}>
