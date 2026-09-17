@@ -67,7 +67,7 @@ export const SkillversityHeader: React.FC<Props> = ({
                             <div className="flyout-panel-head">
                               Hospital Administration — 4 Specializations
                             </div>
-                            <Link href="/programs/hospital-administration" className="flyout-item">
+                            <Link href="/programs/hospital-administration/advanced-diploma-hospital-administration" className="flyout-item">
                               <div className="flyout-title">
                                 <span>🏥</span> Advanced Diploma (ADHA)
                               </div>
@@ -75,7 +75,7 @@ export const SkillversityHeader: React.FC<Props> = ({
                                 ⏱️ 10/12 Months · Operations, OPD/Ward Management & NABH Audit Standards
                               </div>
                             </Link>
-                            <Link href="/programs/hospital-administration" className="flyout-item">
+                            <Link href="/programs/hospital-administration/hospital-billing-tpa-operations" className="flyout-item">
                               <div className="flyout-title">
                                 <span>💳</span> Hospital Billing & TPA Desk
                               </div>
@@ -83,7 +83,7 @@ export const SkillversityHeader: React.FC<Props> = ({
                                 ⏱️ 6/10 Months · Cashless Insurance, Revenue Cycle (RCM) & Claims Processing
                               </div>
                             </Link>
-                            <Link href="/programs/hospital-administration" className="flyout-item">
+                            <Link href="/programs/hospital-administration/his-medical-records-emr" className="flyout-item">
                               <div className="flyout-title">
                                 <span>💻</span> HIS & Medical Records (EMR/EHR)
                               </div>
@@ -91,7 +91,7 @@ export const SkillversityHeader: React.FC<Props> = ({
                                 ⏱️ 6 Months · EMR Digital Workflows, ICD-10 Coding & Health Data Privacy
                               </div>
                             </Link>
-                            <Link href="/programs/hospital-administration" className="flyout-item">
+                            <Link href="/programs/hospital-administration/patient-care-nabh-quality-standards" className="flyout-item">
                               <div className="flyout-title">
                                 <span>🛡️</span> Patient Care & NABH Quality
                               </div>

@@ -61,6 +61,7 @@ export type ProgramDetail = {
   faqs?: Array<{ question: string; answer: string }>
   subCourses?: Array<{
     id: string
+    slug?: string
     title: string
     icon?: string
     tag?: string
@@ -315,22 +316,40 @@ export const ProgramPage: React.FC<{ program: ProgramDetail }> = ({ program }) =
                       </div>
                     ) : null}
 
-                    <Link
-                      href="/contact#lead-form"
-                      className="btn btn-brand"
-                      style={{
-                        width: '100%',
-                        justifyContent: 'center',
-                        padding: '12px 18px',
-                        borderRadius: '12px',
-                        fontSize: '14.5px',
-                        fontWeight: 800,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                      }}
-                    >
-                      Enquire For This Track →
-                    </Link>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: 'auto' }}>
+                      {track.slug && (
+                        <Link
+                          href={`/programs/${program.slug}/${track.slug}`}
+                          className="btn btn-brand"
+                          style={{
+                            width: '100%',
+                            justifyContent: 'center',
+                            padding: '12px 18px',
+                            borderRadius: '12px',
+                            fontSize: '14.5px',
+                            fontWeight: 800,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.04em',
+                          }}
+                        >
+                          View Dedicated Course Page →
+                        </Link>
+                      )}
+                      <Link
+                        href="/contact#lead-form"
+                        className="btn btn-secondary"
+                        style={{
+                          width: '100%',
+                          justifyContent: 'center',
+                          padding: '10px 18px',
+                          borderRadius: '12px',
+                          fontSize: '13.5px',
+                          fontWeight: 700,
+                        }}
+                      >
+                        Enquire / Get Syllabus →
+                      </Link>
+                    </div>
                   </div>
                 </ScrollReveal>
               ))}
