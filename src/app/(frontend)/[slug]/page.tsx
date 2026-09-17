@@ -29,7 +29,7 @@ export async function generateStaticParams() {
     })
 
     return pages.docs
-      ?.filter((doc) => doc.slug !== 'home')
+      ?.filter((doc) => doc.slug !== 'home' && doc.slug !== 'admin-portal' && doc.slug !== 'media-portal')
       .map(({ slug }) => ({ slug }))
   } catch {
     return []
