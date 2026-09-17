@@ -11,7 +11,7 @@ type StudentPlacementImage = {
   image: string
 }
 
-const PLACEMENT_IMAGES: StudentPlacementImage[] = [
+const DEFAULT_PLACEMENT_IMAGES: StudentPlacementImage[] = [
   {
     id: '1',
     name: 'Vishnu - Placed at DHL',
@@ -33,7 +33,25 @@ export const RecentPlacementsPopup: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showFloatingCounter, setShowFloatingCounter] = useState(false)
   const [counterValue, setCounterValue] = useState(0)
+  const [placementImages, setPlacementImages] = useState<StudentPlacementImage[]>(DEFAULT_PLACEMENT_IMAGES)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+
+  useEffect(() => {
+    fetch('/api/upload-media')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.media?.length) {
+          const liveItems: StudentPlacementImage[] = data.media.map((m: any, idx: number) => ({
+            id: m.id || `live-${idx}`,
+            name: m.alt || m.filename || 'Placed Student',
+            image: m.url,
+          }))
+          // Prepend uploaded images to default images and slice top 3-4 for display
+          setPlacementImages([...liveItems, ...DEFAULT_PLACEMENT_IMAGES].slice(0, 3))
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     // Show main celebration popup after 3 seconds
@@ -245,7 +263,7 @@ export const RecentPlacementsPopup: React.FC = () => {
 
             {/* Pure Images Grid - No text details */}
             <div className="placement-popup-pure-images-grid">
-              {PLACEMENT_IMAGES.map((item, idx) => (
+              {placementImages.map((item, idx) => (
                 <div
                   key={item.id}
                   className="placement-pure-image-card"

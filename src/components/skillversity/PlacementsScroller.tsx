@@ -94,7 +94,26 @@ const fallbackPlacements: PlacementItem[] = [
 
 export const PlacementsScroller: React.FC<Props> = ({ placements = [] }) => {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const list = placements.length > 0 ? placements : fallbackPlacements
+  const [liveUploaded, setLiveUploaded] = React.useState<PlacementItem[]>([])
+
+  React.useEffect(() => {
+    fetch('/api/upload-media')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.media?.length) {
+          const items: PlacementItem[] = data.media.map((m: any) => ({
+            firstName: m.alt || m.filename,
+            caption: `${m.alt || m.filename} · Placed Student`,
+            image: { url: m.url, alt: m.alt || m.filename },
+          }))
+          setLiveUploaded(items)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  const initialList = placements.length > 0 ? placements : fallbackPlacements
+  const list = [...liveUploaded, ...initialList]
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
