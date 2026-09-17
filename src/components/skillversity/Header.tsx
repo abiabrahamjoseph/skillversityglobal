@@ -42,7 +42,7 @@ export const SkillversityHeader: React.FC<Props> = ({
                           style={{
                             display: 'flex',
                             alignItems: 'center',
-                            justify: 'space-between',
+                            justifyContent: 'space-between',
                             padding: '10px 14px',
                             borderRadius: '9px',
                             fontSize: '13.5px',
