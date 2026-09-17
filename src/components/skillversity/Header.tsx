@@ -34,37 +34,74 @@ export const SkillversityHeader: React.FC<Props> = ({
               item.href === '/programs' ? (
                 <span className="has-drop" key={item.href}>
                   <Link href="/programs">{item.label} ▾</Link>
-                  <div className="drop" style={{ minWidth: '320px', padding: '12px' }}>
+                  <div className="drop" style={{ minWidth: '260px', padding: '10px' }}>
                     {programs.map((p) => (
-                      <React.Fragment key={p.slug}>
-                        <Link href={`/programs/${p.slug}`} className="drop-item-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div key={p.slug} className={p.slug === 'hospital-administration' ? 'has-flyout' : ''}>
+                        <Link
+                          href={`/programs/${p.slug}`}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justify: 'space-between',
+                            padding: '10px 14px',
+                            borderRadius: '9px',
+                            fontSize: '13.5px',
+                            fontWeight: 600,
+                            color: 'var(--ink)',
+                            textDecoration: 'none',
+                          }}
+                        >
                           <span style={{ display: 'inline-flex', alignItems: 'center' }}>
                             <span className="drop-dot" style={{ background: p.color }} />
-                            <strong style={{ fontWeight: 700 }}>{p.title}</strong>
+                            {p.title}
                           </span>
                           {p.slug === 'hospital-administration' && (
-                            <span style={{ fontSize: '10px', background: '#E0F7FD', color: '#00B6E8', padding: '2px 6px', borderRadius: '4px', fontWeight: 800 }}>
-                              4 TRACKS
+                            <span style={{ fontSize: '15px', color: 'var(--ink-soft)', fontWeight: 800, marginLeft: '12px' }}>
+                              ›
                             </span>
                           )}
                         </Link>
+
                         {p.slug === 'hospital-administration' && (
-                          <div style={{ paddingLeft: '24px', margin: '4px 0 10px 0', display: 'flex', flexDirection: 'column', gap: '3px', borderLeft: '2px solid #E0F7FD' }}>
-                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
-                              🏥 Advanced Diploma (ADHA)
+                          <div className="flyout-panel">
+                            <div className="flyout-panel-head">
+                              Hospital Administration — 4 Specializations
+                            </div>
+                            <Link href="/programs/hospital-administration" className="flyout-item">
+                              <div className="flyout-title">
+                                <span>🏥</span> Advanced Diploma (ADHA)
+                              </div>
+                              <div className="flyout-desc">
+                                ⏱️ 10/12 Months · Operations, OPD/Ward Management & NABH Audit Standards
+                              </div>
                             </Link>
-                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
-                              💳 Hospital Billing & TPA Desk
+                            <Link href="/programs/hospital-administration" className="flyout-item">
+                              <div className="flyout-title">
+                                <span>💳</span> Hospital Billing & TPA Desk
+                              </div>
+                              <div className="flyout-desc">
+                                ⏱️ 6/10 Months · Cashless Insurance, Revenue Cycle (RCM) & Claims Processing
+                              </div>
                             </Link>
-                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
-                              💻 HIS & Medical Records (EMR)
+                            <Link href="/programs/hospital-administration" className="flyout-item">
+                              <div className="flyout-title">
+                                <span>💻</span> HIS & Medical Records (EMR/EHR)
+                              </div>
+                              <div className="flyout-desc">
+                                ⏱️ 6 Months · EMR Digital Workflows, ICD-10 Coding & Health Data Privacy
+                              </div>
                             </Link>
-                            <Link href="/programs/hospital-administration" style={{ fontSize: '12.5px', padding: '5px 8px', color: 'var(--ink-soft)', fontWeight: 600, borderRadius: '6px' }}>
-                              🛡️ Patient Care & NABH Quality
+                            <Link href="/programs/hospital-administration" className="flyout-item">
+                              <div className="flyout-title">
+                                <span>🛡️</span> Patient Care & NABH Quality
+                              </div>
+                              <div className="flyout-desc">
+                                ⏱️ 6/10 Months · Patient Experience, Grooming, Safety Protocols & Audit Prep
+                              </div>
                             </Link>
                           </div>
                         )}
-                      </React.Fragment>
+                      </div>
                     ))}
                   </div>
                 </span>

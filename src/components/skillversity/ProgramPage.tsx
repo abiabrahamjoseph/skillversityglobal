@@ -227,6 +227,8 @@ export const ProgramPage: React.FC<{ program: ProgramDetail }> = ({ program }) =
             </ScrollReveal>
           </div>
         </section>
+      )}
+
       {/* SUB-COURSES & SPECIALIZATION TRACKS */}
       {program.subCourses?.length ? (
         <section className="section" style={{ background: '#ffffff', padding: '72px 0' }}>
