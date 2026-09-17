@@ -4,7 +4,22 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Skillversity Global',
-  description: 'Read Skillversity Global\'s privacy policy. How we collect, use, and protect your personal information.',
+  description:
+    "Read Skillversity Global's privacy policy. Learn how we collect, store, and protect your personal data and lead form submissions.",
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/privacy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Privacy Policy | Skillversity Global',
+    description: "Read Skillversity Global's privacy policy and data protection practices.",
+    url: 'https://www.skillversityglobal.com/privacy',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
 }
 
 export default function PrivacyPolicy() {

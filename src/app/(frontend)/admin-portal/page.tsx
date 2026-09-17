@@ -5,6 +5,10 @@ import { AdminPortalPageClient } from '@/components/skillversity/pages/AdminPort
 export const metadata: Metadata = {
   title: 'Admin Portal Login | Skillversity Global',
   description: 'Admin Portal Login to manage student lead enquiries, SEO metadata, pages, and website content.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function AdminPortalPage() {

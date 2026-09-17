@@ -7,8 +7,36 @@ import { CTASection } from '@/components/skillversity/CTASection'
 import { CampusAlbumUI } from '@/components/skillversity/CampusAlbumUI'
 
 export const metadata: Metadata = {
-  title: 'Campus Life | Skillversity Global | Kochi, Kerala',
-  description: "Experience campus life at Skillversity Global — India's First Job-Ready Campus in Kochi. Modern facilities, industry visits, personality development, sports, and cultural activities.",
+  title: 'Campus Life & Facilities | Skillversity Global Kochi',
+  description:
+    "Experience campus life at Skillversity Global — India's First Job-Ready Campus in Kochi. Smart classrooms, industry visits, port tours, NABH simulation labs, and student activities.",
+  keywords: [
+    'Skillversity Campus Life',
+    'Student Life Kochi Campus',
+    'NABH Simulation Lab Kerala',
+    'Industrial Visits Kochi',
+    'Job Ready Student Life',
+  ],
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/campus-life',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Campus Life & Facilities | Skillversity Global Kochi',
+    description:
+      "Experience campus life at Skillversity Global in Kochi. Modern facilities, industry visits, NABH simulation labs, and cultural events.",
+    url: 'https://www.skillversityglobal.com/campus-life',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Campus Life | Skillversity Global Kochi',
+    description: 'Smart classrooms, port visits, simulation labs, and vibrant student community.',
+  },
 }
 
 export default function CampusLifePage() {

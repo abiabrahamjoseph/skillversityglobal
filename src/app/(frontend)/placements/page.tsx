@@ -6,8 +6,39 @@ import { PlacementsPageClient } from '@/components/skillversity/pages/Placements
 import { CTASection } from '@/components/skillversity/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Placements | 10,141+ Students Placed from 2014 | Skillversity Global',
-  description: '10,141+ placements since 2014. Explore placement records across Hospital Administration, Logistics, Oil & Gas, and HR Management in India & GCC.',
+  title: '10,141+ Student Placements & Career Record | Skillversity Global',
+  description:
+    '10,141+ student placements since 2014 across India & GCC. Explore live placement records in Hospital Administration, Logistics, Oil & Gas, and HR Management.',
+  keywords: [
+    'Skillversity Placements',
+    'Student Placement Record Kochi',
+    'Job Placements Kerala',
+    'Hospital Admin Jobs GCC',
+    'Logistics Placements India',
+    'Oil and Gas Inspector Placements',
+    'HR Trainee Placements',
+  ],
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/placements',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: '10,141+ Student Placements & Career Record | Skillversity Global',
+    description:
+      '10,141+ student placements since 2014 across India & GCC. Explore live placement records in Hospital Administration, Logistics, Oil & Gas, and HR.',
+    url: 'https://www.skillversityglobal.com/placements',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '10,141+ Student Placements | Skillversity Global',
+    description:
+      '10,141+ student placements since 2014 across India & GCC. Hospital Admin, Logistics, Oil & Gas, HR.',
+  },
 }
 
 async function getPlacementsGallery() {

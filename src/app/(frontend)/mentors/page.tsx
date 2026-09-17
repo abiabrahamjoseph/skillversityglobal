@@ -12,8 +12,37 @@ import { defaultMentors, defaultAllMentors } from '@/skillversity/defaultContent
 import { MentorsDirectory } from '@/components/skillversity/MentorsDirectory'
 
 export const metadata: Metadata = {
-  title: '43+ Industry Mentors | Skillversity Global',
-  description: 'Meet our 43+ industry mentors with 30+ years of experience across healthcare, logistics, oil & gas, and HR. They guide, train, and mentor students into job-ready professionals.',
+  title: '43+ Industry Mentors & Faculty | Skillversity Global Kochi',
+  description:
+    'Meet our 43+ industry mentors with 30+ years of active experience across hospitals, ports, oil refineries, and corporate HR. Learn directly from experts who hire.',
+  keywords: [
+    'Skillversity Mentors',
+    'Industry Faculty Kochi',
+    'Hospital Admin Trainers Kerala',
+    'Logistics Mentors Kochi',
+    'Oil and Gas QC Instructors',
+    'HR Mentors Kerala',
+  ],
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/mentors',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: '43+ Industry Mentors & Faculty | Skillversity Global Kochi',
+    description:
+      'Meet our 43+ industry mentors with 30+ years of experience across healthcare, logistics, oil & gas, and HR.',
+    url: 'https://www.skillversityglobal.com/mentors',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '43+ Industry Mentors | Skillversity Global Kochi',
+    description: 'Learn from 43+ industry mentors actively working in hospitals, ports, and corporate HR.',
+  },
 }
 
 async function getMentorsGallery() {

@@ -3,14 +3,18 @@ import { getServerSideURL } from './getURL'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  description: 'An open-source website built with Payload and Next.js.',
+  description:
+    "Skillversity Global — India's First Job-Ready Campus in Kochi, Kerala. 10,141+ student placements since 2014. Programs in Hospital Administration, Logistics, Oil & Gas, and HR.",
   images: [
     {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
+      url: `${getServerSideURL()}/media/hero-bg.jpg`,
+      width: 1200,
+      height: 630,
+      alt: 'Skillversity Global - Job-Ready Campus Kochi',
     },
   ],
-  siteName: 'Payload Website Template',
-  title: 'Payload Website Template',
+  siteName: 'Skillversity Global',
+  title: "Skillversity Global | India's First Job-Ready Campus | Kochi, Kerala",
 }
 
 export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'] => {
@@ -20,3 +24,4 @@ export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'
     images: og?.images ? og.images : defaultOpenGraph.images,
   }
 }
+

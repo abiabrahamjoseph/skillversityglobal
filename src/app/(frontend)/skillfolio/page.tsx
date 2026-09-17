@@ -5,8 +5,36 @@ import { ScrollReveal } from '@/components/skillversity/ScrollReveal'
 import { CTASection } from '@/components/skillversity/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Skillfolio | Your Digital Employability Profile | Skillversity Global',
-  description: 'Every Skillversity graduate receives a Skillfolio — a verifiable digital profile showcasing skills, projects, certifications, and mentor endorsements. Better than a CV.',
+  title: 'Skillfolio | Verifiable Digital Employability Profile | Skillversity Global',
+  description:
+    'Every Skillversity graduate receives a Skillfolio — a verifiable digital portfolio showcasing skills, practical projects, certifications, and mentor endorsements to employers.',
+  keywords: [
+    'Skillfolio Skillversity',
+    'Digital Employability Profile',
+    'Verifiable Student Portfolio',
+    'Skillversity CV Replacement',
+    'Job Ready Digital Certificate',
+  ],
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/skillfolio',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Skillfolio | Verifiable Digital Employability Profile | Skillversity Global',
+    description:
+      'Every Skillversity graduate receives a Skillfolio — a verifiable digital portfolio showcasing skills, projects, and mentor endorsements.',
+    url: 'https://www.skillversityglobal.com/skillfolio',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Skillfolio | Digital Employability Profile',
+    description: 'Beyond the traditional CV — verifiable digital skills portfolio for Skillversity graduates.',
+  },
 }
 
 export default function SkillfolioPage() {

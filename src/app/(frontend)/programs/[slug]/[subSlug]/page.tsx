@@ -31,12 +31,42 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const subCourse = parentProgram?.subCourses?.find((s) => s.slug === subSlug)
 
   if (!subCourse || !parentProgram) {
-    return { title: 'Course | Skillversity Global' }
+    return { title: 'Course Details | Skillversity Global' }
   }
 
+  const title = `${subCourse.title} | ${parentProgram.title} | Skillversity Global`
+  const description = subCourse.shortDesc || `Enroll in ${subCourse.title} under ${parentProgram.title} at Skillversity Global Kochi. Practical training & placement support.`
+  const url = `https://www.skillversityglobal.com/programs/${slug}/${subSlug}`
+
   return {
-    title: `${subCourse.title} | ${parentProgram.title} | Skillversity Global`,
-    description: subCourse.shortDesc || `${subCourse.title} course at Skillversity Global.`,
+    title,
+    description,
+    keywords: [
+      subCourse.title,
+      `${subCourse.title} Course Kochi`,
+      `${parentProgram.title} Specialized Diploma`,
+      'Skillversity Global Sub Course',
+      'Job Ready Training Kerala',
+    ],
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'Skillversity Global',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   }
 }
 

@@ -110,9 +110,39 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
     }
   }
 
+  const pageTitle = `${program.title} Course | Job-Ready Certification | Skillversity Global`
+  const pageDesc = program.heroDescription || program.shortDescription || `Master ${program.title} with 100% placement assurance & practical industry training at Skillversity Global, Kochi, Kerala.`
+  const pageUrl = `https://www.skillversityglobal.com/programs/${slug}`
+
   return {
-    title: `${program.title} | Skillversity Global`,
-    description: program.heroDescription || program.shortDescription || `${program.title} program at Skillversity Global.`,
+    title: pageTitle,
+    description: pageDesc,
+    keywords: [
+      `${program.title} Course Kochi`,
+      `${program.title} Training Kerala`,
+      `${program.title} Certification`,
+      'Skillversity Global',
+      'Job Placement Course Kochi',
+    ],
+    alternates: {
+      canonical: pageUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title: pageTitle,
+      description: pageDesc,
+      url: pageUrl,
+      siteName: 'Skillversity Global',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageTitle,
+      description: pageDesc,
+    },
   }
 }
 

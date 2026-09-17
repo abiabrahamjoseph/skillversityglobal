@@ -10,8 +10,38 @@ import { ScrollReveal } from '@/components/skillversity/ScrollReveal'
 import { defaultPrograms } from '@/skillversity/defaultContent'
 
 export const metadata: Metadata = {
-  title: 'All Programs | Skillversity Global',
-  description: 'Compare all four industry-led programs at Skillversity Global — Hospital Administration, Logistics & Supply Chain, Oil & Gas, HR Management.',
+  title: 'Job-Ready Courses & Programs | Skillversity Global Kochi',
+  description:
+    'Compare all four industry-led job-ready programs at Skillversity Global — Hospital Administration, Logistics & Supply Chain, Oil & Gas Quality Inspection, and HR Management in Kochi, Kerala.',
+  keywords: [
+    'Job-Ready Programs Kochi',
+    'Hospital Administration Courses',
+    'Logistics Management Courses Kerala',
+    'Oil and Gas Inspection Training',
+    'HR Management Courses',
+    'Career Training Programs Kochi',
+  ],
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/programs',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Job-Ready Courses & Programs | Skillversity Global Kochi',
+    description:
+      'Compare all four industry-led job-ready programs at Skillversity Global — Hospital Administration, Logistics & Supply Chain, Oil & Gas, and HR Management.',
+    url: 'https://www.skillversityglobal.com/programs',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Job-Ready Courses & Programs | Skillversity Global',
+    description:
+      'Compare all four industry-led job-ready programs at Skillversity Global — Hospital Admin, Logistics, Oil & Gas, and HR.',
+  },
 }
 
 async function getPrograms() {

@@ -9,8 +9,37 @@ import { getPayload } from 'payload'
 import { defaultBlogPosts } from '@/skillversity/defaultContent'
 
 export const metadata: Metadata = {
-  title: 'Blog & Career Insights | Skillversity Global',
-  description: 'Career guides, industry news, placement stories, and expert advice from Skillversity Global. Learn about Hospital Admin, Logistics, Oil & Gas, and HR careers.',
+  title: 'Blog, Career Guides & Industry News | Skillversity Global',
+  description:
+    'Read expert career guides, industry trends, placement success stories, and salary insights in Hospital Administration, Logistics, Oil & Gas, and HR Management.',
+  keywords: [
+    'Skillversity Blog',
+    'Career Advice Kochi',
+    'Hospital Administration Salary India',
+    'Logistics Career Guide',
+    'Oil and Gas Inspector Jobs GCC',
+    'HR Career Growth Kerala',
+  ],
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/blog',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Blog, Career Guides & Industry News | Skillversity Global',
+    description:
+      'Expert career guides, industry trends, and placement stories in Hospital Administration, Logistics, Oil & Gas, and HR.',
+    url: 'https://www.skillversityglobal.com/blog',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Career Insights & Blog | Skillversity Global',
+    description: 'Expert career guides, industry news, and placement advice from Skillversity mentors.',
+  },
 }
 
 export default async function BlogPage() {

@@ -5,6 +5,10 @@ import { MediaPortalPageClient } from '@/components/skillversity/pages/MediaPort
 export const metadata: Metadata = {
   title: 'Media Upload Portal | Skillversity Global',
   description: 'Upload images, student placement posters, event photos, and website media to Skillversity Global.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function MediaPortalPage() {

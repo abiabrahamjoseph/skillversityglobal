@@ -11,7 +11,36 @@ import { getPayload } from 'payload'
 export const metadata: Metadata = {
   title: "About Skillversity Global | India's First Job-Ready Campus | IMS Kochi",
   description:
-    "Skillversity is the manifestation of IMS — carrying forward 11+ years of trust and 25,000+ successfully trained career aspirants. Learn our story, vision, and core values.",
+    'Skillversity is the manifestation of IMS — carrying forward 11+ years of trust and 25,000+ trained career aspirants. Learn about our story, vision, leadership, and job-readiness mission in Kochi.',
+  keywords: [
+    'About Skillversity Global',
+    'IMS Kochi History',
+    'Job Ready Campus Story',
+    'Best Training Institute Kochi',
+    'Skillversity Leadership Team',
+    'Career Guarantee Campus Kerala',
+  ],
+  alternates: {
+    canonical: 'https://www.skillversityglobal.com/about',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "About Skillversity Global | India's First Job-Ready Campus | IMS Kochi",
+    description:
+      'Skillversity is the manifestation of IMS — carrying forward 11+ years of trust and 25,000+ trained career aspirants. Learn our story, vision, and core values.',
+    url: 'https://www.skillversityglobal.com/about',
+    siteName: 'Skillversity Global',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Skillversity Global | Job-Ready Campus Kochi',
+    description:
+      'Skillversity is the manifestation of IMS — 11+ years of trust and 25,000+ trained career aspirants.',
+  },
 }
 
 const whyPoints = [

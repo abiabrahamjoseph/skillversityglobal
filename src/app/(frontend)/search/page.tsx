@@ -83,6 +83,11 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Search`,
+    title: 'Search Courses & Articles | Skillversity Global',
+    description: 'Search through courses, sub-courses, placement records, and career guides on Skillversity Global.',
+    robots: {
+      index: false,
+      follow: true,
+    },
   }
 }
