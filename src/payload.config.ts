@@ -106,13 +106,12 @@ export default buildConfig({
             process.env.POSTGRES_URL ||
             process.env.DATABASE_URL ||
             process.env.DATABASE_URI ||
-            (rawDbUrl ? rawDbUrl : 'postgres://postgres:postgres@localhost:5432/skillversity'),
-          ssl:
-            rawDbUrl && (rawDbUrl.includes('neon.tech') || rawDbUrl.includes('supabase') || rawDbUrl.includes('postgres'))
-              ? { rejectUnauthorized: false }
-              : false,
+            'postgresql://neondb_owner:npg_HnMAX38ISrmq@ep-lingering-wildflower-avincw96-pooler.c-11.us-east-1.aws.neon.tech/neondb?sslmode=require',
+          ssl: {
+            rejectUnauthorized: false,
+          },
         },
-        push: true,
+        push: false,
         migrationDir: path.resolve(dirname, 'migrations'),
       })
     : sqliteAdapter({
