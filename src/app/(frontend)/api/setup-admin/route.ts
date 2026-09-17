@@ -16,10 +16,19 @@ export async function GET() {
     })
 
     if (existingUsers.docs.length > 0) {
+      const userToUpdate = existingUsers.docs[0]
+      await payload.update({
+        collection: 'users',
+        id: userToUpdate.id,
+        data: {
+          password: 'skillversity2026',
+        },
+      })
       return NextResponse.json({
         success: true,
-        message: 'Admin user already exists!',
+        message: 'Admin user password has been reset to skillversity2026!',
         email: 'admin@skillversityglobal.com',
+        password: 'skillversity2026',
         loginUrl: 'https://skillversityglobal.vercel.app/admin/login',
       })
     }
